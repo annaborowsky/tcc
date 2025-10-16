@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventos - Comunidade São Francisco</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2c5530;
+            --primary-light: #4a7c59;
+            --primary-dark: #1a3c23;
+            --secondary: #d4af37;
+            --secondary-light: #e8c766;
+            --accent: #8b4513;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+            --light-gray: #e9ecef;
+            --shadow: 0 4px 12px rgba(0,0,0,0.1);
+            --radius: 12px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+            color: var(--dark);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 20px 0;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.05)"/></svg>');
+            background-size: cover;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--secondary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 24px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .logo-subtitle {
+            font-size: 14px;
+            opacity: 0.8;
+            margin-top: 2px;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .nav-btn {
+            background: rgba(255,255,255,0.15);
+            border: none;
+            padding: 10px 18px;
+            border-radius: 30px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            backdrop-filter: blur(5px);
+            text-decoration: none;
+        }
+
+        .nav-btn:hover {
+            background: rgba(255,255,255,0.25);
+            transform: translateY(-2px);
+        }
+
+        .nav-btn.active {
+            background: rgba(255,255,255,0.3);
+            box-shadow: 0 0 0 2px rgba(255,255,255,0.5);
+        }
+
+        .hero {
+            text-align: center;
+            padding: 40px 20px;
+            background: rgba(255,255,255,0.1);
+            border-radius: var(--radius);
+            margin-top: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .hero h1 {
+            font-size: 32px;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        /* Main Content */
+        main {
+            padding: 40px 0;
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 25px;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--light-gray);
+        }
+
+        .section-title i {
+            color: var(--secondary);
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background: var(--primary-light);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+
+        .btn-secondary {
+            background: var(--secondary);
+            color: var(--dark);
+        }
+
+        .btn-secondary:hover {
+            background: var(--secondary-light);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .events-filter {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: white;
+            border: 1px solid var(--light-gray);
+            padding: 10px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+
+        .filter-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .events-list {
+            display: grid;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .event-item {
+            background: white;
+            border-radius: var(--radius);
+            padding: 25px;
+            box-shadow: var(--shadow);
+            display: flex;
+            gap: 20px;
+            transition: var(--transition);
+        }
+
+        .event-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        }
+
+        .event-date {
+            background: var(--primary);
+            color: white;
+            width: 80px;
+            height: 80px;
+            border-radius: var(--radius);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .event-day {
+            font-size: 24px;
+            font-weight: bold;
+            line-height: 1;
+        }
+
+        .event-month {
+            font-size: 14px;
+            text-transform: uppercase;
+        }
+
+        .event-details {
+            flex: 1;
+        }
+
+        .event-meta {
+            display: flex;
+            gap: 15px;
+            margin: 10px 0;
+            font-size: 14px;
+            color: var(--gray);
+        }
+
+        .event-meta i {
+            color: var(--secondary);
+            margin-right: 5px;
+        }
+
+        .card {
+            background: white;
+            border-radius: var(--radius);
+            padding: 25px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border-left: 4px solid var(--secondary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 20px rgba(0,0,0,0.15);
+        }
+
+        .card h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card h3 i {
+            color: var(--secondary);
+        }
+
+        .card p {
+            color: var(--gray);
+            margin-bottom: 20px;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+            color: white;
+            padding: 40px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-section h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-section h3::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--secondary);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-links a:hover {
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .contact-info {
+            list-style: none;
+        }
+
+        .contact-info li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .contact-info i {
+            color: var(--secondary);
+            margin-top: 4px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: white;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 14px;
+            color: rgba(255,255,255,0.7);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .hero h1 {
+                font-size: 26px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .section-title {
+                font-size: 20px;
+            }
+
+            .event-item {
+                flex-direction: column;
+            }
+
+            .event-date {
+                align-self: flex-start;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-buttons {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-church"></i>
+                    </div>
+                    <div>
+                        <div class="logo-text">Comunidade São Francisco</div>
+                        <div class="logo-subtitle">Uma família em fé e amor</div>
+                    </div>
+                </div>
+                <div class="nav-buttons">
+                    <button class="nav-btn"><i class="fas fa-info-circle"></i> Sobre</button>
+                    <button class="nav-btn"><i class="fas fa-question-circle"></i> Ajuda</button>
+                    <a href="index.html" class="nav-btn"><i class="fas fa-home"></i> Início</a>
+                </div>
+            </div>
+            <div class="hero">
+                <h1>Eventos da Comunidade</h1>
+                <p>Confira nossa agenda de celebrações, encontros e atividades especiais.</p>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section>
+            <div class="schedule-header">
+                <h2 class="section-title" style="border-bottom: none; margin: 0; padding: 0;"><i class="fas fa-calendar-alt"></i> Próximos Eventos</h2>
+                <div class="events-filter">
+                    <button class="filter-btn active">Todos</button>
+                    <button class="filter-btn">Missas</button>
+                    <button class="filter-btn">Formações</button>
+                    <button class="filter-btn">Festas</button>
+                    <button class="filter-btn">Serviços</button>
+                </div>
+            </div>
+            <div class="events-list">
+                <div class="event-item">
+                    <div class="event-date">
+                        <div class="event-day">15</div>
+                        <div class="event-month">MAI</div>
+                    </div>
+                    <div class="event-details">
+                        <h3>Festa de São Francisco</h3>
+                        <p>Celebração especial em honra ao nosso padroeiro com missa solene, procissão e festa comunitária.</p>
+                        <div class="event-meta">
+                            <span><i class="far fa-clock"></i> 19:00</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Igreja Matriz</span>
+                            <span><i class="fas fa-tag"></i> Festa</span>
+                        </div>
+                        <a href="#" class="btn btn-outline">Mais Detalhes</a>
+                    </div>
+                </div>
+                <div class="event-item">
+                    <div class="event-date">
+                        <div class="event-day">18</div>
+                        <div class="event-month">MAI</div>
+                    </div>
+                    <div class="event-details">
+                        <h3>Curso de Batismo</h3>
+                        <p>Encontro formativo para pais e padrinhos que desejam batizar suas crianças na comunidade.</p>
+                        <div class="event-meta">
+                            <span><i class="far fa-clock"></i> 20:00</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Salão Paroquial</span>
+                            <span><i class="fas fa-tag"></i> Formação</span>
+                        </div>
+                        <a href="#" class="btn btn-outline">Mais Detalhes</a>
+                    </div>
+                </div>
+                <div class="event-item">
+                    <div class="event-date">
+                        <div class="event-day">20</div>
+                        <div class="event-month">MAI</div>
+                    </div>
+                    <div class="event-details">
+                        <h3>Missa com Unção dos Enfermos</h3>
+                        <p>Celebração especial com o sacramento da unção para idosos, enfermos e todos que necessitam de cura.</p>
+                        <div class="event-meta">
+                            <span><i class="far fa-clock"></i> 15:00</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Igreja Matriz</span>
+                            <span><i class="fas fa-tag"></i> Missa</span>
+                        </div>
+                        <a href="#" class="btn btn-outline">Mais Detalhes</a>
+                    </div>
+                </div>
+                <div class="event-item">
+                    <div class="event-date">
+                        <div class="event-day">25</div>
+                        <div class="event-month">MAI</div>
+                    </div>
+                    <div class="event-details">
+                        <h3>Encontro de Mães</h3>
+                        <p>Momento de partilha, oração e formação para mães de todas as idades. Creche disponível para crianças.</p>
+                        <div class="event-meta">
+                            <span><i class="far fa-clock"></i> 14:30</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Salão Comunitário</span>
+                            <span><i class="fas fa-tag"></i> Formação</span>
+                        </div>
+                        <a href="#" class="btn btn-outline">Mais Detalhes</a>
+                    </div>
+                </div>
+                <div class="event-item">
+                    <div class="event-date">
+                        <div class="event-day">27</div>
+                        <div class="event-month">MAI</div>
+                    </div>
+                    <div class="event-details">
+                        <h3>Mutirão de Limpeza</h3>
+                        <p>Junte-se a nós para cuidar da nossa igreja e seus arredores. Trabalho voluntário seguido de lanche comunitário.</p>
+                        <div class="event-meta">
+                            <span><i class="far fa-clock"></i> 08:00</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Área da Igreja</span>
+                            <span><i class="fas fa-tag"></i> Serviço</span>
+                        </div>
+                        <a href="#" class="btn btn-outline">Mais Detalhes</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section style="margin-top: 40px;">
+            <h2 class="section-title"><i class="fas fa-calendar-plus"></i> Adicionar ao Calendário</h2>
+            <div class="card">
+                <p>Quer receber lembretes dos nossos eventos? Adicione o calendário da comunidade ao seu dispositivo:</p>
+                <div style="display: flex; gap: 15px; margin-top: 20px;">
+                    <a href="#" class="btn"><i class="fas fa-calendar-plus"></i> Google Calendar</a>
+                    <a href="#" class="btn btn-outline"><i class="fas fa-file-export"></i> Exportar</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Comunidade São Francisco</h3>
+                    <p>Uma família em fé, esperança e amor. Junte-se a nós em nossa jornada espiritual.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Links Rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html"><i class="fas fa-chevron-right"></i> Início</a></li>
+                        <li><a href="biblia.html"><i class="fas fa-chevron-right"></i> Bíblia</a></li>
+                        <li><a href="retiros.html"><i class="fas fa-chevron-right"></i> Retiros</a></li>
+                        <li><a href="eventos.html"><i class="fas fa-chevron-right"></i> Eventos</a></li>
+                        <li><a href="leitura.html"><i class="fas fa-chevron-right"></i> Leitura do Dia</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contato</h3>
+                    <ul class="contact-info">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Rua da Esperança, 123<br>Centro, Cidade - Estado</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <span>(11) 9999-9999</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>contato@comunidadesaofrancisco.org</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025, FéTech. Todos os direitos reservados. FéTech, o logotipo da FéTech, e o Sistema de
+                    Organização Pastoral são marcas de uso exclusivo do projeto acadêmico desenvolvido no Instituto
+                    Federal Catarinense. Outros nomes de marcas e produtos mencionados neste site podem ser marcas
+                    registradas de seus respectivos proprietários.
+                    Nosso site pode conter links para páginas e recursos externos, fornecidos por terceiros. Esses links
+                    são disponibilizados apenas para sua conveniência. A FéTech não possui controle sobre o conteúdo
+                    desses sites ou recursos e não se responsabiliza por eles, nem por qualquer perda ou dano que possa
+                    resultar de seu uso.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Adicionar interatividade aos filtros
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
