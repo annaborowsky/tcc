@@ -543,6 +543,45 @@
                 justify-content: center;
             }
         }
+
+        .carousel-container {
+            width: 80%;
+            /* Ajuste a largura conforme necessário */
+            margin: 0 auto;
+            /* Centraliza o carrossel */
+            overflow: hidden;
+            /* Oculta os slides que não estão visíveis */
+            white-space: nowrap;
+            /* Mantém todos os slides em uma única linha */
+        }
+
+        .carousel-slide {
+            display: inline-block;
+            /* Permite que os slides fiquem lado a lado */
+            width: 100%;
+            /* Cada slide ocupa 100% da largura do contêiner */
+            animation: slide 10s infinite linear;
+            /* Aplica a animação com 10s de duração */
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            /* Faz as imagens ocuparem a largura do slide */
+            display: block;
+        }
+
+        @keyframes slide {
+            from {
+                transform: translateX(0);
+                /* Posição inicial */
+            }
+
+            to {
+                transform: translateX(-100%);
+                /* Move para a esquerda */
+            }
+        }
+
     </style>
 </head>
 
@@ -560,7 +599,7 @@
                     </div>
                 </div>
                 <div class="nav-buttons">
-                    <button class="nav-btn active"><i class="fas fa-info-circle"></i> Sobre</button>
+                    <button class="nav-btn"><i class="fas fa-info-circle"></i> Sobre</button>
                     <button class="nav-btn"><i class="fas fa-question-circle"></i> Ajuda</button>
                     <button class="nav-btn"><i class="fas fa-home"></i> Início</button>
                 </div>
@@ -578,7 +617,16 @@
             <div class="cards-grid">
                 <a href="missas.html" class="card">
                     <div class="card-image">
-                        <i class="fas fa-cross"></i>
+                        <div class="carousel-container">
+                            <div class="carousel-slide">
+                                <img URL="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.istockphoto.com%2Fbr%2Ffotos%2Fmissa&psig=AOvVaw2FlzXNw-0s7ZtWJu1Sp7MJ&ust=1760807089787000&source=images&cd=vfe&opi=89978449&ved=0CBUQjRxqFwoTCPiayNzbq5ADFQAAAAAdAAAAABAE"
+                                    alt="Imagem 1">
+                                <img URL="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.istockphoto.com%2Fbr%2Ffotos%2Fmissa-fotos&psig=AOvVaw2FlzXNw-0s7ZtWJu1Sp7MJ&ust=1760807089787000&source=images&cd=vfe&opi=89978449&ved=0CBUQjRxqFwoTCPiayNzbq5ADFQAAAAAdAAAAABAK"
+                                    alt="Imagem 2">
+                                <img URL="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.istockphoto.com%2Fbr%2Ffotos%2Fmissa-fotos&psig=AOvVaw2FlzXNw-0s7ZtWJu1Sp7MJ&ust=1760807089787000&source=images&cd=vfe&opi=89978449&ved=0CBUQjRxqFwoTCPiayNzbq5ADFQAAAAAdAAAAABAc"
+                                    alt="Imagem 3">
+                            </div>
+                        </div>
                     </div>
                     <h3><i class="fas fa-church"></i> Missas</h3>
                     <p>Participe das nossas celebrações e fortaleça sua fé com a comunidade.</p>
@@ -736,7 +784,7 @@
 
             // Adicionar a data ao hero
             const hero = document.querySelector('.hero p');
-            hero.innerHTML += `<br><small><i class="far fa-calendar"></i> Hoje é ${dateString}</small>`;
+            hero.innerHTML += `<br><small><i class="far fa-calendar"></i> ${dateString}</small>`;
         });
     </script>
 </body>
