@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eventos - Paróquia São José Operário</title>
+    <title>Ajuda e Suporte - FéTech</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -133,7 +133,6 @@
             box-shadow: 0 0 0 2px rgba(255,255,255,0.5);
         }
 
-        /* Configurações */
         .settings-container {
             position: relative;
         }
@@ -166,7 +165,7 @@
             border-radius: var(--radius);
             box-shadow: var(--shadow);
             padding: 15px 0;
-            min-width: 220px;
+            min-width: 200px;
             opacity: 0;
             visibility: hidden;
             transform: translateY(-10px);
@@ -213,13 +212,19 @@
             margin: 8px 0;
         }
 
+        .theme-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+        }
+
         .theme-options {
             display: flex;
             gap: 5px;
             background: var(--light-gray);
             padding: 4px;
             border-radius: 20px;
-            margin-left: auto;
         }
 
         .theme-option {
@@ -274,6 +279,18 @@
         }
 
         /* Main Content */
+        .settings-menu {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+        }
+
+        .settings-menu.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
         main {
             padding: 40px 0;
         }
@@ -334,92 +351,14 @@
             color: white;
         }
 
-        .events-filter {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 30px;
-            flex-wrap: wrap;
-        }
-
-        .filter-btn {
-            background: white;
-            border: 1px solid var(--light-gray);
-            padding: 10px 20px;
-            border-radius: 30px;
-            cursor: pointer;
-            transition: var(--transition);
-            font-weight: 500;
-        }
-
-        .filter-btn.active {
-            background: var(--primary);
-            color: white;
-            border-color: var(--primary);
-        }
-
-        .events-list {
+        .help-grid {
             display: grid;
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
             margin-bottom: 40px;
         }
 
-        .event-item {
-            background: white;
-            border-radius: var(--radius);
-            padding: 25px;
-            box-shadow: var(--shadow);
-            display: flex;
-            gap: 20px;
-            transition: var(--transition);
-        }
-
-        .event-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-        }
-
-        .event-date {
-            background: var(--primary);
-            color: white;
-            width: 80px;
-            height: 80px;
-            border-radius: var(--radius);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-
-        .event-day {
-            font-size: 24px;
-            font-weight: bold;
-            line-height: 1;
-        }
-
-        .event-month {
-            font-size: 14px;
-            text-transform: uppercase;
-        }
-
-        .event-details {
-            flex: 1;
-        }
-
-        .event-meta {
-            display: flex;
-            gap: 15px;
-            margin: 10px 0;
-            font-size: 14px;
-            color: var(--gray);
-        }
-
-        .event-meta i {
-            color: var(--secondary);
-            margin-right: 5px;
-        }
-
-        .card {
+        .help-card {
             background: white;
             border-radius: var(--radius);
             padding: 25px;
@@ -430,7 +369,7 @@
             overflow: hidden;
         }
 
-        .card::before {
+        .help-card::before {
             content: "";
             position: absolute;
             top: 0;
@@ -440,12 +379,12 @@
             background: linear-gradient(90deg, var(--primary), var(--secondary));
         }
 
-        .card:hover {
+        .help-card:hover {
             transform: translateY(-8px);
             box-shadow: 0 12px 20px rgba(0,0,0,0.15);
         }
 
-        .card h3 {
+        .help-card h3 {
             font-size: 20px;
             margin-bottom: 15px;
             color: var(--primary);
@@ -454,13 +393,168 @@
             gap: 10px;
         }
 
-        .card h3 i {
+        .help-card h3 i {
             color: var(--secondary);
         }
 
-        .card p {
+        .help-card p {
             color: var(--gray);
             margin-bottom: 20px;
+        }
+
+        .contact-info {
+            list-style: none;
+            margin-top: 20px;
+        }
+
+        .contact-info li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            padding: 12px;
+            background: var(--light);
+            border-radius: var(--radius);
+            transition: var(--transition);
+        }
+
+        .contact-info li:hover {
+            background: #f0f5ff;
+            transform: translateX(5px);
+        }
+
+        .contact-info i {
+            color: var(--secondary);
+            font-size: 18px;
+            margin-top: 2px;
+            min-width: 20px;
+        }
+
+        .contact-details {
+            flex: 1;
+        }
+
+        .contact-type {
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .contact-value {
+            color: var(--gray);
+            font-size: 14px;
+        }
+
+        .contact-hours {
+            font-size: 12px;
+            color: var(--gray);
+            margin-top: 3px;
+        }
+
+        .faq-section {
+            background: white;
+            border-radius: var(--radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+            margin-bottom: 40px;
+        }
+
+        .faq-item {
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--light-gray);
+            padding-bottom: 20px;
+        }
+
+        .faq-item:last-child {
+            margin-bottom: 0;
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .faq-question {
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+        }
+
+        .faq-question i {
+            color: var(--secondary);
+            transition: var(--transition);
+        }
+
+        .faq-answer {
+            color: var(--gray);
+            line-height: 1.6;
+            max-height: 0;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            margin-top: 10px;
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        .support-form {
+            background: white;
+            border-radius: var(--radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+            margin-bottom: 40px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 10px;
+            color: var(--primary);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .form-label i {
+            color: var(--secondary);
+        }
+
+        .form-input, .form-textarea, .form-select {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid var(--light-gray);
+            border-radius: var(--radius);
+            font-size: 16px;
+            transition: var(--transition);
+            background: var(--light);
+        }
+
+        .form-input:focus, .form-textarea:focus, .form-select:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: white;
+            box-shadow: 0 0 0 3px rgba(44, 85, 48, 0.1);
+        }
+
+        .form-textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
         }
 
         /* Footer */
@@ -516,22 +610,6 @@
             transform: translateX(5px);
         }
 
-        .contact-info {
-            list-style: none;
-        }
-
-        .contact-info li {
-            margin-bottom: 15px;
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-        }
-
-        .contact-info i {
-            color: var(--secondary);
-            margin-top: 4px;
-        }
-
         .social-links {
             display: flex;
             gap: 15px;
@@ -563,7 +641,42 @@
             color: rgba(255,255,255,0.7);
         }
 
-        /* Modo Escuro */
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .hero h1 {
+                font-size: 26px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .section-title {
+                font-size: 20px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .help-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-buttons {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+
+        /* Modo Escuro - Apenas cores azuis, conteúdo principal branco */
         body.dark-mode {
             --primary: #1e3a8a;
             --primary-light: #3b82f6;
@@ -575,7 +688,7 @@
             --gray: #6c757d;
             --light-gray: #e9ecef;
             background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            color: white;
+            color: var(--dark);
         }
 
         body.dark-mode header {
@@ -586,30 +699,30 @@
             background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
         }
 
-        body.dark-mode .card,
-        body.dark-mode .event-item,
-        body.dark-mode .filter-btn {
+        body.dark-mode .help-card,
+        body.dark-mode .faq-section,
+        body.dark-mode .support-form {
             background: white;
             color: var(--dark);
         }
 
-        /* CORREÇÃO DOS TÍTULOS NO MODO ESCURO */
+        body.dark-mode .help-card h3,
+        body.dark-mode .faq-question,
         body.dark-mode .section-title {
-            color: white;
-            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
-        }
-
-        body.dark-mode .section-title i {
-            color: var(--secondary);
-        }
-
-        body.dark-mode .card h3 {
             color: var(--primary);
         }
 
-        body.dark-mode .card p,
-        body.dark-mode .event-details p {
+        body.dark-mode .help-card p,
+        body.dark-mode .faq-answer {
             color: var(--gray);
+        }
+
+        body.dark-mode .contact-info li {
+            background: var(--light);
+        }
+
+        body.dark-mode .contact-info li:hover {
+            background: #f0f5ff;
         }
 
         body.dark-mode .settings-menu {
@@ -630,39 +743,16 @@
             background: var(--light-gray);
         }
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                gap: 20px;
-            }
-
-            .hero h1 {
-                font-size: 26px;
-            }
-
-            .hero p {
-                font-size: 16px;
-            }
-
-            .section-title {
-                font-size: 20px;
-            }
-
-            .event-item {
-                flex-direction: column;
-            }
-
-            .event-date {
-                align-self: flex-start;
-            }
+        body.dark-mode .form-input,
+        body.dark-mode .form-textarea,
+        body.dark-mode .form-select {
+            background: var(--light);
         }
 
-        @media (max-width: 480px) {
-            .nav-buttons {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
+        body.dark-mode .form-input:focus,
+        body.dark-mode .form-textarea:focus,
+        body.dark-mode .form-select:focus {
+            background: white;
         }
     </style>
 </head>
@@ -672,16 +762,16 @@
             <div class="header-content">
                 <div class="logo">
                     <div class="logo-icon">
-                        <i class="fas fa-church"></i>
+                        <i class="fas fa-hands-helping"></i>
                     </div>
                     <div>
-                        <div class="logo-text">Paróquia São José Operário</div>
-                        <div class="logo-subtitle">Uma família em fé e amor</div>
+                        <div class="logo-text">Suporte FéTech</div>
+                        <div class="logo-subtitle">Estamos aqui para ajudar</div>
                     </div>
                 </div>
                 <div class="nav-buttons">
                     <a href="sobre.html" class="nav-btn"><i class="fas fa-info-circle"></i> Sobre</a>
-                    <a href="index.html" class="nav-btn"><i class="fas fa-question-circle"></i> Ajuda</a>
+                    <a href="ajuda.html" class="nav-btn active"><i class="fas fa-question-circle"></i> Ajuda</a>
                     <a href="index.html" class="nav-btn"><i class="fas fa-home"></i> Início</a>
 
                     <!-- Botão de Configurações -->
@@ -701,10 +791,11 @@
                                             Meu Perfil
                                         </a>
                                     </button>
-                                    <button class="settings-menu-item" id="authButton" onclick="toggleAuth()">
-                                        <i class="fas fa-sign-out-alt" id="authIcon"></i>
-                                        <span id="authText">Sair</span>
+                                    <button class="settings-menu-item" onclick="logout()">
+                                        <i class="fas fa-sign-out-alt"></i>
+                                        Sair
                                     </button>
+
                                 </div>
                             </button>
                         </div>
@@ -712,117 +803,191 @@
                 </div>
             </div>
             <div class="hero">
-                <h1>Eventos da Comunidade</h1>
-                <p>Confira nossa agenda de celebrações, encontros e atividades especiais.</p>
+                <h1>Central de Ajuda e Suporte</h1>
+                <p>Encontre respostas para suas dúvidas e entre em contato conosco</p>
             </div>
         </div>
     </header>
 
     <main class="container">
         <section>
-            <div class="schedule-header">
-                <h2 class="section-title" style="border-bottom: none; margin: 0; padding: 0;"><i class="fas fa-calendar-alt"></i> Próximos Eventos</h2>
-                <div class="events-filter">
-                    <button class="filter-btn active">Todos</button>
-                    <button class="filter-btn">Missas</button>
-                    <button class="filter-btn">Formações</button>
-                    <button class="filter-btn">Festas</button>
-                    <button class="filter-btn">Serviços</button>
+            <h2 class="section-title"><i class="fas fa-life-ring"></i> Canais de Atendimento</h2>
+            <div class="help-grid">
+                <div class="help-card">
+                    <h3><i class="fas fa-phone-alt"></i> Atendimento Telefônico</h3>
+                    <p>Fale diretamente com nossa equipe de suporte para questões urgentes.</p>
+                    <ul class="contact-info">
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <div class="contact-details">
+                                <div class="contact-type">Telefone Principal</div>
+                                <div class="contact-value">(11) 3456-7890</div>
+                                <div class="contact-hours">Segunda a Sexta, 8h às 18h</div>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-mobile-alt"></i>
+                            <div class="contact-details">
+                                <div class="contact-type">WhatsApp</div>
+                                <div class="contact-value">(11) 98765-4321</div>
+                                <div class="contact-hours">Todos os dias, 7h às 22h</div>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
-            </div>
-            <div class="events-list">
-                <div class="event-item">
-                    <div class="event-date">
-                        <div class="event-day">15</div>
-                        <div class="event-month">MAI</div>
-                    </div>
-                    <div class="event-details">
-                        <h3>Festa de São Francisco</h3>
-                        <p>Celebração especial em honra ao nosso padroeiro com missa solene, procissão e festa comunitária.</p>
-                        <div class="event-meta">
-                            <span><i class="far fa-clock"></i> 19:00</span>
-                            <span><i class="fas fa-map-marker-alt"></i> Igreja Matriz</span>
-                            <span><i class="fas fa-tag"></i> Festa</span>
-                        </div>
-                        <a href="#" class="btn btn-outline">Mais Detalhes</a>
-                    </div>
+
+                <div class="help-card">
+                    <h3><i class="fas fa-envelope"></i> Atendimento por E-mail</h3>
+                    <p>Envie suas dúvidas detalhadas e receba resposta por e-mail.</p>
+                    <ul class="contact-info">
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <div class="contact-details">
+                                <div class="contact-type">Suporte Técnico</div>
+                                <div class="contact-value">suporte@fétech.org</div>
+                                <div class="contact-hours">Resposta em até 24h</div>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-users"></i>
+                            <div class="contact-details">
+                                <div class="contact-type">Comunidade</div>
+                                <div class="contact-value">comunidade@fétech.org</div>
+                                <div class="contact-hours">Dúvidas sobre uso</div>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-church"></i>
+                            <div class="contact-details">
+                                <div class="contact-type">Pastoral</div>
+                                <div class="contact-value">pastoral@fétech.org</div>
+                                <div class="contact-hours">Conteúdo espiritual</div>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
-                <div class="event-item">
-                    <div class="event-date">
-                        <div class="event-day">18</div>
-                        <div class="event-month">MAI</div>
-                    </div>
-                    <div class="event-details">
-                        <h3>Curso de Batismo</h3>
-                        <p>Encontro formativo para pais e padrinhos que desejam batizar suas crianças na comunidade.</p>
-                        <div class="event-meta">
-                            <span><i class="far fa-clock"></i> 20:00</span>
-                            <span><i class="fas fa-map-marker-alt"></i> Salão Paroquial</span>
-                            <span><i class="fas fa-tag"></i> Formação</span>
-                        </div>
-                        <a href="#" class="btn btn-outline">Mais Detalhes</a>
-                    </div>
-                </div>
-                <div class="event-item">
-                    <div class="event-date">
-                        <div class="event-day">20</div>
-                        <div class="event-month">MAI</div>
-                    </div>
-                    <div class="event-details">
-                        <h3>Missa com Unção dos Enfermos</h3>
-                        <p>Celebração especial com o sacramento da unção para idosos, enfermos e todos que necessitam de cura.</p>
-                        <div class="event-meta">
-                            <span><i class="far fa-clock"></i> 15:00</span>
-                            <span><i class="fas fa-map-marker-alt"></i> Igreja Matriz</span>
-                            <span><i class="fas fa-tag"></i> Missa</span>
-                        </div>
-                        <a href="#" class="btn btn-outline">Mais Detalhes</a>
-                    </div>
-                </div>
-                <div class="event-item">
-                    <div class="event-date">
-                        <div class="event-day">25</div>
-                        <div class="event-month">MAI</div>
-                    </div>
-                    <div class="event-details">
-                        <h3>Encontro de Mães</h3>
-                        <p>Momento de partilha, oração e formação para mães de todas as idades. Creche disponível para crianças.</p>
-                        <div class="event-meta">
-                            <span><i class="far fa-clock"></i> 14:30</span>
-                            <span><i class="fas fa-map-marker-alt"></i> Salão Comunitário</span>
-                            <span><i class="fas fa-tag"></i> Formação</span>
-                        </div>
-                        <a href="#" class="btn btn-outline">Mais Detalhes</a>
-                    </div>
-                </div>
-                <div class="event-item">
-                    <div class="event-date">
-                        <div class="event-day">27</div>
-                        <div class="event-month">MAI</div>
-                    </div>
-                    <div class="event-details">
-                        <h3>Mutirão de Limpeza</h3>
-                        <p>Junte-se a nós para cuidar da nossa igreja e seus arredores. Trabalho voluntário seguido de lanche comunitário.</p>
-                        <div class="event-meta">
-                            <span><i class="far fa-clock"></i> 08:00</span>
-                            <span><i class="fas fa-map-marker-alt"></i> Área da Igreja</span>
-                            <span><i class="fas fa-tag"></i> Serviço</span>
-                        </div>
-                        <a href="#" class="btn btn-outline">Mais Detalhes</a>
-                    </div>
+
+                <div class="help-card">
+                    <h3><i class="fas fa-map-marker-alt"></i> Atendimento Presencial</h3>
+                    <p>Visite nossa sede para atendimento personalizado.</p>
+                    <ul class="contact-info">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div class="contact-details">
+                                <div class="contact-type">Sede FéTech</div>
+                                <div class="contact-value">Av. da Fé, 123 - Centro<br>São Paulo - SP, 01234-567</div>
+                                <div class="contact-hours">Segunda a Sexta, 9h às 17h</div>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-subway"></i>
+                            <div class="contact-details">
+                                <div class="contact-type">Como chegar</div>
+                                <div class="contact-value">Metrô Sé - 5min a pé<br>Estacionamento no local</div>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </section>
 
-        <section style="margin-top: 40px;">
-            <h2 class="section-title"><i class="fas fa-calendar-plus"></i> Adicionar ao Calendário</h2>
-            <div class="card">
-                <p>Quer receber lembretes dos nossos eventos? Adicione o calendário da comunidade ao seu dispositivo:</p>
-                <div style="display: flex; gap: 15px; margin-top: 20px;">
-                    <a href="#" class="btn"><i class="fas fa-calendar-plus"></i> Google Calendar</a>
-                    <a href="#" class="btn btn-outline"><i class="fas fa-file-export"></i> Exportar</a>
+        <section class="faq-section">
+            <h2 class="section-title"><i class="fas fa-comments"></i> Perguntas Frequentes</h2>
+            
+            <div class="faq-item active">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <i class="fas fa-chevron-down"></i>
+                    Como faço para me cadastrar na plataforma?
+                </div>
+                <div class="faq-answer">
+                    O cadastro pode ser feito através do botão "Criar Conta" na página inicial. Você precisará informar seu nome, e-mail, telefone e criar uma senha. Após o cadastro, você receberá um e-mail de confirmação para ativar sua conta.
                 </div>
             </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <i class="fas fa-chevron-down"></i>
+                    Esqueci minha senha, como recuperar?
+                </div>
+                <div class="faq-answer">
+                    Na página de login, clique em "Esqueci minha senha". Informe o e-mail cadastrado e você receberá um link para redefinir sua senha. Caso não receba o e-mail, verifique sua pasta de spam ou entre em contato com nosso suporte.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <i class="fas fa-chevron-down"></i>
+                    Como posso participar dos eventos da comunidade?
+                </div>
+                <div class="faq-answer">
+                    Acesse a seção "Eventos" no menu principal. Lá você encontrará a agenda completa com datas, horários e locais. Para se inscrever, basta clicar no evento desejado e seguir as instruções. Alguns eventos podem ter vagas limitadas.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <i class="fas fa-chevron-down"></i>
+                    A plataforma é gratuita?
+                </div>
+                <div class="faq-answer">
+                    Sim, a plataforma FéTech é completamente gratuita para todos os membros da comunidade. Desenvolvemos este projeto como parte de nosso TCC com o objetivo de servir à comunidade, sem qualquer custo para os usuários.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <i class="fas fa-chevron-down"></i>
+                    Como faço para sugerir melhorias ou reportar problemas?
+                </div>
+                <div class="faq-answer">
+                    Suas sugestões são muito importantes! Utilize o formulário de contato abaixo ou envie um e-mail para suporte@fétech.org. Nossa equipe analisa todas as sugestões e feedbacks para melhorar continuamente a plataforma.
+                </div>
+            </div>
+        </section>
+
+        <section class="support-form">
+            <h2 class="section-title"><i class="fas fa-headset"></i> Formulário de Suporte</h2>
+            <p style="color: var(--gray); margin-bottom: 25px;">Preencha o formulário abaixo e nossa equipe entrará em contato o mais breve possível.</p>
+            
+            <form id="supportForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label"><i class="fas fa-user"></i> Nome Completo</label>
+                        <input type="text" class="form-input" placeholder="Seu nome completo" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label"><i class="fas fa-envelope"></i> E-mail</label>
+                        <input type="email" class="form-input" placeholder="seu@email.com" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label"><i class="fas fa-phone"></i> Telefone</label>
+                        <input type="tel" class="form-input" placeholder="(11) 99999-9999">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label"><i class="fas fa-tag"></i> Assunto</label>
+                        <select class="form-select" required>
+                            <option value="">Selecione o assunto</option>
+                            <option value="duvida">Dúvida sobre a plataforma</option>
+                            <option value="problema">Problema técnico</option>
+                            <option value="sugestao">Sugestão de melhoria</option>
+                            <option value="conteudo">Dúvida sobre conteúdo</option>
+                            <option value="outro">Outro</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label"><i class="fas fa-comment"></i> Mensagem</label>
+                    <textarea class="form-textarea" placeholder="Descreva sua dúvida, problema ou sugestão com detalhes..." required></textarea>
+                </div>
+
+                <button type="submit" class="btn">
+                    <i class="fas fa-paper-plane"></i> Enviar Mensagem
+                </button>
+            </form>
         </section>
     </main>
 
@@ -830,8 +995,8 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h3>Paróquia São José Operário</h3>
-                    <p>Uma família em fé, esperança e amor. Junte-se a nós em nossa jornada espiritual.</p>
+                    <h3>Suporte FéTech</h3>
+                    <p>Estamos comprometidos em oferecer o melhor atendimento e suporte para nossa comunidade.</p>
                     <div class="social-links">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-instagram"></i></a>
@@ -841,31 +1006,22 @@
                 </div>
                 <div class="footer-section">
                     <h3>Links Rápidos</h3>
-                     <ul class="footer-links">
+                    <ul class="footer-links">
                         <li><a href="index.html"><i class="fas fa-chevron-right"></i> Início</a></li>
-                        <li><a href="missas.html"><i class="fas fa-chevron-right"></i> Missas</a></li>
                         <li><a href="biblia.html"><i class="fas fa-chevron-right"></i> Bíblia</a></li>
+                        <li><a href="enciclopedias.html"><i class="fas fa-chevron-right"></i> Enciclopédias</a></li>
                         <li><a href="retiros.html"><i class="fas fa-chevron-right"></i> Retiros</a></li>
                         <li><a href="eventos.html"><i class="fas fa-chevron-right"></i> Eventos</a></li>
-                        <li><a href="leitura.html"><i class="fas fa-chevron-right"></i> Leitura do Dia</a></li>
-                        <li><a href="enciclopedias.html"><i class="fas fa-chevron-right"></i> Enciclopédias</a></li>
+                        <li><a href="ajuda.html"><i class="fas fa-chevron-right"></i> Ajuda</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h3>Contato</h3>
-                    <ul class="contact-info">
-                        <li>
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>Rua da Esperança, 123<br>Centro, Cidade - Estado</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-phone"></i>
-                            <span>(11) 9999-9999</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-envelope"></i>
-                            <span>contato@comunidadesaofrancisco.org</span>
-                        </li>
+                    <h3>Contato Rápido</h3>
+                    <ul class="footer-links">
+                        <li><a href="tel:+551134567890"><i class="fas fa-phone"></i> (11) 3456-7890</a></li>
+                        <li><a href="https://wa.me/5511987654321"><i class="fab fa-whatsapp"></i> (11) 98765-4321</a></li>
+                        <li><a href="mailto:suporte@fétech.org"><i class="fas fa-envelope"></i> suporte@fétech.org</a></li>
+                        <li><a href="#"><i class="fas fa-map-marker-alt"></i> Av. da Fé, 123 - Centro</a></li>
                     </ul>
                 </div>
             </div>
@@ -883,12 +1039,6 @@
     </footer>
 
     <script>
-        // Estado de autenticação do usuário
-        let isLoggedIn = true;
-        const authButton = document.getElementById('authButton');
-        const authIcon = document.getElementById('authIcon');
-        const authText = document.getElementById('authText');
-
         // Gerenciamento de Configurações
         function toggleSettings() {
             const menu = document.getElementById('settingsMenu');
@@ -896,20 +1046,14 @@
         }
 
         // Fechar menu ao clicar fora
-        document.addEventListener('click', function(event) {
+        document.addEventListener('click', function (event) {
             const settingsContainer = document.querySelector('.settings-container');
             const settingsMenu = document.getElementById('settingsMenu');
-            
+
             if (!settingsContainer.contains(event.target)) {
                 settingsMenu.classList.remove('active');
             }
         });
-
-        // Alternar opções de tema
-        function toggleThemeOptions() {
-            const themeOptions = document.querySelector('.theme-options');
-            themeOptions.classList.toggle('active');
-        }
 
         // Gerenciamento de Tema
         function setTheme(theme) {
@@ -931,64 +1075,29 @@
         }
 
         // Carregar tema salvo
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const savedTheme = localStorage.getItem('theme') || 'light';
             setTheme(savedTheme);
-            updateAuthButton();
-            
-            // Adicionar interatividade aos filtros
-            const filterBtns = document.querySelectorAll('.filter-btn');
-            
-            filterBtns.forEach(btn => {
-                btn.addEventListener('click', function() {
-                    // Remove active class from all buttons
-                    filterBtns.forEach(b => b.classList.remove('active'));
-                    // Add active class to clicked button
-                    this.classList.add('active');
-                });
-            });
         });
 
-        // Alternar entre login/logout
-        function toggleAuth() {
-            if (isLoggedIn) {
-                logout();
-            } else {
-                login();
-            }
+        // FAQ Toggle
+        function toggleFAQ(element) {
+            const faqItem = element.parentElement;
+            faqItem.classList.toggle('active');
         }
 
-        // Função de logout
+        // Form Submission
+        document.getElementById('supportForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Mensagem enviada com sucesso! Entraremos em contato em breve.');
+            this.reset();
+        });
+
+        // Logout
         function logout() {
             if (confirm('Tem certeza que deseja sair?')) {
-                isLoggedIn = false;
-                updateAuthButton();
                 alert('Você foi desconectado com sucesso.');
-                // Fechar o menu após o logout
-                const settingsMenu = document.getElementById('settingsMenu');
-                settingsMenu.classList.remove('active');
-            }
-        }
-
-        // Função de login
-        function login() {
-            isLoggedIn = true;
-            updateAuthButton();
-            // Fechar o menu após o login
-            const settingsMenu = document.getElementById('settingsMenu');
-            settingsMenu.classList.remove('active');
-            // Redirecionar para página de login
-            window.location.href = 'login.html';
-        }
-
-        // Atualizar o botão de autenticação
-        function updateAuthButton() {
-            if (isLoggedIn) {
-                authIcon.className = 'fas fa-sign-out-alt';
-                authText.textContent = 'Sair';
-            } else {
-                authIcon.className = 'fas fa-sign-in-alt';
-                authText.textContent = 'Login / Cadastrar-se';
+                window.location.href = 'index.html';
             }
         }
     </script>

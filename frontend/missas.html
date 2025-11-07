@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,7 +18,7 @@
             --dark: #212529;
             --gray: #6c757d;
             --light-gray: #e9ecef;
-            --shadow: 0 4px 12px rgba(0,0,0,0.1);
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             --radius: 12px;
             --transition: all 0.3s ease;
         }
@@ -87,7 +88,7 @@
             justify-content: center;
             color: var(--primary);
             font-size: 24px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
         .logo-text {
@@ -108,7 +109,7 @@
         }
 
         .nav-btn {
-            background: rgba(255,255,255,0.15);
+            background: rgba(255, 255, 255, 0.15);
             border: none;
             padding: 10px 18px;
             border-radius: 30px;
@@ -124,13 +125,13 @@
         }
 
         .nav-btn:hover {
-            background: rgba(255,255,255,0.25);
+            background: rgba(255, 255, 255, 0.25);
             transform: translateY(-2px);
         }
 
         .nav-btn.active {
-            background: rgba(255,255,255,0.3);
-            box-shadow: 0 0 0 2px rgba(255,255,255,0.5);
+            background: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5);
         }
 
         /* Configurações */
@@ -139,7 +140,7 @@
         }
 
         .settings-btn {
-            background: rgba(255,255,255,0.15);
+            background: rgba(255, 255, 255, 0.15);
             border: none;
             padding: 10px 18px;
             border-radius: 30px;
@@ -154,7 +155,7 @@
         }
 
         .settings-btn:hover {
-            background: rgba(255,255,255,0.25);
+            background: rgba(255, 255, 255, 0.25);
             transform: translateY(-2px);
         }
 
@@ -259,11 +260,11 @@
         .hero {
             text-align: center;
             padding: 40px 20px;
-            background: rgba(255,255,255,0.1);
+            background: rgba(255, 255, 255, 0.1);
             border-radius: var(--radius);
             margin-top: 20px;
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.2);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .hero h1 {
@@ -317,7 +318,7 @@
         .btn:hover {
             background: var(--primary-light);
             transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
         }
 
         .btn-secondary {
@@ -370,7 +371,7 @@
 
         .card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 12px 20px rgba(0,0,0,0.15);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
         }
 
         .card h3 {
@@ -565,7 +566,7 @@
         }
 
         .footer-links a {
-            color: rgba(255,255,255,0.8);
+            color: rgba(255, 255, 255, 0.8);
             text-decoration: none;
             transition: var(--transition);
             display: flex;
@@ -606,7 +607,7 @@
             justify-content: center;
             width: 40px;
             height: 40px;
-            background: rgba(255,255,255,0.1);
+            background: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
             color: white;
             transition: var(--transition);
@@ -620,9 +621,9 @@
         .footer-bottom {
             text-align: center;
             padding-top: 20px;
-            border-top: 1px solid rgba(255,255,255,0.1);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
             font-size: 14px;
-            color: rgba(255,255,255,0.7);
+            color: rgba(255, 255, 255, 0.7);
         }
 
         /* Modo Escuro */
@@ -731,6 +732,7 @@
         }
     </style>
 </head>
+
 <body>
     <header>
         <div class="container">
@@ -745,10 +747,11 @@
                     </div>
                 </div>
                 <div class="nav-buttons">
-                    <button class="nav-btn"><i class="fas fa-info-circle"></i> Sobre</button>
-                    <button class="nav-btn"><i class="fas fa-question-circle"></i> Ajuda</button>
+                    <a href="sobre.html" class="nav-btn"><i class="fas fa-info-circle"></i> Sobre</a>
+                    <a href="index.html" class="nav-btn"><i class="fas fa-question-circle"></i> Ajuda</a>
                     <a href="index.html" class="nav-btn"><i class="fas fa-home"></i> Início</a>
-                    
+
+
                     <!-- Botão de Configurações -->
                     <div class="settings-container">
                         <button class="settings-btn" onclick="toggleSettings()">
@@ -759,16 +762,16 @@
                                 <i class="fas fa-palette"></i>
                                 <span>Tema</span>
                             </button>
-                            
+
                             <div class="settings-menu-divider"></div>
-                            
+
                             <a href="perfil.html" class="settings-menu-item">
                                 <i class="fas fa-user"></i>
                                 Meu Perfil
                             </a>
-                            
+
                             <div class="settings-menu-divider"></div>
-                            
+
                             <button class="settings-menu-item" onclick="logout()">
                                 <i class="fas fa-sign-out-alt"></i>
                                 Sair
@@ -787,7 +790,7 @@
     <main class="container">
         <section class="mass-schedule">
             <h2 class="section-title"><i class="fas fa-calendar-alt"></i> Horários Regulares</h2>
-            
+
             <div class="mass-day">
                 <h3><i class="fas fa-sun"></i> Domingo</h3>
                 <div class="mass-times">
@@ -879,7 +882,7 @@
 
         <section class="special-masses">
             <h2 class="section-title"><i class="fas fa-star"></i> Missas Especiais</h2>
-            
+
             <div class="special-mass-item">
                 <div class="special-mass-date">
                     <div class="special-mass-day">15</div>
@@ -937,7 +940,8 @@
             <div class="cards-grid">
                 <div class="card">
                     <h3><i class="fas fa-bell"></i> Confissões</h3>
-                    <p>As confissões estão disponíveis 30 minutos antes de cada missa ou mediante agendamento com a secretaria.</p>
+                    <p>As confissões estão disponíveis 30 minutos antes de cada missa ou mediante agendamento com a
+                        secretaria.</p>
                     <a href="#" class="btn">Agendar Confissão</a>
                 </div>
                 <div class="card">
@@ -1017,10 +1021,10 @@
         }
 
         // Fechar menu ao clicar fora
-        document.addEventListener('click', function(event) {
+        document.addEventListener('click', function (event) {
             const settingsContainer = document.querySelector('.settings-container');
             const settingsMenu = document.getElementById('settingsMenu');
-            
+
             if (!settingsContainer.contains(event.target)) {
                 settingsMenu.classList.remove('active');
             }
@@ -1046,15 +1050,15 @@
         }
 
         // Carregar tema salvo
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const savedTheme = localStorage.getItem('theme') || 'light';
             setTheme(savedTheme);
-            
+
             // Adicionar data atual
             const today = new Date();
             const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
             const dateString = today.toLocaleDateString('pt-BR', options);
-            
+
             // Adicionar a data ao hero
             const hero = document.querySelector('.hero p');
             hero.innerHTML += `<br><small><i class="far fa-calendar"></i> Hoje é ${dateString}</small>`;
@@ -1069,4 +1073,5 @@
         }
     </script>
 </body>
+
 </html>

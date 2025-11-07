@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Comunidade São Francisco - Portal da Fé</title>
+    <title>Enciclopédias - FéTech</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -166,7 +166,7 @@
             border-radius: var(--radius);
             box-shadow: var(--shadow);
             padding: 15px 0;
-            min-width: 220px;
+            min-width: 200px;
             opacity: 0;
             visibility: hidden;
             transform: translateY(-10px);
@@ -213,13 +213,19 @@
             margin: 8px 0;
         }
 
+        .theme-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+        }
+
         .theme-options {
             display: flex;
             gap: 5px;
             background: var(--light-gray);
             padding: 4px;
             border-radius: 20px;
-            margin-left: auto;
         }
 
         .theme-option {
@@ -274,6 +280,18 @@
         }
 
         /* Main Content */
+        .settings-menu {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+        }
+
+        .settings-menu.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
         main {
             padding: 40px 0;
         }
@@ -292,79 +310,6 @@
 
         .section-title i {
             color: var(--secondary);
-        }
-
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            margin-bottom: 40px;
-        }
-
-        .card {
-            background: white;
-            border-radius: var(--radius);
-            padding: 25px;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            border-left: 4px solid var(--secondary);
-            position: relative;
-            overflow: hidden;
-            cursor: pointer;
-            text-decoration: none;
-            display: block;
-            color: inherit;
-        }
-
-        .card::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-        }
-
-        .card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
-        }
-
-        .card h3 {
-            font-size: 20px;
-            margin-bottom: 15px;
-            color: var(--primary);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .card h3 i {
-            color: var(--secondary);
-        }
-
-        .card p {
-            color: var(--gray);
-            margin-bottom: 20px;
-        }
-
-        .card-image {
-            height: 160px;
-            background: var(--light-gray);
-            border-radius: 8px;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--gray);
-            font-size: 14px;
-            overflow: hidden;
-        }
-
-        .card-image i {
-            font-size: 40px;
-            opacity: 0.5;
         }
 
         .btn {
@@ -407,118 +352,171 @@
             color: white;
         }
 
-        .resources {
+        .books-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
             margin-bottom: 40px;
         }
 
-        .resource-card {
+        .book-card {
             background: white;
             border-radius: var(--radius);
             padding: 25px;
             box-shadow: var(--shadow);
             transition: var(--transition);
-            text-align: center;
-            border-top: 4px solid var(--primary);
+            border-left: 4px solid var(--secondary);
+            position: relative;
+            overflow: hidden;
             cursor: pointer;
             text-decoration: none;
             display: block;
             color: inherit;
         }
 
-        .resource-card:hover {
-            transform: translateY(-5px);
+        .book-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
         }
 
-        .resource-icon {
-            width: 60px;
-            height: 60px;
+        .book-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .book-card.featured {
+            border-left: 4px solid var(--secondary);
+            background: linear-gradient(135deg, white 0%, #f8fdf8 100%);
+        }
+
+        .book-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .book-icon {
+            width: 70px;
+            height: 70px;
             background: var(--light-gray);
-            border-radius: 50%;
+            border-radius: var(--radius);
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 15px;
-            font-size: 24px;
+            font-size: 28px;
             color: var(--primary);
+            flex-shrink: 0;
         }
 
-        .resource-card h3 {
-            margin-bottom: 10px;
-            color: var(--primary);
+        .book-info {
+            flex: 1;
         }
 
-        .resource-card p {
+        .book-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .book-subtitle {
+            font-size: 14px;
             color: var(--gray);
+            margin-bottom: 10px;
+        }
+
+        .book-badge {
+            display: inline-block;
+            background: var(--secondary);
+            color: var(--dark);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .book-description {
+            color: var(--gray);
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .book-stats {
+            display: flex;
+            gap: 20px;
             margin-bottom: 20px;
             font-size: 14px;
         }
 
-        .schedule {
-            background: white;
-            border-radius: var(--radius);
-            padding: 30px;
-            box-shadow: var(--shadow);
-            margin-bottom: 40px;
+        .book-stat {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: var(--gray);
         }
 
-        .schedule-header {
+        .book-stat i {
+            color: var(--secondary);
+        }
+
+        .categories {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 25px;
             flex-wrap: wrap;
             gap: 15px;
+            margin-bottom: 30px;
         }
 
-        .schedule-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-        }
-
-        .schedule-item {
+        .category-btn {
             background: var(--light);
-            border-radius: var(--radius);
-            padding: 20px;
-            border-left: 4px solid var(--primary);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 30px;
+            color: var(--dark);
+            font-weight: 500;
+            cursor: pointer;
             transition: var(--transition);
         }
 
-        .schedule-item:hover {
-            background: #f0f5ff;
-            transform: translateX(5px);
+        .category-btn:hover,
+        .category-btn.active {
+            background: var(--primary);
+            color: white;
         }
 
-        .schedule-item h4 {
-            color: var(--primary);
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+        .search-box {
+            position: relative;
+            max-width: 500px;
+            margin-bottom: 30px;
         }
 
-        .schedule-item ul {
-            list-style: none;
+        .search-input {
+            width: 100%;
+            padding: 15px 50px 15px 20px;
+            border: 2px solid var(--light-gray);
+            border-radius: 30px;
+            font-size: 16px;
+            transition: var(--transition);
+            background: white;
         }
 
-        .schedule-item li {
-            padding: 8px 0;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-            display: flex;
-            align-items: center;
-            gap: 10px;
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(44, 85, 48, 0.1);
         }
 
-        .schedule-item li:last-child {
-            border-bottom: none;
-        }
-
-        .schedule-item li i {
-            color: var(--secondary);
-            font-size: 12px;
+        .search-icon {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gray);
         }
 
         /* Footer */
@@ -640,24 +638,29 @@
                 font-size: 20px;
             }
 
-            .schedule-header {
+            .book-header {
                 flex-direction: column;
-                align-items: flex-start;
+                text-align: center;
+            }
+
+            .book-icon {
+                align-self: center;
             }
         }
 
         @media (max-width: 480px) {
-            .cards-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .resources {
+            .books-grid {
                 grid-template-columns: 1fr;
             }
 
             .nav-buttons {
                 flex-wrap: wrap;
                 justify-content: center;
+            }
+
+            .book-stats {
+                flex-direction: column;
+                gap: 10px;
             }
         }
 
@@ -673,7 +676,7 @@
             --gray: #6c757d;
             --light-gray: #e9ecef;
             background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            color: white; /* Alterado para branco para melhor contraste */
+            color: var(--dark);
         }
 
         body.dark-mode header {
@@ -684,50 +687,25 @@
             background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
         }
 
-        body.dark-mode .card,
-        body.dark-mode .resource-card,
-        body.dark-mode .schedule,
-        body.dark-mode .schedule-item {
+        body.dark-mode .book-card,
+        body.dark-mode .search-input {
             background: white;
             color: var(--dark);
         }
 
-        /* CORREÇÃO DOS TÍTULOS NO MODO ESCURO - AGORA EM BRANCO */
+        body.dark-mode .book-title,
         body.dark-mode .section-title {
-            color: white; /* Títulos das seções em branco */
-            border-bottom: 2px solid rgba(255, 255, 255, 0.2); /* Borda mais suave */
-        }
-
-        body.dark-mode .section-title i {
-            color: var(--secondary); /* Mantém o dourado nos ícones */
-        }
-
-        body.dark-mode .card h3,
-        body.dark-mode .resource-card h3 {
-            color: var(--primary); /* Mantém azul nos títulos dos cards */
-        }
-
-        body.dark-mode .card p,
-        body.dark-mode .resource-card p {
-            color: var(--gray);
-        }
-
-        body.dark-mode .card-image,
-        body.dark-mode .resource-icon {
-            background: var(--light-gray);
             color: var(--primary);
         }
 
-        body.dark-mode .schedule-item {
-            background: var(--light);
+        body.dark-mode .book-description,
+        body.dark-mode .book-subtitle {
+            color: var(--gray);
         }
 
-        body.dark-mode .schedule-item:hover {
-            background: #f0f5ff;
-        }
-
-        body.dark-mode .schedule-item h4 {
-            color: var(--primary); /* Mantém azul nos títulos da agenda */
+        body.dark-mode .book-icon {
+            background: var(--light-gray);
+            color: var(--primary);
         }
 
         body.dark-mode .settings-menu {
@@ -748,6 +726,15 @@
             background: var(--light-gray);
         }
 
+        body.dark-mode .category-btn {
+            background: var(--light);
+        }
+
+        body.dark-mode .category-btn:hover,
+        body.dark-mode .category-btn.active {
+            background: var(--primary);
+            color: white;
+        }
     </style>
 </head>
 
@@ -757,11 +744,11 @@
             <div class="header-content">
                 <div class="logo">
                     <div class="logo-icon">
-                        <i class="fas fa-church"></i>
+                        <i class="fas fa-book"></i>
                     </div>
                     <div>
-                        <div class="logo-text">Paróquia São José Operário</div>
-                        <div class="logo-subtitle">Uma família em fé e amor</div>
+                        <div class="logo-text">Biblioteca FéTech</div>
+                        <div class="logo-subtitle">Sabedoria para a jornada espiritual</div>
                     </div>
                 </div>
                 <div class="nav-buttons">
@@ -770,7 +757,7 @@
                     <a href="index.html" class="nav-btn"><i class="fas fa-home"></i> Início</a>
 
                     <!-- Botão de Configurações -->
-                    <div class="settings-container">
+                   <div class="settings-container">
                         <button class="settings-btn" onclick="toggleSettings()">
                             <i class="fas fa-cog"></i> Configurações
                         </button>
@@ -786,10 +773,11 @@
                                             Meu Perfil
                                         </a>
                                     </button>
-                                    <button class="settings-menu-item" id="authButton" onclick="toggleAuth()">
-                                        <i class="fas fa-sign-out-alt" id="authIcon"></i>
-                                        <span id="authText">Sair</span>
+                                    <button class="settings-menu-item" onclick="logout()">
+                                        <i class="fas fa-sign-out-alt"></i>
+                                        Sair
                                     </button>
+
                                 </div>
                             </button>
                         </div>
@@ -797,106 +785,307 @@
                 </div>
             </div>
             <div class="hero">
-                <h1>Bem-vindo à nossa comunidade</h1>
-                <p>Juntos em fé, esperança e amor. Participe de nossas missas, eventos e atividades espirituais.</p>
+                <h1>Enciclopédias e Livros Sagrados</h1>
+                <p>Explore nossa coleção de obras espirituais, doutrinárias e históricas para aprofundar seu
+                    conhecimento da fé</p>
             </div>
         </div>
     </header>
 
     <main class="container">
         <section>
-            <h2 class="section-title"><i class="fas fa-star"></i> Destaques</h2>
-            <div class="cards-grid">
-                <a href="missas.html" class="card">
-                    <div class="card-image">
-                        <i class="fas fa-cross"></i>
-                    </div>
-                    <h3><i class="fas fa-church"></i> Missas</h3>
-                    <p>Participe das nossas celebrações e fortaleça sua fé com a comunidade.</p>
-                    <div class="btn">Ver Horários</div>
-                </a>
-                <a href="eventos.html" class="card">
-                    <div class="card-image">
-                        <i class="fas fa-calendar-alt"></i>
-                    </div>
-                    <h3><i class="fas fa-calendar-check"></i> Eventos</h3>
-                    <p>Confira nossa agenda de retiros, encontros e atividades especiais.</p>
-                    <div class="btn">Ver Agenda</div>
-                </a>
-                <a href="retiros.html" class="card">
-                    <div class="card-image">
-                        <i class="fas fa-praying-hands"></i>
-                    </div>
-                    <h3><i class="fas fa-hands-helping"></i> Retiros</h3>
-                    <p>Momentos de reflexão e renovação espiritual para toda a família.</p>
-                    <div class="btn">Saiba Mais</div>
-                </a>
+            <h2 class="section-title"><i class="fas fa-search"></i> Buscar na Biblioteca</h2>
+            <div class="search-box">
+                <input type="text" class="search-input" placeholder="Buscar por título, autor ou assunto...">
+                <i class="fas fa-search search-icon"></i>
+            </div>
+
+            <div class="categories">
+                <button class="category-btn active">Todos</button>
+                <button class="category-btn">Bíblia e Sagradas Escrituras</button>
+                <button class="category-btn">Doutrina e Teologia</button>
+                <button class="category-btn">História da Igreja</button>
+                <button class="category-btn">Vidas dos Santos</button>
+                <button class="category-btn">Espiritualidade</button>
+                <button class="category-btn">Liturgia e Sacramentos</button>
             </div>
         </section>
 
         <section>
-            <h2 class="section-title"><i class="fas fa-book-open"></i> Recursos Espirituais</h2>
-            <div class="resources">
-                <a href="biblia.html" class="resource-card">
-                    <div class="resource-icon">
-                        <i class="fas fa-bible"></i>
+            <h2 class="section-title"><i class="fas fa-star"></i> Destaques</h2>
+            <div class="books-grid">
+                <a href="biblia.html" class="book-card featured">
+                    <div class="book-header">
+                        <div class="book-icon">
+                            <i class="fas fa-bible"></i>
+                        </div>
+                        <div class="book-info">
+                            <div class="book-title">Bíblia Sagrada</div>
+                            <div class="book-subtitle">Tradução Oficial da CNBB</div>
+                            <span class="book-badge">Mais Acessado</span>
+                        </div>
                     </div>
-                    <h3>Bíblia Online</h3>
-                    <p>Leia e pesquise nas sagradas escrituras em diferentes versões.</p>
+                    <div class="book-description">
+                        A Sagrada Escritura completa, com Antigo e Novo Testamento. Inclui introduções, notas
+                        explicativas e referências cruzadas para estudo aprofundado.
+                    </div>
+                    <div class="book-stats">
+                        <div class="book-stat">
+                            <i class="fas fa-book-open"></i>
+                            <span>73 livros</span>
+                        </div>
+                        <div class="book-stat">
+                            <i class="fas fa-clock"></i>
+                            <span>Leitura: 70h</span>
+                        </div>
+                        <div class="book-stat">
+                            <i class="fas fa-download"></i>
+                            <span>1.2M leituras</span>
+                        </div>
+                    </div>
+                    <div class="btn">Ler Agora</div>
+                </a>
+
+                <div class="book-card">
+                    <div class="book-header">
+                        <div class="book-icon">
+                            <i class="fas fa-cross"></i>
+                        </div>
+                        <div class="book-info">
+                            <div class="book-title">Catecismo da Igreja Católica</div>
+                            <div class="book-subtitle">Compêndio da Doutrina Católica</div>
+                            <span class="book-badge">Oficial</span>
+                        </div>
+                    </div>
+                    <div class="book-description">
+                        Exposição completa da fé católica e da moral cristã. Texto de referência para catequese,
+                        formação e estudo da doutrina da Igreja.
+                    </div>
+                    <div class="book-stats">
+                        <div class="book-stat">
+                            <i class="fas fa-book"></i>
+                            <span>4 partes</span>
+                        </div>
+                        <div class="book-stat">
+                            <i class="fas fa-clock"></i>
+                            <span>Leitura: 45h</span>
+                        </div>
+                        <div class="book-stat">
+                            <i class="fas fa-download"></i>
+                            <span>450K leituras</span>
+                        </div>
+                    </div>
                     <div class="btn btn-outline">Acessar</div>
-                </a>
-                <a href="leitura.html" class="resource-card">
-                    <div class="resource-icon">
-                        <i class="fas fa-book-reader"></i>
+                </div>
+
+                <div class="book-card">
+                    <div class="book-header">
+                        <div class="book-icon">
+                            <i class="fas fa-history"></i>
+                        </div>
+                        <div class="book-info">
+                            <div class="book-title">História da Igreja</div>
+                            <div class="book-subtitle">Dos Apóstolos aos Nossos Dias</div>
+                            <span class="book-badge">Completo</span>
+                        </div>
                     </div>
-                    <h3>Leitura do Dia</h3>
-                    <p>Reflexões diárias para iluminar seu caminho espiritual.</p>
-                    <div class="btn btn-outline">Ler Hoje</div>
-                </a>
-                <a href="enciclopedias.html" class="resource-card">
-                    <div class="resource-icon">
-                        <i class="fas fa-book"></i>
+                    <div class="book-description">
+                        Narrativa completa da trajetória do Cristianismo desde Pentecostes até os dias atuais, com
+                        análise dos principais eventos e figuras.
                     </div>
-                    <h3>Enciclopédias</h3>
-                    <p>Conheça mais sobre a doutrina, santos e história da Igreja.</p>
-                    <div class="btn btn-outline">Explorar</div>
-                </a>
+                    <div class="book-stats">
+                        <div class="book-stat">
+                            <i class="fas fa-book"></i>
+                            <span>3 volumes</span>
+                        </div>
+                        <div class="book-stat">
+                            <i class="fas fa-clock"></i>
+                            <span>Leitura: 60h</span>
+                        </div>
+                        <div class="book-stat">
+                            <i class="fas fa-download"></i>
+                            <span>320K leituras</span>
+                        </div>
+                    </div>
+                    <div class="btn btn-outline">Acessar</div>
+                </div>
             </div>
         </section>
 
-        <section class="schedule">
-            <div class="schedule-header">
-                <h2 class="section-title" style="border-bottom: none; margin: 0; padding: 0;"><i
-                        class="fas fa-calendar-day"></i> Próximas Escalas</h2>
-                <a href="eventos.html" class="btn btn-secondary">Ver Todas as Escalas</a>
+        <section>
+            <h2 class="section-title"><i class="fas fa-book-open"></i> Obras Doutrinárias</h2>
+            <div class="books-grid">
+                <div class="book-card">
+                    <div class="book-header">
+                        <div class="book-icon">
+                            <i class="fas fa-theater-masks"></i>
+                        </div>
+                        <div class="book-info">
+                            <div class="book-title">Suma Teológica</div>
+                            <div class="book-subtitle">São Tomás de Aquino</div>
+                            <span class="book-badge">Clássico</span>
+                        </div>
+                    </div>
+                    <div class="book-description">
+                        A obra-prima da teologia escolástica, tratando de Deus, da criação, do homem e de sua salvação
+                        através de Cristo.
+                    </div>
+                    <div class="book-stats">
+                        <div class="book-stat">
+                            <i class="fas fa-book"></i>
+                            <span>3 partes</span>
+                        </div>
+                        <div class="book-stat">
+                            <i class="fas fa-clock"></i>
+                            <span>Leitura: 120h</span>
+                        </div>
+                    </div>
+                    <div class="btn btn-outline">Acessar</div>
+                </div>
+
+                <div class="book-card">
+                    <div class="book-header">
+                        <div class="book-icon">
+                            <i class="fas fa-dove"></i>
+                        </div>
+                        <div class="book-info">
+                            <div class="book-title">Deus é Amor</div>
+                            <div class="book-subtitle">Papa Bento XVI</div>
+                            <span class="book-badge">Encíclica</span>
+                        </div>
+                    </div>
+                    <div class="book-description">
+                        Primeira encíclica do Papa Bento XVI sobre o amor cristão, explorando o amor de Deus e o amor ao
+                        próximo.
+                    </div>
+                    <div class="book-stats">
+                        <div class="book-stat">
+                            <i class="fas fa-file-alt"></i>
+                            <span>42 parágrafos</span>
+                        </div>
+                        <div class="book-stat">
+                            <i class="fas fa-clock"></i>
+                            <span>Leitura: 2h</span>
+                        </div>
+                    </div>
+                    <div class="btn btn-outline">Acessar</div>
+                </div>
+
+                <div class="book-card">
+                    <div class="book-header">
+                        <div class="book-icon">
+                            <i class="fas fa-hands-helping"></i>
+                        </div>
+                        <div class="book-info">
+                            <div class="book-title">A Alegria do Evangelho</div>
+                            <div class="book-subtitle">Papa Francisco</div>
+                            <span class="book-badge">Exortação</span>
+                        </div>
+                    </div>
+                    <div class="book-description">
+                        Exortação apostólica sobre o anúncio do Evangelho no mundo atual, com ênfase na alegria e na
+                        misericórdia.
+                    </div>
+                    <div class="book-stats">
+                        <div class="book-stat">
+                            <i class="fas fa-file-alt"></i>
+                            <span>288 parágrafos</span>
+                        </div>
+                        <div class="book-stat">
+                            <i class="fas fa-clock"></i>
+                            <span>Leitura: 5h</span>
+                        </div>
+                    </div>
+                    <div class="btn btn-outline">Acessar</div>
+                </div>
             </div>
-            <div class="schedule-grid">
-                <div class="schedule-item">
-                    <h4><i class="far fa-calendar-alt"></i> 15/05 - Acolitos</h4>
-                    <ul>
-                        <li><i class="fas fa-user"></i> João Silva</li>
-                        <li><i class="fas fa-user"></i> Maria Santos</li>
-                        <li><i class="fas fa-user"></i> Pedro Oliveira</li>
-                        <li><i class="fas fa-user"></i> Ana Costa</li>
-                    </ul>
+        </section>
+
+        <section>
+            <h2 class="section-title"><i class="fas fa-user-alt"></i> Vidas dos Santos</h2>
+            <div class="books-grid">
+                <div class="book-card">
+                    <div class="book-header">
+                        <div class="book-icon">
+                            <i class="fas fa-dove"></i>
+                        </div>
+                        <div class="book-info">
+                            <div class="book-title">Vida de São Francisco</div>
+                            <div class="book-subtitle">São Boaventura</div>
+                            <span class="book-badge">Biografia</span>
+                        </div>
+                    </div>
+                    <div class="book-description">
+                        A vida inspiradora do poverello de Assis, fundador da Ordem Franciscana e exemplo de pobreza
+                        evangélica.
+                    </div>
+                    <div class="book-stats">
+                        <div class="book-stat">
+                            <i class="fas fa-book"></i>
+                            <span>15 capítulos</span>
+                        </div>
+                        <div class="book-stat">
+                            <i class="fas fa-clock"></i>
+                            <span>Leitura: 8h</span>
+                        </div>
+                    </div>
+                    <div class="btn btn-outline">Acessar</div>
                 </div>
-                <div class="schedule-item">
-                    <h4><i class="far fa-calendar-alt"></i> 16/05 - Músicos</h4>
-                    <ul>
-                        <li><i class="fas fa-user"></i> Carlos Lima</li>
-                        <li><i class="fas fa-user"></i> Fernanda Rocha</li>
-                        <li><i class="fas fa-user"></i> Ricardo Alves</li>
-                        <li><i class="fas fa-user"></i> Patrícia Nunes</li>
-                    </ul>
+
+                <div class="book-card">
+                    <div class="book-header">
+                        <div class="book-icon">
+                            <i class="fas fa-female"></i>
+                        </div>
+                        <div class="book-info">
+                            <div class="book-title">História de uma Alma</div>
+                            <div class="book-subtitle">Santa Teresinha</div>
+                            <span class="book-badge">Autobiografia</span>
+                        </div>
+                    </div>
+                    <div class="book-description">
+                        Autobiografia espiritual de Santa Teresinha do Menino Jesus, expondo sua "pequena via" de
+                        confiança e amor.
+                    </div>
+                    <div class="book-stats">
+                        <div class="book-stat">
+                            <i class="fas fa-book"></i>
+                            <span>10 manuscritos</span>
+                        </div>
+                        <div class="book-stat">
+                            <i class="fas fa-clock"></i>
+                            <span>Leitura: 6h</span>
+                        </div>
+                    </div>
+                    <div class="btn btn-outline">Acessar</div>
                 </div>
-                <div class="schedule-item">
-                    <h4><i class="far fa-calendar-alt"></i> 17/05 - Leitores</h4>
-                    <ul>
-                        <li><i class="fas fa-user"></i> Roberto Ferreira</li>
-                        <li><i class="fas fa-user"></i> Juliana Mendes</li>
-                        <li><i class="fas fa-user"></i> Marcos Dias</li>
-                        <li><i class="fas fa-user"></i> Luciana Moreira</li>
-                    </ul>
+
+                <div class="book-card">
+                    <div class="book-header">
+                        <div class="book-icon">
+                            <i class="fas fa-cross"></i>
+                        </div>
+                        <div class="book-info">
+                            <div class="book-title">Confissões</div>
+                            <div class="book-subtitle">Santo Agostinho</div>
+                            <span class="book-badge">Clássico</span>
+                        </div>
+                    </div>
+                    <div class="book-description">
+                        Autobiografia espiritual de Santo Agostinho, narrando sua conversão e reflexões sobre Deus, o
+                        tempo e a memória.
+                    </div>
+                    <div class="book-stats">
+                        <div class="book-stat">
+                            <i class="fas fa-book"></i>
+                            <span>13 livros</span>
+                        </div>
+                        <div class="book-stat">
+                            <i class="fas fa-clock"></i>
+                            <span>Leitura: 15h</span>
+                        </div>
+                    </div>
+                    <div class="btn btn-outline">Acessar</div>
                 </div>
             </div>
         </section>
@@ -910,9 +1099,7 @@
                     <p>Uma família em fé, esperança e amor. Junte-se a nós em nossa jornada espiritual.</p>
                     <div class="social-links">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a
-                            href="https://www.instagram.com/par.saojoseoperario?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><i
-                                class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
                         <a href="#"><i class="fab fa-youtube"></i></a>
                         <a href="#"><i class="fab fa-whatsapp"></i></a>
                     </div>
@@ -942,7 +1129,7 @@
                         </li>
                         <li>
                             <i class="fas fa-envelope"></i>
-                            <span>contato@comunidadesaofrancisco.org</span>
+                            <span>biblioteca@fétech.org</span>
                         </li>
                     </ul>
                 </div>
@@ -955,21 +1142,12 @@
                     Nosso site pode conter links para páginas e recursos externos, fornecidos por terceiros. Esses links
                     são disponibilizados apenas para sua conveniência. A FéTech não possui controle sobre o conteúdo
                     desses sites ou recursos e não se responsabiliza por eles, nem por qualquer perda ou dano que possa
-                    resultar de seu uso.
-                </p>
+                    resultar de seu uso.</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Estado de autenticação do usuário
-        let isLoggedIn = true;
-        const authButton = document.getElementById('authButton');
-        const authIcon = document.getElementById('authIcon');
-        const authText = document.getElementById('authText');
-        const statusIndicator = document.getElementById('statusIndicator');
-        const statusText = document.getElementById('statusText');
-
         // Gerenciamento de Configurações
         function toggleSettings() {
             const menu = document.getElementById('settingsMenu');
@@ -985,12 +1163,6 @@
                 settingsMenu.classList.remove('active');
             }
         });
-
-        // Alternar opções de tema
-        function toggleThemeOptions() {
-            const themeOptions = document.querySelector('.theme-options');
-            themeOptions.classList.toggle('active');
-        }
 
         // Gerenciamento de Tema
         function setTheme(theme) {
@@ -1015,73 +1187,33 @@
         document.addEventListener('DOMContentLoaded', function () {
             const savedTheme = localStorage.getItem('theme') || 'light';
             setTheme(savedTheme);
-            updateAuthButton();
-            updateStatusIndicator();
+
+            // Adicionar funcionalidade de busca
+            const searchInput = document.querySelector('.search-input');
+            const categoryButtons = document.querySelectorAll('.category-btn');
+
+            // Filtro por categoria
+            categoryButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    categoryButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    // Aqui iria a lógica de filtragem por categoria
+                });
+            });
+
+            // Busca em tempo real
+            searchInput.addEventListener('input', function () {
+                const searchTerm = this.value.toLowerCase();
+                // Aqui iria a lógica de filtragem por busca
+            });
         });
 
-        // Alternar entre login/logout
-        function toggleAuth() {
-            if (isLoggedIn) {
-                logout();
-            } else {
-                login();
-            }
-        }
-
-        // Função de logout
+        // Logout
         function logout() {
             if (confirm('Tem certeza que deseja sair?')) {
-                isLoggedIn = false;
-                updateAuthButton();
-                updateStatusIndicator();
                 alert('Você foi desconectado com sucesso.');
-                // Fechar o menu após o logout
-                const settingsMenu = document.getElementById('settingsMenu');
-                settingsMenu.classList.remove('active');
-            }
-        }
-
-        // Função de login
-        function login() {
-            isLoggedIn = true;
-            updateAuthButton();
-            updateStatusIndicator();
-            // Fechar o menu após o login
-            const settingsMenu = document.getElementById('settingsMenu');
-            settingsMenu.classList.remove('active');
-            // Redirecionar para página de login
-            window.location.href = 'login.html';
-        }
-
-        // Atualizar o botão de autenticação
-        function updateAuthButton() {
-            if (isLoggedIn) {
-                authIcon.className = 'fas fa-sign-out-alt';
-                authText.textContent = 'Sair';
-            } else {
-                authIcon.className = 'fas fa-sign-in-alt';
-                authText.textContent = 'Login / Cadastrar-se';
-            }
-        }
-
-        // Atualizar o indicador de status
-        function updateStatusIndicator() {
-            if (isLoggedIn) {
-                statusIndicator.classList.remove('logged-out');
-                statusText.textContent = 'Logado';
-            } else {
-                statusIndicator.classList.add('logged-out');
-                statusText.textContent = 'Deslogado';
-            }
-        }
-
-        // Para a página de perfil - confirmação de exclusão de conta
-        function confirmDelete() {
-            if (confirm('Tem certeza que deseja excluir sua conta? Esta ação é irreversível e todos os seus dados serão perdidos.')) {
-                if (confirm('Esta é sua última chance. Confirmar exclusão permanente da conta?')) {
-                    alert('Conta excluída com sucesso. Sentiremos sua falta!');
-                    window.location.href = 'index.html';
-                }
+                // Redirecionar para a página inicial
+                window.location.href = 'index.html';
             }
         }
     </script>
