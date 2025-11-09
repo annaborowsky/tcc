@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Missas - Comunidade São Francisco</title>
+    <title>Enciclopédias - FéTech</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -134,7 +134,6 @@
             box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5);
         }
 
-        /* Configurações */
         .settings-container {
             position: relative;
         }
@@ -281,6 +280,18 @@
         }
 
         /* Main Content */
+        .settings-menu {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+        }
+
+        .settings-menu.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
         main {
             padding: 40px 0;
         }
@@ -341,14 +352,14 @@
             color: white;
         }
 
-        .cards-grid {
+        .books-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 25px;
             margin-bottom: 40px;
         }
 
-        .card {
+        .book-card {
             background: white;
             border-radius: var(--radius);
             padding: 25px;
@@ -357,9 +368,13 @@
             border-left: 4px solid var(--secondary);
             position: relative;
             overflow: hidden;
+            cursor: pointer;
+            text-decoration: none;
+            display: block;
+            color: inherit;
         }
 
-        .card::before {
+        .book-card::before {
             content: "";
             position: absolute;
             top: 0;
@@ -369,161 +384,139 @@
             background: linear-gradient(90deg, var(--primary), var(--secondary));
         }
 
-        .card:hover {
+        .book-card:hover {
             transform: translateY(-8px);
             box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
         }
 
-        .card h3 {
-            font-size: 20px;
-            margin-bottom: 15px;
-            color: var(--primary);
+        .book-card.featured {
+            border-left: 4px solid var(--secondary);
+            background: linear-gradient(135deg, white 0%, #f8fdf8 100%);
+        }
+
+        .book-header {
             display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .card h3 i {
-            color: var(--secondary);
-        }
-
-        .card p {
-            color: var(--gray);
+            align-items: flex-start;
+            gap: 20px;
             margin-bottom: 20px;
         }
 
-        .mass-schedule {
-            background: white;
+        .book-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--light-gray);
             border-radius: var(--radius);
-            padding: 30px;
-            box-shadow: var(--shadow);
-            margin-bottom: 40px;
-        }
-
-        .mass-day {
-            margin-bottom: 30px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid var(--light-gray);
-        }
-
-        .mass-day:last-child {
-            margin-bottom: 0;
-            padding-bottom: 0;
-            border-bottom: none;
-        }
-
-        .mass-day h3 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
             color: var(--primary);
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            flex-shrink: 0;
         }
 
-        .mass-times {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-        }
-
-        .mass-time {
-            background: var(--light);
-            padding: 15px;
-            border-radius: var(--radius);
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            transition: var(--transition);
-        }
-
-        .mass-time:hover {
-            background: #f0f5ff;
-            transform: translateX(5px);
-        }
-
-        .mass-time i {
-            color: var(--secondary);
-            font-size: 20px;
-        }
-
-        .mass-info {
+        .book-info {
             flex: 1;
         }
 
-        .mass-time-slot {
-            font-weight: 600;
+        .book-title {
+            font-size: 20px;
+            font-weight: 700;
             color: var(--primary);
             margin-bottom: 5px;
         }
 
-        .mass-type {
+        .book-subtitle {
             font-size: 14px;
+            color: var(--gray);
+            margin-bottom: 10px;
+        }
+
+        .book-badge {
+            display: inline-block;
+            background: var(--secondary);
+            color: var(--dark);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .book-description {
+            color: var(--gray);
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .book-stats {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        .book-stat {
+            display: flex;
+            align-items: center;
+            gap: 5px;
             color: var(--gray);
         }
 
-        .special-masses {
-            background: white;
-            border-radius: var(--radius);
-            padding: 30px;
-            box-shadow: var(--shadow);
-            margin-bottom: 40px;
+        .book-stat i {
+            color: var(--secondary);
         }
 
-        .special-mass-item {
+        .categories {
             display: flex;
-            gap: 20px;
-            padding: 20px;
-            border-bottom: 1px solid var(--light-gray);
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .category-btn {
+            background: var(--light);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 30px;
+            color: var(--dark);
+            font-weight: 500;
+            cursor: pointer;
             transition: var(--transition);
         }
 
-        .special-mass-item:hover {
-            background: var(--light);
-        }
-
-        .special-mass-item:last-child {
-            border-bottom: none;
-        }
-
-        .special-mass-date {
+        .category-btn:hover,
+        .category-btn.active {
             background: var(--primary);
             color: white;
-            width: 70px;
-            height: 70px;
-            border-radius: var(--radius);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
         }
 
-        .special-mass-day {
-            font-size: 20px;
-            font-weight: bold;
-            line-height: 1;
+        .search-box {
+            position: relative;
+            max-width: 500px;
+            margin-bottom: 30px;
         }
 
-        .special-mass-month {
-            font-size: 12px;
-            text-transform: uppercase;
+        .search-input {
+            width: 100%;
+            padding: 15px 50px 15px 20px;
+            border: 2px solid var(--light-gray);
+            border-radius: 30px;
+            font-size: 16px;
+            transition: var(--transition);
+            background: white;
         }
 
-        .special-mass-details {
-            flex: 1;
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(44, 85, 48, 0.1);
         }
 
-        .special-mass-meta {
-            display: flex;
-            gap: 15px;
-            margin: 10px 0;
-            font-size: 14px;
+        .search-icon {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
             color: var(--gray);
-        }
-
-        .special-mass-meta i {
-            color: var(--secondary);
-            margin-right: 5px;
         }
 
         /* Footer */
@@ -626,7 +619,52 @@
             color: rgba(255, 255, 255, 0.7);
         }
 
-        /* Modo Escuro */
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .hero h1 {
+                font-size: 26px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .section-title {
+                font-size: 20px;
+            }
+
+            .book-header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .book-icon {
+                align-self: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .books-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-buttons {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .book-stats {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+
+        /* Modo Escuro - Apenas cores azuis, conteúdo principal branco */
         body.dark-mode {
             --primary: #1e3a8a;
             --primary-light: #3b82f6;
@@ -649,30 +687,27 @@
             background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
         }
 
-        body.dark-mode .card,
-        body.dark-mode .mass-schedule,
-        body.dark-mode .special-masses,
-        body.dark-mode .mass-time {
+        body.dark-mode .book-card,
+        body.dark-mode .search-input {
             background: white;
             color: var(--dark);
         }
 
-        body.dark-mode .card h3,
-        body.dark-mode .section-title,
-        body.dark-mode .mass-day h3,
-        body.dark-mode .special-mass-details h3 {
+        body.dark-mode .book-title{
             color: var(--primary);
         }
 
-        body.dark-mode #popy {
-            color: white;
-            border-bottom: 2px solid var(--light-gray);
+        body.dark-mode .section-title{
+            color: white
+        }
+        body.dark-mode .book-description,
+        body.dark-mode .book-subtitle {
+            color: var(--gray);
         }
 
-        body.dark-mode .card p,
-        body.dark-mode .special-mass-details p,
-        body.dark-mode .mass-type {
-            color: var(--gray);
+        body.dark-mode .book-icon {
+            background: var(--light-gray);
+            color: var(--primary);
         }
 
         body.dark-mode .settings-menu {
@@ -693,47 +728,14 @@
             background: var(--light-gray);
         }
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                gap: 20px;
-            }
-
-            .hero h1 {
-                font-size: 26px;
-            }
-
-            .hero p {
-                font-size: 16px;
-            }
-
-            .section-title {
-                font-size: 20px;
-            }
-
-            .special-mass-item {
-                flex-direction: column;
-            }
-
-            .special-mass-date {
-                align-self: flex-start;
-            }
+        body.dark-mode .category-btn {
+            background: var(--light);
         }
 
-        @media (max-width: 480px) {
-            .cards-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .nav-buttons {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-
-            .mass-times {
-                grid-template-columns: 1fr;
-            }
+        body.dark-mode .category-btn:hover,
+        body.dark-mode .category-btn.active {
+            background: var(--primary);
+            color: white;
         }
     </style>
 </head>
@@ -744,11 +746,11 @@
         <div class="header-content">
             <div class="logo">
                 <div class="logo-icon">
-                    <i class="fas fa-church"></i>
+                    <i class="fas fa-book"></i>
                 </div>
                 <div>
-                    <div class="logo-text">Missas</div>
-                    <div class="logo-subtitle">A oração mais forte que existe!</div>
+                    <div class="logo-text">Biblioteca FéTech</div>
+                    <div class="logo-subtitle">Sabedoria para a jornada espiritual</div>
                 </div>
             </div>
             <div class="nav-buttons">
@@ -778,180 +780,308 @@
             </div>
         </div>
         <div class="hero">
-            <h1>Horários de Missas</h1>
-            <p>Participe das nossas celebrações e fortaleça sua fé com a comunidade.</p>
+            <h1>Enciclopédias e Livros Sagrados</h1>
+            <p>Explore nossa coleção de obras espirituais, doutrinárias e históricas para aprofundar seu
+                conhecimento da fé</p>
         </div>
     </div>
 </header>
-
     <br>
 
     <main class="container">
-        <section class="mass-schedule">
-            <h2 class="section-title"><i class="fas fa-calendar-alt"></i> Horários Regulares</h2>
-
-            <div class="mass-day">
-                <h3><i class="fas fa-sun"></i> Domingo</h3>
-                <div class="mass-times">
-                    <div class="mass-time">
-                        <i class="fas fa-clock"></i>
-                        <div class="mass-info">
-                            <div class="mass-time-slot">07:00</div>
-                            <div class="mass-type">Missa Matinal</div>
-                        </div>
-                    </div>
-                    <div class="mass-time">
-                        <i class="fas fa-clock"></i>
-                        <div class="mass-info">
-                            <div class="mass-time-slot">09:00</div>
-                            <div class="mass-type">Missa da Família</div>
-                        </div>
-                    </div>
-                    <div class="mass-time">
-                        <i class="fas fa-clock"></i>
-                        <div class="mass-info">
-                            <div class="mass-time-slot">11:00</div>
-                            <div class="mass-type">Missa Solene</div>
-                        </div>
-                    </div>
-                    <div class="mass-time">
-                        <i class="fas fa-clock"></i>
-                        <div class="mass-info">
-                            <div class="mass-time-slot">19:00</div>
-                            <div class="mass-type">Missa da Juventude</div>
-                        </div>
-                    </div>
-                </div>
+        <section>
+            <h2 class="section-title"><i class="fas fa-search"></i> Buscar na Biblioteca</h2>
+            <div class="search-box">
+                <input type="text" class="search-input" placeholder="Buscar por título, autor ou assunto...">
+                <i class="fas fa-search search-icon"></i>
             </div>
 
-            <div class="mass-day">
-                <h3><i class="fas fa-calendar-day"></i> Segunda a Sexta</h3>
-                <div class="mass-times">
-                    <div class="mass-time">
-                        <i class="fas fa-clock"></i>
-                        <div class="mass-info">
-                            <div class="mass-time-slot">07:00</div>
-                            <div class="mass-type">Missa da Manhã</div>
-                        </div>
-                    </div>
-                    <div class="mass-time">
-                        <i class="fas fa-clock"></i>
-                        <div class="mass-info">
-                            <div class="mass-time-slot">12:00</div>
-                            <div class="mass-type">Missa do Meio-Dia</div>
-                        </div>
-                    </div>
-                    <div class="mass-time">
-                        <i class="fas fa-clock"></i>
-                        <div class="mass-info">
-                            <div class="mass-time-slot">19:30</div>
-                            <div class="mass-type">Missa da Noite</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="mass-day">
-                <h3><i class="fas fa-star"></i> Sábado</h3>
-                <div class="mass-times">
-                    <div class="mass-time">
-                        <i class="fas fa-clock"></i>
-                        <div class="mass-info">
-                            <div class="mass-time-slot">08:00</div>
-                            <div class="mass-type">Missa da Manhã</div>
-                        </div>
-                    </div>
-                    <div class="mass-time">
-                        <i class="fas fa-clock"></i>
-                        <div class="mass-info">
-                            <div class="mass-time-slot">17:00</div>
-                            <div class="mass-type">Missa Vespertina</div>
-                        </div>
-                    </div>
-                    <div class="mass-time">
-                        <i class="fas fa-clock"></i>
-                        <div class="mass-info">
-                            <div class="mass-time-slot">19:00</div>
-                            <div class="mass-type">Missa Dominical Antecipada</div>
-                        </div>
-                    </div>
-                </div>
+            <div class="categories">
+                <button class="category-btn active">Todos</button>
+                <button class="category-btn">Bíblia e Sagradas Escrituras</button>
+                <button class="category-btn">Doutrina e Teologia</button>
+                <button class="category-btn">História da Igreja</button>
+                <button class="category-btn">Vidas dos Santos</button>
+                <button class="category-btn">Espiritualidade</button>
+                <button class="category-btn">Liturgia e Sacramentos</button>
             </div>
         </section>
 
-        <section class="special-masses">
-            <h2 class="section-title"><i class="fas fa-star"></i> Missas Especiais</h2>
-
-            <div class="special-mass-item">
-                <div class="special-mass-date">
-                    <div class="special-mass-day">15</div>
-                    <div class="special-mass-month">MAI</div>
-                </div>
-                <div class="special-mass-details">
-                    <h3>Missa de São Francisco</h3>
-                    <p>Celebração especial em honra ao nosso padroeiro com bênção dos animais.</p>
-                    <div class="special-mass-meta">
-                        <span><i class="far fa-clock"></i> 18:00</span>
-                        <span><i class="fas fa-map-marker-alt"></i> Igreja Matriz</span>
-                        <span><i class="fas fa-user-alt"></i> Pe. João Silva</span>
+        <section>
+            <h2 class="section-title"><i class="fas fa-star"></i> Destaques</h2>
+            <div class="books-grid">
+                <a href="biblia.html" class="book-card featured">
+                    <div class="book-header">
+                        <div class="book-icon">
+                            <i class="fas fa-bible"></i>
+                        </div>
+                        <div class="book-info">
+                            <div class="book-title">Bíblia Sagrada</div>
+                            <div class="book-subtitle">Tradução Oficial da CNBB</div>
+                            <span class="book-badge">Mais Acessado</span>
+                        </div>
                     </div>
-                    <a href="#" class="btn btn-outline">Mais Informações</a>
-                </div>
-            </div>
-
-            <div class="special-mass-item">
-                <div class="special-mass-date">
-                    <div class="special-mass-day">20</div>
-                    <div class="special-mass-month">MAI</div>
-                </div>
-                <div class="special-mass-details">
-                    <h3>Missa com Unção dos Enfermos</h3>
-                    <p>Celebração especial com o sacramento da unção para idosos e enfermos.</p>
-                    <div class="special-mass-meta">
-                        <span><i class="far fa-clock"></i> 15:00</span>
-                        <span><i class="fas fa-map-marker-alt"></i> Igreja Matriz</span>
-                        <span><i class="fas fa-user-alt"></i> Pe. Carlos Oliveira</span>
+                    <div class="book-description">
+                        A Sagrada Escritura completa, com Antigo e Novo Testamento. Inclui introduções, notas
+                        explicativas e referências cruzadas para estudo aprofundado.
                     </div>
-                    <a href="#" class="btn btn-outline">Mais Informações</a>
-                </div>
-            </div>
-
-            <div class="special-mass-item">
-                <div class="special-mass-date">
-                    <div class="special-mass-day">25</div>
-                    <div class="special-mass-month">MAI</div>
-                </div>
-                <div class="special-mass-details">
-                    <h3>Missa das Mães</h3>
-                    <p>Celebração especial para todas as mães da comunidade com bênção especial.</p>
-                    <div class="special-mass-meta">
-                        <span><i class="far fa-clock"></i> 10:00</span>
-                        <span><i class="fas fa-map-marker-alt"></i> Capela Nossa Senhora</span>
-                        <span><i class="fas fa-user-alt"></i> Pe. Maria Santos</span>
+                    <div class="book-stats">
+                        <div class="book-stat">
+                            <i class="fas fa-book-open"></i>
+                            <span>73 livros</span>
+                        </div>
+                        <div class="book-stat">
+                            <i class="fas fa-clock"></i>
+                            <span>Leitura: 70h</span>
+                        </div>
+                        <div class="book-stat">
+                            <i class="fas fa-download"></i>
+                            <span>1.2M leituras</span>
+                        </div>
                     </div>
-                    <a href="#" class="btn btn-outline">Mais Informações</a>
+                    <div class="btn">Ler Agora</div>
+                </a>
+
+                <div class="book-card">
+                    <div class="book-header">
+                        <div class="book-icon">
+                            <i class="fas fa-cross"></i>
+                        </div>
+                        <div class="book-info">
+                            <div class="book-title">Catecismo da Igreja Católica</div>
+                            <div class="book-subtitle">Compêndio da Doutrina Católica</div>
+                            <span class="book-badge">Oficial</span>
+                        </div>
+                    </div>
+                    <div class="book-description">
+                        Exposição completa da fé católica e da moral cristã. Texto de referência para catequese,
+                        formação e estudo da doutrina da Igreja.
+                    </div>
+                    <div class="book-stats">
+                        <div class="book-stat">
+                            <i class="fas fa-book"></i>
+                            <span>4 partes</span>
+                        </div>
+                        <div class="book-stat">
+                            <i class="fas fa-clock"></i>
+                            <span>Leitura: 45h</span>
+                        </div>
+                        <div class="book-stat">
+                            <i class="fas fa-download"></i>
+                            <span>450K leituras</span>
+                        </div>
+                    </div>
+                    <div class="btn btn-outline">Acessar</div>
+                </div>
+
+                <div class="book-card">
+                    <div class="book-header">
+                        <div class="book-icon">
+                            <i class="fas fa-history"></i>
+                        </div>
+                        <div class="book-info">
+                            <div class="book-title">História da Igreja</div>
+                            <div class="book-subtitle">Dos Apóstolos aos Nossos Dias</div>
+                            <span class="book-badge">Completo</span>
+                        </div>
+                    </div>
+                    <div class="book-description">
+                        Narrativa completa da trajetória do Cristianismo desde Pentecostes até os dias atuais, com
+                        análise dos principais eventos e figuras.
+                    </div>
+                    <div class="book-stats">
+                        <div class="book-stat">
+                            <i class="fas fa-book"></i>
+                            <span>3 volumes</span>
+                        </div>
+                        <div class="book-stat">
+                            <i class="fas fa-clock"></i>
+                            <span>Leitura: 60h</span>
+                        </div>
+                        <div class="book-stat">
+                            <i class="fas fa-download"></i>
+                            <span>320K leituras</span>
+                        </div>
+                    </div>
+                    <div class="btn btn-outline">Acessar</div>
                 </div>
             </div>
         </section>
 
         <section>
-            <h2 id="popy" class="section-title"><i class="fas fa-info-circle"></i> Informações Importantes</h2>
-            <div class="cards-grid">
-                <div class="card">
-                    <h3><i class="fas fa-bell"></i> Confissões</h3>
-                    <p>As confissões estão disponíveis 30 minutos antes de cada missa ou mediante agendamento com a
-                        secretaria.</p>
-                    <a href="#" class="btn">Agendar Confissão</a>
+            <h2 class="section-title"><i class="fas fa-book-open"></i> Obras Doutrinárias</h2>
+            <div class="books-grid">
+                <div class="book-card">
+                    <div class="book-header">
+                        <div class="book-icon">
+                            <i class="fas fa-theater-masks"></i>
+                        </div>
+                        <div class="book-info">
+                            <div class="book-title">Suma Teológica</div>
+                            <div class="book-subtitle">São Tomás de Aquino</div>
+                            <span class="book-badge">Clássico</span>
+                        </div>
+                    </div>
+                    <div class="book-description">
+                        A obra-prima da teologia escolástica, tratando de Deus, da criação, do homem e de sua salvação
+                        através de Cristo.
+                    </div>
+                    <div class="book-stats">
+                        <div class="book-stat">
+                            <i class="fas fa-book"></i>
+                            <span>3 partes</span>
+                        </div>
+                        <div class="book-stat">
+                            <i class="fas fa-clock"></i>
+                            <span>Leitura: 120h</span>
+                        </div>
+                    </div>
+                    <div class="btn btn-outline">Acessar</div>
                 </div>
-                <div class="card">
-                    <h3><i class="fas fa-users"></i> Primeira Eucaristia</h3>
-                    <p>Preparação para a primeira comunhão acontece aos sábados pela manhã. Inscrições abertas.</p>
-                    <a href="#" class="btn">Saiba Mais</a>
+
+                <div class="book-card">
+                    <div class="book-header">
+                        <div class="book-icon">
+                            <i class="fas fa-dove"></i>
+                        </div>
+                        <div class="book-info">
+                            <div class="book-title">Deus é Amor</div>
+                            <div class="book-subtitle">Papa Bento XVI</div>
+                            <span class="book-badge">Encíclica</span>
+                        </div>
+                    </div>
+                    <div class="book-description">
+                        Primeira encíclica do Papa Bento XVI sobre o amor cristão, explorando o amor de Deus e o amor ao
+                        próximo.
+                    </div>
+                    <div class="book-stats">
+                        <div class="book-stat">
+                            <i class="fas fa-file-alt"></i>
+                            <span>42 parágrafos</span>
+                        </div>
+                        <div class="book-stat">
+                            <i class="fas fa-clock"></i>
+                            <span>Leitura: 2h</span>
+                        </div>
+                    </div>
+                    <div class="btn btn-outline">Acessar</div>
                 </div>
-                <div class="card">
-                    <h3><i class="fas fa-baby"></i> Batizados</h3>
-                    <p>Celebrações de batizado acontecem no primeiro e terceiro domingo de cada mês às 14h.</p>
-                    <a href="#" class="btn">Agendar Batizado</a>
+
+                <div class="book-card">
+                    <div class="book-header">
+                        <div class="book-icon">
+                            <i class="fas fa-hands-helping"></i>
+                        </div>
+                        <div class="book-info">
+                            <div class="book-title">A Alegria do Evangelho</div>
+                            <div class="book-subtitle">Papa Francisco</div>
+                            <span class="book-badge">Exortação</span>
+                        </div>
+                    </div>
+                    <div class="book-description">
+                        Exortação apostólica sobre o anúncio do Evangelho no mundo atual, com ênfase na alegria e na
+                        misericórdia.
+                    </div>
+                    <div class="book-stats">
+                        <div class="book-stat">
+                            <i class="fas fa-file-alt"></i>
+                            <span>288 parágrafos</span>
+                        </div>
+                        <div class="book-stat">
+                            <i class="fas fa-clock"></i>
+                            <span>Leitura: 5h</span>
+                        </div>
+                    </div>
+                    <div class="btn btn-outline">Acessar</div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="section-title"><i class="fas fa-user-alt"></i> Vidas dos Santos</h2>
+            <div class="books-grid">
+                <div class="book-card">
+                    <div class="book-header">
+                        <div class="book-icon">
+                            <i class="fas fa-dove"></i>
+                        </div>
+                        <div class="book-info">
+                            <div class="book-title">Vida de São Francisco</div>
+                            <div class="book-subtitle">São Boaventura</div>
+                            <span class="book-badge">Biografia</span>
+                        </div>
+                    </div>
+                    <div class="book-description">
+                        A vida inspiradora do poverello de Assis, fundador da Ordem Franciscana e exemplo de pobreza
+                        evangélica.
+                    </div>
+                    <div class="book-stats">
+                        <div class="book-stat">
+                            <i class="fas fa-book"></i>
+                            <span>15 capítulos</span>
+                        </div>
+                        <div class="book-stat">
+                            <i class="fas fa-clock"></i>
+                            <span>Leitura: 8h</span>
+                        </div>
+                    </div>
+                    <div class="btn btn-outline">Acessar</div>
+                </div>
+
+                <div class="book-card">
+                    <div class="book-header">
+                        <div class="book-icon">
+                            <i class="fas fa-female"></i>
+                        </div>
+                        <div class="book-info">
+                            <div class="book-title">História de uma Alma</div>
+                            <div class="book-subtitle">Santa Teresinha</div>
+                            <span class="book-badge">Autobiografia</span>
+                        </div>
+                    </div>
+                    <div class="book-description">
+                        Autobiografia espiritual de Santa Teresinha do Menino Jesus, expondo sua "pequena via" de
+                        confiança e amor.
+                    </div>
+                    <div class="book-stats">
+                        <div class="book-stat">
+                            <i class="fas fa-book"></i>
+                            <span>10 manuscritos</span>
+                        </div>
+                        <div class="book-stat">
+                            <i class="fas fa-clock"></i>
+                            <span>Leitura: 6h</span>
+                        </div>
+                    </div>
+                    <div class="btn btn-outline">Acessar</div>
+                </div>
+
+                <div class="book-card">
+                    <div class="book-header">
+                        <div class="book-icon">
+                            <i class="fas fa-cross"></i>
+                        </div>
+                        <div class="book-info">
+                            <div class="book-title">Confissões</div>
+                            <div class="book-subtitle">Santo Agostinho</div>
+                            <span class="book-badge">Clássico</span>
+                        </div>
+                    </div>
+                    <div class="book-description">
+                        Autobiografia espiritual de Santo Agostinho, narrando sua conversão e reflexões sobre Deus, o
+                        tempo e a memória.
+                    </div>
+                    <div class="book-stats">
+                        <div class="book-stat">
+                            <i class="fas fa-book"></i>
+                            <span>13 livros</span>
+                        </div>
+                        <div class="book-stat">
+                            <i class="fas fa-clock"></i>
+                            <span>Leitura: 15h</span>
+                        </div>
+                    </div>
+                    <div class="btn btn-outline">Acessar</div>
                 </div>
             </div>
         </section>
@@ -979,6 +1109,7 @@
                         <li><a href="retiros.html"><i class="fas fa-chevron-right"></i> Retiros</a></li>
                         <li><a href="eventos.html"><i class="fas fa-chevron-right"></i> Eventos</a></li>
                         <li><a href="leitura.html"><i class="fas fa-chevron-right"></i> Leitura do Dia</a></li>
+                        <li><a href="enciclopedias.html"><i class="fas fa-chevron-right"></i> Enciclopédias</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
@@ -994,7 +1125,7 @@
                         </li>
                         <li>
                             <i class="fas fa-envelope"></i>
-                            <span>contato@comunidadesaofrancisco.org</span>
+                            <span>biblioteca@fétech.org</span>
                         </li>
                     </ul>
                 </div>
@@ -1053,20 +1184,31 @@
             const savedTheme = localStorage.getItem('theme') || 'light';
             setTheme(savedTheme);
 
-            // Adicionar data atual
-            const today = new Date();
-            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-            const dateString = today.toLocaleDateString('pt-BR', options);
+            // Adicionar funcionalidade de busca
+            const searchInput = document.querySelector('.search-input');
+            const categoryButtons = document.querySelectorAll('.category-btn');
 
-            // Adicionar a data ao hero
-            const hero = document.querySelector('.hero p');
-            hero.innerHTML += `<br><small><i class="far fa-calendar"></i> Hoje é ${dateString}</small>`;
+            // Filtro por categoria
+            categoryButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    categoryButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    // Aqui iria a lógica de filtragem por categoria
+                });
+            });
+
+            // Busca em tempo real
+            searchInput.addEventListener('input', function () {
+                const searchTerm = this.value.toLowerCase();
+                // Aqui iria a lógica de filtragem por busca
+            });
         });
 
         // Logout
         function logout() {
             if (confirm('Tem certeza que deseja sair?')) {
                 alert('Você foi desconectado com sucesso.');
+                // Redirecionar para a página inicial
                 window.location.href = 'index.html';
             }
         }

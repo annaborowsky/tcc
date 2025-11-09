@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,7 +18,7 @@
             --dark: #212529;
             --gray: #6c757d;
             --light-gray: #e9ecef;
-            --shadow: 0 4px 12px rgba(0,0,0,0.1);
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             --radius: 12px;
             --transition: all 0.3s ease;
         }
@@ -87,7 +88,7 @@
             justify-content: center;
             color: var(--primary);
             font-size: 24px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
         .logo-text {
@@ -104,10 +105,11 @@
         .nav-buttons {
             display: flex;
             gap: 10px;
+            align-items: center;
         }
 
         .nav-btn {
-            background: rgba(255,255,255,0.15);
+            background: rgba(255, 255, 255, 0.15);
             border: none;
             padding: 10px 18px;
             border-radius: 30px;
@@ -123,23 +125,140 @@
         }
 
         .nav-btn:hover {
-            background: rgba(255,255,255,0.25);
+            background: rgba(255, 255, 255, 0.25);
             transform: translateY(-2px);
         }
 
         .nav-btn.active {
-            background: rgba(255,255,255,0.3);
-            box-shadow: 0 0 0 2px rgba(255,255,255,0.5);
+            background: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5);
+        }
+
+        /* Configurações */
+        .settings-container {
+            position: relative;
+        }
+
+        .settings-btn {
+            background: rgba(255, 255, 255, 0.15);
+            border: none;
+            padding: 10px 18px;
+            border-radius: 30px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            backdrop-filter: blur(5px);
+        }
+
+        .settings-btn:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-2px);
+        }
+
+        .settings-menu {
+            position: absolute;
+            top: 50px;
+            right: 0;
+            background: white;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 15px 0;
+            min-width: 220px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: var(--transition);
+            z-index: 1000;
+        }
+
+        .settings-menu.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .settings-menu-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 20px;
+            color: var(--dark);
+            text-decoration: none;
+            transition: var(--transition);
+            border: none;
+            background: none;
+            width: 100%;
+            text-align: left;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .settings-menu-item:hover {
+            background: var(--light);
+            color: var(--primary);
+        }
+
+        .settings-menu-item i {
+            width: 20px;
+            text-align: center;
+            color: var(--secondary);
+        }
+
+        .settings-menu-divider {
+            height: 1px;
+            background: var(--light-gray);
+            margin: 8px 0;
+        }
+
+        .theme-options {
+            display: flex;
+            gap: 5px;
+            background: var(--light-gray);
+            padding: 4px;
+            border-radius: 20px;
+            margin-left: auto;
+        }
+
+        .theme-option {
+            width: 30px;
+            height: 30px;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+        }
+
+        .theme-option.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        .theme-light {
+            background: #f8f9fa;
+            color: #212529;
+        }
+
+        .theme-dark {
+            background: #212529;
+            color: #f8f9fa;
         }
 
         .hero {
             text-align: center;
             padding: 40px 20px;
-            background: rgba(255,255,255,0.1);
+            background: rgba(255, 255, 255, 0.1);
             border-radius: var(--radius);
             margin-top: 20px;
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.2);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .hero h1 {
@@ -193,7 +312,7 @@
         .btn:hover {
             background: var(--primary-light);
             transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
         }
 
         .btn-secondary {
@@ -307,7 +426,7 @@
 
         .card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 12px 20px rgba(0,0,0,0.15);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
         }
 
         .card h3 {
@@ -368,7 +487,7 @@
         }
 
         .footer-links a {
-            color: rgba(255,255,255,0.8);
+            color: rgba(255, 255, 255, 0.8);
             text-decoration: none;
             transition: var(--transition);
             display: flex;
@@ -409,7 +528,7 @@
             justify-content: center;
             width: 40px;
             height: 40px;
-            background: rgba(255,255,255,0.1);
+            background: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
             color: white;
             transition: var(--transition);
@@ -423,9 +542,79 @@
         .footer-bottom {
             text-align: center;
             padding-top: 20px;
-            border-top: 1px solid rgba(255,255,255,0.1);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
             font-size: 14px;
-            color: rgba(255,255,255,0.7);
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Modo Escuro */
+        body.dark-mode {
+            --primary: #1e3a8a;
+            --primary-light: #3b82f6;
+            --primary-dark: #1e40af;
+            --secondary: #d4af37;
+            --secondary-light: #e8c766;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+            --light-gray: #e9ecef;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: white;
+        }
+
+        body.dark-mode header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+        }
+
+        body.dark-mode footer {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+        }
+
+        body.dark-mode .daily-reading,
+        body.dark-mode .card,
+        body.dark-mode .reading-reflection {
+            background: white;
+            color: var(--dark);
+        }
+
+        /* CORREÇÃO DOS TÍTULOS NO MODO ESCURO */
+        body.dark-mode .section-title {
+            color: white;
+            border-bottom: 2px solid white;
+        }
+
+        body.dark-mode .section-title i {
+            color: var(--secondary);
+        }
+
+        body.dark-mode .reading-title,
+        body.dark-mode .card h3,
+        body.dark-mode .reading-reflection h3 {
+            color: var(--primary);
+        }
+
+        body.dark-mode .reading-content p,
+        body.dark-mode .card p,
+        body.dark-mode .reading-reflection p {
+            color: var(--gray);
+        }
+
+        body.dark-mode .settings-menu {
+            background: white;
+            color: var(--dark);
+        }
+
+        body.dark-mode .settings-menu-item {
+            color: var(--dark);
+        }
+
+        body.dark-mode .settings-menu-item:hover {
+            background: var(--light);
+            color: var(--primary);
+        }
+
+        body.dark-mode .theme-options {
+            background: var(--light-gray);
         }
 
         /* Responsive */
@@ -460,31 +649,54 @@
         }
     </style>
 </head>
+
 <body>
-    <header>
-        <div class="container">
-            <div class="header-content">
-                <div class="logo">
-                    <div class="logo-icon">
-                        <i class="fas fa-church"></i>
-                    </div>
-                    <div>
-                        <div class="logo-text">Comunidade São Francisco</div>
-                        <div class="logo-subtitle">Uma família em fé e amor</div>
-                    </div>
+<header>
+    <div class="container">
+        <div class="header-content">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-book-reader"></i>
                 </div>
-                <div class="nav-buttons">
-                    <button class="nav-btn"><i class="fas fa-info-circle"></i> Sobre</button>
-                    <button class="nav-btn"><i class="fas fa-question-circle"></i> Ajuda</button>
-                    <a href="index.html" class="nav-btn"><i class="fas fa-home"></i> Início</a>
+                <div>
+                    <div class="logo-text">Leitura Diária</div>
+                    <div class="logo-subtitle">Um pouco de Deus todo dia!</div>
                 </div>
             </div>
-            <div class="hero">
-                <h1>Leitura do Dia</h1>
-                <p>Reflexões diárias para iluminar seu caminho espiritual.</p>
+            <div class="nav-buttons">
+                <a href="sobre.html" class="nav-btn"><i class="fas fa-info-circle"></i> Sobre</a>
+                <a href="ajuda.html" class="nav-btn"><i class="fas fa-question-circle"></i> Ajuda</a>
+                <a href="index.html" class="nav-btn"><i class="fas fa-home"></i> Início</a>
+
+                <!-- Botão de Configurações -->
+                <div class="settings-container">
+                    <button class="settings-btn" onclick="toggleSettings()">
+                        <i class="fas fa-cog" style="font-size: 22px;"></i>
+                    </button>
+                    <div class="settings-menu" id="settingsMenu">
+                        <button class="settings-menu-item" onclick="toggleTheme()">
+                            <i class="fas fa-palette"></i>
+                            <span>Tema</span>
+                        </button>
+                        <button class="settings-menu-item" onclick="window.location.href='perfil.html'">
+                            <i class="fas fa-user"></i> Meu perfil
+                        </button>
+                        <button class="settings-menu-item" id="authButton" onclick="toggleAuth()">
+                            <i class="fas fa-sign-out-alt" id="authIcon"></i>
+                            <span id="authText">Sair</span>
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
-    </header>
+        <div class="hero">
+            <h1>Leitura do Dia</h1>
+            <p>Reflexões diárias para iluminar seu caminho espiritual.</p>
+        </div>
+    </div>
+</header>
+
+    <br>
 
     <main class="container">
         <div class="daily-reading">
@@ -495,40 +707,55 @@
             </div>
             <div class="reading-content">
                 <div class="reading-verse">
-                    <p><span class="reading-verse-number">11</span> Eu sou o bom pastor. O bom pastor dá a vida pelas ovelhas.</p>
+                    <p><span class="reading-verse-number">11</span> Eu sou o bom pastor. O bom pastor dá a vida pelas
+                        ovelhas.</p>
                 </div>
                 <div class="reading-verse">
-                    <p><span class="reading-verse-number">12</span> O mercenário, que não é pastor, a quem não pertencem as ovelhas, vê vir o lobo e abandona as ovelhas e foge; e o lobo as arrebata e dispersa.</p>
+                    <p><span class="reading-verse-number">12</span> O mercenário, que não é pastor, a quem não pertencem
+                        as ovelhas, vê vir o lobo e abandona as ovelhas e foge; e o lobo as arrebata e dispersa.</p>
                 </div>
                 <div class="reading-verse">
-                    <p><span class="reading-verse-number">13</span> O mercenário foge porque é mercenário e não tem cuidado com as ovelhas.</p>
+                    <p><span class="reading-verse-number">13</span> O mercenário foge porque é mercenário e não tem
+                        cuidado com as ovelhas.</p>
                 </div>
                 <div class="reading-verse">
-                    <p><span class="reading-verse-number">14</span> Eu sou o bom pastor; conheço as minhas ovelhas, e elas me conhecem a mim,</p>
+                    <p><span class="reading-verse-number">14</span> Eu sou o bom pastor; conheço as minhas ovelhas, e
+                        elas me conhecem a mim,</p>
                 </div>
                 <div class="reading-verse">
-                    <p><span class="reading-verse-number">15</span> assim como o Pai me conhece a mim, e eu conheço o Pai; e dou a minha vida pelas ovelhas.</p>
+                    <p><span class="reading-verse-number">15</span> assim como o Pai me conhece a mim, e eu conheço o
+                        Pai; e dou a minha vida pelas ovelhas.</p>
                 </div>
                 <div class="reading-verse">
-                    <p><span class="reading-verse-number">16</span> Ainda tenho outras ovelhas que não são deste aprisco; a mim me convém conduzi-las; elas ouvirão a minha voz; então, haverá um rebanho e um pastor.</p>
+                    <p><span class="reading-verse-number">16</span> Ainda tenho outras ovelhas que não são deste
+                        aprisco; a mim me convém conduzi-las; elas ouvirão a minha voz; então, haverá um rebanho e um
+                        pastor.</p>
                 </div>
                 <div class="reading-verse">
-                    <p><span class="reading-verse-number">17</span> Por isso, o Pai me ama, porque eu dou a minha vida para a reassumir.</p>
+                    <p><span class="reading-verse-number">17</span> Por isso, o Pai me ama, porque eu dou a minha vida
+                        para a reassumir.</p>
                 </div>
                 <div class="reading-verse">
-                    <p><span class="reading-verse-number">18</span> Ninguém a tira de mim; pelo contrário, eu espontaneamente a dou. Tenho autoridade para a entregar e também para reavê-la. Este mandato recebi de meu Pai.</p>
+                    <p><span class="reading-verse-number">18</span> Ninguém a tira de mim; pelo contrário, eu
+                        espontaneamente a dou. Tenho autoridade para a entregar e também para reavê-la. Este mandato
+                        recebi de meu Pai.</p>
                 </div>
             </div>
             <div class="reading-reflection">
                 <h3><i class="fas fa-lightbulb"></i> Reflexão do Dia</h3>
-                <p>No evangelho de hoje, Jesus se apresenta como o Bom Pastor. Esta imagem nos fala profundamente sobre o cuidado, a dedicação e o amor que Deus tem por cada um de nós. Diferente do mercenário que trabalha apenas por interesse, Jesus está disposto a dar a própria vida por suas ovelhas.</p>
-                <p style="margin-top: 15px;">Esta passagem nos convida a refletir: confiamos plenamente em nosso Pastor? Seguimos sua voz em meio aos ruídos do mundo? E em nossas comunidades, somos pastores uns dos outros, cuidando com amor e dedicação daqueles que nos foram confiados?</p>
-                <p style="margin-top: 15px;">Que hoje possamos ouvir atentamente a voz do Bom Pastor e seguir seus caminhos, certos de que Ele nos conduz às pastagens verdejantes e às fontes de água viva.</p>
+                <p>No evangelho de hoje, Jesus se apresenta como o Bom Pastor. Esta imagem nos fala profundamente sobre
+                    o cuidado, a dedicação e o amor que Deus tem por cada um de nós. Diferente do mercenário que
+                    trabalha apenas por interesse, Jesus está disposto a dar a própria vida por suas ovelhas.</p>
+                <p style="margin-top: 15px;">Esta passagem nos convida a refletir: confiamos plenamente em nosso Pastor?
+                    Seguimos sua voz em meio aos ruídos do mundo? E em nossas comunidades, somos pastores uns dos
+                    outros, cuidando com amor e dedicação daqueles que nos foram confiados?</p>
+                <p style="margin-top: 15px;">Que hoje possamos ouvir atentamente a voz do Bom Pastor e seguir seus
+                    caminhos, certos de que Ele nos conduz às pastagens verdejantes e às fontes de água viva.</p>
             </div>
         </div>
 
         <section>
-            <h2 class="section-title"><i class="fas fa-history"></i> Leituras Anteriores</h2>
+            <h2 class="section-title" id="popy"><i class="fas fa-history"></i> Leituras Anteriores</h2>
             <div class="cards-grid">
                 <div class="card">
                     <h3><i class="far fa-calendar"></i> 10 de Maio</h3>
@@ -571,6 +798,7 @@
                         <li><a href="retiros.html"><i class="fas fa-chevron-right"></i> Retiros</a></li>
                         <li><a href="eventos.html"><i class="fas fa-chevron-right"></i> Eventos</a></li>
                         <li><a href="leitura.html"><i class="fas fa-chevron-right"></i> Leitura do Dia</a></li>
+                        <li><a href="enciclopedias.html"><i class="fas fa-chevron-right"></i> Enciclopédias</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
@@ -603,5 +831,105 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        // Estado de autenticação do usuário
+        let isLoggedIn = true;
+        const authButton = document.getElementById('authButton');
+        const authIcon = document.getElementById('authIcon');
+        const authText = document.getElementById('authText');
+
+        // Gerenciamento de Configurações
+        function toggleSettings() {
+            const menu = document.getElementById('settingsMenu');
+            menu.classList.toggle('active');
+        }
+
+        // Fechar menu ao clicar fora
+        document.addEventListener('click', function (event) {
+            const settingsContainer = document.querySelector('.settings-container');
+            const settingsMenu = document.getElementById('settingsMenu');
+
+            if (!settingsContainer.contains(event.target)) {
+                settingsMenu.classList.remove('active');
+            }
+        });
+
+        // Alternar opções de tema
+        function toggleThemeOptions() {
+            const themeOptions = document.querySelector('.theme-options');
+            themeOptions.classList.toggle('active');
+        }
+
+        // Gerenciamento de Tema
+        function setTheme(theme) {
+            if (theme === 'dark') {
+                document.body.classList.add('dark-mode');
+                document.querySelector('.theme-light').classList.remove('active');
+                document.querySelector('.theme-dark').classList.add('active');
+            } else {
+                document.body.classList.remove('dark-mode');
+                document.querySelector('.theme-light').classList.add('active');
+                document.querySelector('.theme-dark').classList.remove('active');
+            }
+            localStorage.setItem('theme', theme);
+        }
+
+        function toggleTheme() {
+            const isDark = document.body.classList.contains('dark-mode');
+            setTheme(isDark ? 'light' : 'dark');
+        }
+
+        // Carregar tema salvo
+        document.addEventListener('DOMContentLoaded', function () {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            setTheme(savedTheme);
+            updateAuthButton();
+        });
+
+        // Alternar entre login/logout
+        function toggleAuth() {
+            if (isLoggedIn) {
+                logout();
+            } else {
+                login();
+            }
+        }
+
+        // Função de logout
+        function logout() {
+            if (confirm('Tem certeza que deseja sair?')) {
+                isLoggedIn = false;
+                updateAuthButton();
+                alert('Você foi desconectado com sucesso.');
+                // Fechar o menu após o logout
+                const settingsMenu = document.getElementById('settingsMenu');
+                settingsMenu.classList.remove('active');
+            }
+        }
+
+        // Função de login
+        function login() {
+            isLoggedIn = true;
+            updateAuthButton();
+            // Fechar o menu após o login
+            const settingsMenu = document.getElementById('settingsMenu');
+            settingsMenu.classList.remove('active');
+            // Redirecionar para página de login
+            window.location.href = 'login.html';
+        }
+
+        // Atualizar o botão de autenticação
+        function updateAuthButton() {
+            if (isLoggedIn) {
+                authIcon.className = 'fas fa-sign-out-alt';
+                authText.textContent = 'Sair';
+            } else {
+                authIcon.className = 'fas fa-sign-in-alt';
+                authText.textContent = 'Login / Cadastrar-se';
+            }
+        }
+    </script>
 </body>
+
 </html>

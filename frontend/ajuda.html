@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Comunidade São Francisco - Portal da Fé</title>
+    <title>Ajuda e Suporte - FéTech</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -18,7 +17,7 @@
             --dark: #212529;
             --gray: #6c757d;
             --light-gray: #e9ecef;
-            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --shadow: 0 4px 12px rgba(0,0,0,0.1);
             --radius: 12px;
             --transition: all 0.3s ease;
         }
@@ -88,7 +87,7 @@
             justify-content: center;
             color: var(--primary);
             font-size: 24px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }
 
         .logo-text {
@@ -109,7 +108,7 @@
         }
 
         .nav-btn {
-            background: rgba(255, 255, 255, 0.15);
+            background: rgba(255,255,255,0.15);
             border: none;
             padding: 10px 18px;
             border-radius: 30px;
@@ -125,13 +124,13 @@
         }
 
         .nav-btn:hover {
-            background: rgba(255, 255, 255, 0.25);
+            background: rgba(255,255,255,0.25);
             transform: translateY(-2px);
         }
 
         .nav-btn.active {
-            background: rgba(255, 255, 255, 0.3);
-            box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5);
+            background: rgba(255,255,255,0.3);
+            box-shadow: 0 0 0 2px rgba(255,255,255,0.5);
         }
 
         .settings-container {
@@ -139,9 +138,9 @@
         }
 
         .settings-btn {
-            background: rgba(255, 255, 255, 0.15);
+            background: rgba(255,255,255,0.15);
             border: none;
-            padding: 11px 18px;
+            padding: 10px 18px;
             border-radius: 30px;
             color: white;
             font-weight: 600;
@@ -151,11 +150,10 @@
             align-items: center;
             gap: 8px;
             backdrop-filter: blur(5px);
-            text-decoration: none;
         }
 
         .settings-btn:hover {
-            background: rgba(255, 255, 255, 0.25);
+            background: rgba(255,255,255,0.25);
             transform: translateY(-2px);
         }
 
@@ -167,7 +165,7 @@
             border-radius: var(--radius);
             box-shadow: var(--shadow);
             padding: 15px 0;
-            min-width: 220px;
+            min-width: 200px;
             opacity: 0;
             visibility: hidden;
             transform: translateY(-10px);
@@ -214,13 +212,19 @@
             margin: 8px 0;
         }
 
+        .theme-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+        }
+
         .theme-options {
             display: flex;
             gap: 5px;
             background: var(--light-gray);
             padding: 4px;
             border-radius: 20px;
-            margin-left: auto;
         }
 
         .theme-option {
@@ -254,11 +258,11 @@
         .hero {
             text-align: center;
             padding: 40px 20px;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255,255,255,0.1);
             border-radius: var(--radius);
             margin-top: 20px;
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255,255,255,0.2);
         }
 
         .hero h1 {
@@ -275,6 +279,18 @@
         }
 
         /* Main Content */
+        .settings-menu {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+        }
+
+        .settings-menu.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
         main {
             padding: 40px 0;
         }
@@ -295,79 +311,6 @@
             color: var(--secondary);
         }
 
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            margin-bottom: 40px;
-        }
-
-        .card {
-            background: white;
-            border-radius: var(--radius);
-            padding: 25px;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            border-left: 4px solid var(--secondary);
-            position: relative;
-            overflow: hidden;
-            cursor: pointer;
-            text-decoration: none;
-            display: block;
-            color: inherit;
-        }
-
-        .card::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-        }
-
-        .card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
-        }
-
-        .card h3 {
-            font-size: 20px;
-            margin-bottom: 15px;
-            color: var(--primary);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .card h3 i {
-            color: var(--secondary);
-        }
-
-        .card p {
-            color: var(--gray);
-            margin-bottom: 20px;
-        }
-
-        .card-image {
-            height: 160px;
-            background: var(--light-gray);
-            border-radius: 8px;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--gray);
-            font-size: 14px;
-            overflow: hidden;
-        }
-
-        .card-image i {
-            font-size: 40px;
-            opacity: 0.5;
-        }
-
         .btn {
             display: inline-block;
             background: var(--primary);
@@ -385,7 +328,7 @@
         .btn:hover {
             background: var(--primary-light);
             transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
         }
 
         .btn-secondary {
@@ -408,56 +351,107 @@
             color: white;
         }
 
-        .resources {
+        .help-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
             margin-bottom: 40px;
         }
 
-        .resource-card {
+        .help-card {
             background: white;
             border-radius: var(--radius);
             padding: 25px;
             box-shadow: var(--shadow);
             transition: var(--transition);
-            text-align: center;
-            border-top: 4px solid var(--primary);
-            cursor: pointer;
-            text-decoration: none;
-            display: block;
-            color: inherit;
+            border-left: 4px solid var(--secondary);
+            position: relative;
+            overflow: hidden;
         }
 
-        .resource-card:hover {
-            transform: translateY(-5px);
+        .help-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
         }
 
-        .resource-icon {
-            width: 60px;
-            height: 60px;
-            background: var(--light-gray);
-            border-radius: 50%;
+        .help-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 20px rgba(0,0,0,0.15);
+        }
+
+        .help-card h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: var(--primary);
             display: flex;
             align-items: center;
-            justify-content: center;
-            margin: 0 auto 15px;
-            font-size: 24px;
-            color: var(--primary);
+            gap: 10px;
         }
 
-        .resource-card h3 {
-            margin-bottom: 10px;
-            color: var(--primary);
+        .help-card h3 i {
+            color: var(--secondary);
         }
 
-        .resource-card p {
+        .help-card p {
             color: var(--gray);
             margin-bottom: 20px;
+        }
+
+        .contact-info {
+            list-style: none;
+            margin-top: 20px;
+        }
+
+        .contact-info li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            padding: 12px;
+            background: var(--light);
+            border-radius: var(--radius);
+            transition: var(--transition);
+        }
+
+        .contact-info li:hover {
+            background: #f0f5ff;
+            transform: translateX(5px);
+        }
+
+        .contact-info i {
+            color: var(--secondary);
+            font-size: 18px;
+            margin-top: 2px;
+            min-width: 20px;
+        }
+
+        .contact-details {
+            flex: 1;
+        }
+
+        .contact-type {
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .contact-value {
+            color: var(--gray);
             font-size: 14px;
         }
 
-        .schedule {
+        .contact-hours {
+            font-size: 12px;
+            color: var(--gray);
+            margin-top: 3px;
+        }
+
+        .faq-section {
             background: white;
             border-radius: var(--radius);
             padding: 30px;
@@ -465,61 +459,102 @@
             margin-bottom: 40px;
         }
 
-        .schedule-header {
+        .faq-item {
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--light-gray);
+            padding-bottom: 20px;
+        }
+
+        .faq-item:last-child {
+            margin-bottom: 0;
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .faq-question {
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 10px;
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            margin-bottom: 25px;
-            flex-wrap: wrap;
-            gap: 15px;
+            gap: 10px;
+            cursor: pointer;
         }
 
-        .schedule-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-        }
-
-        .schedule-item {
-            background: var(--light);
-            border-radius: var(--radius);
-            padding: 20px;
-            border-left: 4px solid var(--primary);
+        .faq-question i {
+            color: var(--secondary);
             transition: var(--transition);
         }
 
-        .schedule-item:hover {
-            background: #f0f5ff;
-            transform: translateX(5px);
+        .faq-answer {
+            color: var(--gray);
+            line-height: 1.6;
+            max-height: 0;
+            overflow: hidden;
+            transition: var(--transition);
         }
 
-        .schedule-item h4 {
-            color: var(--primary);
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            margin-top: 10px;
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        .support-form {
+            background: white;
+            border-radius: var(--radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+            margin-bottom: 40px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-label {
+            display: block;
             margin-bottom: 10px;
+            color: var(--primary);
+            font-weight: 600;
             display: flex;
             align-items: center;
             gap: 8px;
         }
 
-        .schedule-item ul {
-            list-style: none;
-        }
-
-        .schedule-item li {
-            padding: 8px 0;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .schedule-item li:last-child {
-            border-bottom: none;
-        }
-
-        .schedule-item li i {
+        .form-label i {
             color: var(--secondary);
-            font-size: 12px;
+        }
+
+        .form-input, .form-textarea, .form-select {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid var(--light-gray);
+            border-radius: var(--radius);
+            font-size: 16px;
+            transition: var(--transition);
+            background: var(--light);
+        }
+
+        .form-input:focus, .form-textarea:focus, .form-select:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: white;
+            box-shadow: 0 0 0 3px rgba(44, 85, 48, 0.1);
+        }
+
+        .form-textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
         }
 
         /* Footer */
@@ -562,7 +597,7 @@
         }
 
         .footer-links a {
-            color: rgba(255, 255, 255, 0.8);
+            color: rgba(255,255,255,0.8);
             text-decoration: none;
             transition: var(--transition);
             display: flex;
@@ -573,22 +608,6 @@
         .footer-links a:hover {
             color: white;
             transform: translateX(5px);
-        }
-
-        .contact-info {
-            list-style: none;
-        }
-
-        .contact-info li {
-            margin-bottom: 15px;
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-        }
-
-        .contact-info i {
-            color: var(--secondary);
-            margin-top: 4px;
         }
 
         .social-links {
@@ -603,7 +622,7 @@
             justify-content: center;
             width: 40px;
             height: 40px;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255,255,255,0.1);
             border-radius: 50%;
             color: white;
             transition: var(--transition);
@@ -617,9 +636,9 @@
         .footer-bottom {
             text-align: center;
             padding-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 1px solid rgba(255,255,255,0.1);
             font-size: 14px;
-            color: rgba(255, 255, 255, 0.7);
+            color: rgba(255,255,255,0.7);
         }
 
         /* Responsive */
@@ -641,18 +660,13 @@
                 font-size: 20px;
             }
 
-            .schedule-header {
-                flex-direction: column;
-                align-items: flex-start;
+            .form-row {
+                grid-template-columns: 1fr;
             }
         }
 
         @media (max-width: 480px) {
-            .cards-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .resources {
+            .help-grid {
                 grid-template-columns: 1fr;
             }
 
@@ -674,8 +688,7 @@
             --gray: #6c757d;
             --light-gray: #e9ecef;
             background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            color: white;
-            /* Alterado para branco para melhor contraste */
+            color: var(--dark);
         }
 
         body.dark-mode header {
@@ -686,63 +699,30 @@
             background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
         }
 
-        body.dark-mode .card,
-        body.dark-mode .resource-card,
-        body.dark-mode .schedule,
-        body.dark-mode .schedule-item {
+        body.dark-mode .help-card,
+        body.dark-mode .faq-section,
+        body.dark-mode .support-form {
             background: white;
             color: var(--dark);
         }
 
-        /* CORREÇÃO DOS TÍTULOS NO MODO ESCURO - AGORA EM BRANCO */
+        body.dark-mode .help-card h3,
+        body.dark-mode .faq-question,
         body.dark-mode .section-title {
-            color: white;
-            /* Títulos das seções em branco */
-            border-bottom: 2px solid white;
-            /* Borda mais suave */
-        }
-
-        body.dark-mode #popy {
-            color: #1e3a8a;
-            /* Títulos das seções em branco */
-            border-bottom: 2px solid #1e3a8a;
-            /* Borda mais suave */
-        }
-
-
-        body.dark-mode .section-title i {
-            color: var(--secondary);
-            /* Mantém o dourado nos ícones */
-        }
-
-        body.dark-mode .card h3,
-        body.dark-mode .resource-card h3 {
             color: var(--primary);
-            /* Mantém azul nos títulos dos cards */
         }
 
-        body.dark-mode .card p,
-        body.dark-mode .resource-card p {
+        body.dark-mode .help-card p,
+        body.dark-mode .faq-answer {
             color: var(--gray);
         }
 
-        body.dark-mode .card-image,
-        body.dark-mode .resource-icon {
-            background: var(--light-gray);
-            color: var(--primary);
-        }
-
-        body.dark-mode .schedule-item {
+        body.dark-mode .contact-info li {
             background: var(--light);
         }
 
-        body.dark-mode .schedule-item:hover {
+        body.dark-mode .contact-info li:hover {
             background: #f0f5ff;
-        }
-
-        body.dark-mode .schedule-item h4 {
-            color: var(--primary);
-            /* Mantém azul nos títulos da agenda */
         }
 
         body.dark-mode .settings-menu {
@@ -763,21 +743,21 @@
             background: var(--light-gray);
         }
 
-        .btn-secondary {
-            background: transparent;
-            border: 2px solid #F9C74F;
-            color: #F9C74F;
+        body.dark-mode .form-input,
+        body.dark-mode .form-textarea,
+        body.dark-mode .form-select {
+            background: var(--light);
         }
 
-        .btn-secondary:hover {
-            background-color: #F9C74F;
-            color: white;
+        body.dark-mode .form-input:focus,
+        body.dark-mode .form-textarea:focus,
+        body.dark-mode .form-select:focus {
+            background: white;
         }
     </style>
 </head>
-
 <body>
- <header>
+<header>
         <div class="container">
             <div class="header-content">
                 <div class="logo">
@@ -785,14 +765,14 @@
                         <i class="fas fa-church"></i>
                     </div>
                     <div>
-                        <div class="logo-text">Paróquia São José Operário</div>
-                        <div class="logo-subtitle">Uma família em fé e amor</div>
+                        <div class="logo-text">Ajuda</div>
+                        <div class="logo-subtitle">Está com problemas?</div>
                     </div>
                 </div>
                 <div class="nav-buttons">
                     <a href="sobre.html" class="nav-btn"><i class="fas fa-info-circle"></i> Sobre</a>
-                    <a href="ajuda.html" class="nav-btn"><i class="fas fa-question-circle"></i> Ajuda</a>
-                    <a href="index.html" class="nav-btn active"><i class="fas fa-home"></i> Início</a>
+                    <a href="ajuda.html" class="nav-btn active"><i class="fas fa-question-circle"></i> Ajuda</a>
+                    <a href="index.html" class="nav-btn"><i class="fas fa-home"></i> Início</a>
 
                     <!-- Botão de Configurações -->
                     <div class="settings-container">
@@ -816,110 +796,194 @@
                 </div>
             </div>
             <div class="hero">
-                <h1>Bem-vindo à nossa comunidade</h1>
-                <p>Juntos em fé, esperança e amor. Participe de nossas missas, eventos e atividades espirituais.</p>
+                <h1>Central de Ajuda e Suporte</h1>
+                <p>Encontre respostas para suas dúvidas e entre em contato conosco</p>
             </div>
         </div>
     </header>
+
 
     <br>
 
     <main class="container">
         <section>
-            <h2 class="section-title"><i class="fas fa-star"></i> Destaques</h2>
-            <div class="cards-grid">
-                <a href="missas.html" class="card">
-                    <div class="card-image">
-                        <i class="fas fa-cross"></i>
-                    </div>
-                    <h3><i class="fas fa-church"></i> Missas</h3>
-                    <p>Participe das nossas celebrações e fortaleça sua fé com a comunidade.</p>
-                    <div class="btn">Ver Horários</div>
-                </a>
-                <a href="eventos.html" class="card">
-                    <div class="card-image">
-                        <i class="fas fa-calendar-alt"></i>
-                    </div>
-                    <h3><i class="fas fa-calendar-check"></i> Eventos</h3>
-                    <p>Confira nossa agenda de retiros, encontros e atividades especiais.</p>
-                    <div class="btn">Ver Agenda</div>
-                </a>
-                <a href="retiros.html" class="card">
-                    <div class="card-image">
-                        <i class="fas fa-praying-hands"></i>
-                    </div>
-                    <h3><i class="fas fa-hands-helping"></i> Retiros</h3>
-                    <p>Momentos de reflexão e renovação espiritual para toda a família.</p>
-                    <div class="btn">Saiba Mais</div>
-                </a>
+            <h2 class="section-title"><i class="fas fa-life-ring"></i> Canais de Atendimento</h2>
+            <div class="help-grid">
+                <div class="help-card">
+                    <h3><i class="fas fa-phone-alt"></i> Atendimento Telefônico</h3>
+                    <p>Fale diretamente com nossa equipe de suporte para questões urgentes.</p>
+                    <ul class="contact-info">
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <div class="contact-details">
+                                <div class="contact-type">Telefone Principal</div>
+                                <div class="contact-value">(11) 3456-7890</div>
+                                <div class="contact-hours">Segunda a Sexta, 8h às 18h</div>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-mobile-alt"></i>
+                            <div class="contact-details">
+                                <div class="contact-type">WhatsApp</div>
+                                <div class="contact-value">(11) 98765-4321</div>
+                                <div class="contact-hours">Todos os dias, 7h às 22h</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="help-card">
+                    <h3><i class="fas fa-envelope"></i> Atendimento por E-mail</h3>
+                    <p>Envie suas dúvidas detalhadas e receba resposta por e-mail.</p>
+                    <ul class="contact-info">
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <div class="contact-details">
+                                <div class="contact-type">Suporte Técnico</div>
+                                <div class="contact-value">suporte@fétech.org</div>
+                                <div class="contact-hours">Resposta em até 24h</div>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-users"></i>
+                            <div class="contact-details">
+                                <div class="contact-type">Comunidade</div>
+                                <div class="contact-value">comunidade@fétech.org</div>
+                                <div class="contact-hours">Dúvidas sobre uso</div>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-church"></i>
+                            <div class="contact-details">
+                                <div class="contact-type">Pastoral</div>
+                                <div class="contact-value">pastoral@fétech.org</div>
+                                <div class="contact-hours">Conteúdo espiritual</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="help-card">
+                    <h3><i class="fas fa-map-marker-alt"></i> Atendimento Presencial</h3>
+                    <p>Visite nossa sede para atendimento personalizado.</p>
+                    <ul class="contact-info">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div class="contact-details">
+                                <div class="contact-type">Sede FéTech</div>
+                                <div class="contact-value">Av. da Fé, 123 - Centro<br>São Paulo - SP, 01234-567</div>
+                                <div class="contact-hours">Segunda a Sexta, 9h às 17h</div>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-subway"></i>
+                            <div class="contact-details">
+                                <div class="contact-type">Como chegar</div>
+                                <div class="contact-value">Metrô Sé - 5min a pé<br>Estacionamento no local</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </section>
 
-        <section>
-            <h2 class="section-title"><i class="fas fa-book-open"></i> Recursos Espirituais</h2>
-            <div class="resources">
-                <a href="biblia.html" class="resource-card">
-                    <div class="resource-icon">
-                        <i class="fas fa-bible"></i>
-                    </div>
-                    <h3>Bíblia Online</h3>
-                    <p>Leia e pesquise nas sagradas escrituras em diferentes versões.</p>
-                    <div class="btn btn-outline">Acessar</div>
-                </a>
-                <a href="leitura.html" class="resource-card">
-                    <div class="resource-icon">
-                        <i class="fas fa-book-reader"></i>
-                    </div>
-                    <h3>Leitura do Dia</h3>
-                    <p>Reflexões diárias para iluminar seu caminho espiritual.</p>
-                    <div class="btn btn-outline">Ler Hoje</div>
-                </a>
-                <a href="enciclopedias.html" class="resource-card">
-                    <div class="resource-icon">
-                        <i class="fas fa-book"></i>
-                    </div>
-                    <h3>Enciclopédias</h3>
-                    <p>Conheça mais sobre a doutrina, santos e história da Igreja.</p>
-                    <div class="btn btn-outline">Explorar</div>
-                </a>
+        <section class="faq-section">
+            <h2 class="section-title"><i class="fas fa-comments"></i> Perguntas Frequentes</h2>
+            
+            <div class="faq-item active">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <i class="fas fa-chevron-down"></i>
+                    Como faço para me cadastrar na plataforma?
+                </div>
+                <div class="faq-answer">
+                    O cadastro pode ser feito através do botão "Criar Conta" na página inicial. Você precisará informar seu nome, e-mail, telefone e criar uma senha. Após o cadastro, você receberá um e-mail de confirmação para ativar sua conta.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <i class="fas fa-chevron-down"></i>
+                    Esqueci minha senha, como recuperar?
+                </div>
+                <div class="faq-answer">
+                    Na página de login, clique em "Esqueci minha senha". Informe o e-mail cadastrado e você receberá um link para redefinir sua senha. Caso não receba o e-mail, verifique sua pasta de spam ou entre em contato com nosso suporte.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <i class="fas fa-chevron-down"></i>
+                    Como posso participar dos eventos da comunidade?
+                </div>
+                <div class="faq-answer">
+                    Acesse a seção "Eventos" no menu principal. Lá você encontrará a agenda completa com datas, horários e locais. Para se inscrever, basta clicar no evento desejado e seguir as instruções. Alguns eventos podem ter vagas limitadas.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <i class="fas fa-chevron-down"></i>
+                    A plataforma é gratuita?
+                </div>
+                <div class="faq-answer">
+                    Sim, a plataforma FéTech é completamente gratuita para todos os membros da comunidade. Desenvolvemos este projeto como parte de nosso TCC com o objetivo de servir à comunidade, sem qualquer custo para os usuários.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <i class="fas fa-chevron-down"></i>
+                    Como faço para sugerir melhorias ou reportar problemas?
+                </div>
+                <div class="faq-answer">
+                    Suas sugestões são muito importantes! Utilize o formulário de contato abaixo ou envie um e-mail para suporte@fétech.org. Nossa equipe analisa todas as sugestões e feedbacks para melhorar continuamente a plataforma.
+                </div>
             </div>
         </section>
 
-        <section class="schedule">
-            <div class="schedule-header">
-                <h2 class="section-title" style="border-bottom: none; margin: 0; padding: 0;" id="popy" ><i
-                        class="fas fa-calendar-day" ></i> Próximas Escalas</h2>
-                <a href="escalas.html" class="btn btn-secondary">Ver Todas as Escalas</a>
-            </div>
-            <div class="schedule-grid">
-                <div class="schedule-item">
-                    <h4><i class="far fa-calendar-alt"></i> 15/05 - Acolitos</h4>
-                    <ul>
-                        <li><i class="fas fa-user"></i> João Silva</li>
-                        <li><i class="fas fa-user"></i> Maria Santos</li>
-                        <li><i class="fas fa-user"></i> Pedro Oliveira</li>
-                        <li><i class="fas fa-user"></i> Ana Costa</li>
-                    </ul>
+        <section class="support-form">
+            <h2 class="section-title"><i class="fas fa-headset"></i> Formulário de Suporte</h2>
+            <p style="color: var(--gray); margin-bottom: 25px;">Preencha o formulário abaixo e nossa equipe entrará em contato o mais breve possível.</p>
+            
+            <form id="supportForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label"><i class="fas fa-user"></i> Nome Completo</label>
+                        <input type="text" class="form-input" placeholder="Seu nome completo" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label"><i class="fas fa-envelope"></i> E-mail</label>
+                        <input type="email" class="form-input" placeholder="seu@email.com" required>
+                    </div>
                 </div>
-                <div class="schedule-item">
-                    <h4><i class="far fa-calendar-alt"></i> 16/05 - Músicos</h4>
-                    <ul>
-                        <li><i class="fas fa-user"></i> Carlos Lima</li>
-                        <li><i class="fas fa-user"></i> Fernanda Rocha</li>
-                        <li><i class="fas fa-user"></i> Ricardo Alves</li>
-                        <li><i class="fas fa-user"></i> Patrícia Nunes</li>
-                    </ul>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label"><i class="fas fa-phone"></i> Telefone</label>
+                        <input type="tel" class="form-input" placeholder="(11) 99999-9999">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label"><i class="fas fa-tag"></i> Assunto</label>
+                        <select class="form-select" required>
+                            <option value="">Selecione o assunto</option>
+                            <option value="duvida">Dúvida sobre a plataforma</option>
+                            <option value="problema">Problema técnico</option>
+                            <option value="sugestao">Sugestão de melhoria</option>
+                            <option value="conteudo">Dúvida sobre conteúdo</option>
+                            <option value="outro">Outro</option>
+                        </select>
+                    </div>
                 </div>
-                <div class="schedule-item">
-                    <h4><i class="far fa-calendar-alt"></i> 17/05 - Leitores</h4>
-                    <ul>
-                        <li><i class="fas fa-user"></i> Roberto Ferreira</li>
-                        <li><i class="fas fa-user"></i> Juliana Mendes</li>
-                        <li><i class="fas fa-user"></i> Marcos Dias</li>
-                        <li><i class="fas fa-user"></i> Luciana Moreira</li>
-                    </ul>
+
+                <div class="form-group">
+                    <label class="form-label"><i class="fas fa-comment"></i> Mensagem</label>
+                    <textarea class="form-textarea" placeholder="Descreva sua dúvida, problema ou sugestão com detalhes..." required></textarea>
                 </div>
-            </div>
+
+                <button type="submit" class="btn">
+                    <i class="fas fa-paper-plane"></i> Enviar Mensagem
+                </button>
+            </form>
         </section>
     </main>
 
@@ -927,13 +991,11 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h3>Paróquia São José Operário</h3>
-                    <p>Uma família em fé, esperança e amor. Junte-se a nós em nossa jornada espiritual.</p>
+                    <h3>Suporte FéTech</h3>
+                    <p>Estamos comprometidos em oferecer o melhor atendimento e suporte para nossa comunidade.</p>
                     <div class="social-links">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a
-                            href="https://www.instagram.com/par.saojoseoperario?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><i
-                                class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
                         <a href="#"><i class="fab fa-youtube"></i></a>
                         <a href="#"><i class="fab fa-whatsapp"></i></a>
                     </div>
@@ -942,29 +1004,20 @@
                     <h3>Links Rápidos</h3>
                     <ul class="footer-links">
                         <li><a href="index.html"><i class="fas fa-chevron-right"></i> Início</a></li>
-                        <li><a href="missas.html"><i class="fas fa-chevron-right"></i> Missas</a></li>
                         <li><a href="biblia.html"><i class="fas fa-chevron-right"></i> Bíblia</a></li>
+                        <li><a href="enciclopedias.html"><i class="fas fa-chevron-right"></i> Enciclopédias</a></li>
                         <li><a href="retiros.html"><i class="fas fa-chevron-right"></i> Retiros</a></li>
                         <li><a href="eventos.html"><i class="fas fa-chevron-right"></i> Eventos</a></li>
-                        <li><a href="leitura.html"><i class="fas fa-chevron-right"></i> Leitura do Dia</a></li>
-                        <li><a href="enciclopedias.html"><i class="fas fa-chevron-right"></i> Enciclopédias</a></li>
+                        <li><a href="ajuda.html"><i class="fas fa-chevron-right"></i> Ajuda</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h3>Contato</h3>
-                    <ul class="contact-info">
-                        <li>
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>Rua da Esperança, 123<br>Centro, Cidade - Estado</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-phone"></i>
-                            <span>(11) 9999-9999</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-envelope"></i>
-                            <span>contato@comunidadesaofrancisco.org</span>
-                        </li>
+                    <h3>Contato Rápido</h3>
+                    <ul class="footer-links">
+                        <li><a href="tel:+551134567890"><i class="fas fa-phone"></i> (11) 3456-7890</a></li>
+                        <li><a href="https://wa.me/5511987654321"><i class="fab fa-whatsapp"></i> (11) 98765-4321</a></li>
+                        <li><a href="mailto:suporte@fétech.org"><i class="fas fa-envelope"></i> suporte@fétech.org</a></li>
+                        <li><a href="#"><i class="fas fa-map-marker-alt"></i> Av. da Fé, 123 - Centro</a></li>
                     </ul>
                 </div>
             </div>
@@ -976,21 +1029,12 @@
                     Nosso site pode conter links para páginas e recursos externos, fornecidos por terceiros. Esses links
                     são disponibilizados apenas para sua conveniência. A FéTech não possui controle sobre o conteúdo
                     desses sites ou recursos e não se responsabiliza por eles, nem por qualquer perda ou dano que possa
-                    resultar de seu uso.
-                </p>
+                    resultar de seu uso.</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Estado de autenticação do usuário
-        let isLoggedIn = true;
-        const authButton = document.getElementById('authButton');
-        const authIcon = document.getElementById('authIcon');
-        const authText = document.getElementById('authText');
-        const statusIndicator = document.getElementById('statusIndicator');
-        const statusText = document.getElementById('statusText');
-
         // Gerenciamento de Configurações
         function toggleSettings() {
             const menu = document.getElementById('settingsMenu');
@@ -1006,12 +1050,6 @@
                 settingsMenu.classList.remove('active');
             }
         });
-
-        // Alternar opções de tema
-        function toggleThemeOptions() {
-            const themeOptions = document.querySelector('.theme-options');
-            themeOptions.classList.toggle('active');
-        }
 
         // Gerenciamento de Tema
         function setTheme(theme) {
@@ -1036,76 +1074,28 @@
         document.addEventListener('DOMContentLoaded', function () {
             const savedTheme = localStorage.getItem('theme') || 'light';
             setTheme(savedTheme);
-            updateAuthButton();
-            updateStatusIndicator();
         });
 
-        // Alternar entre login/logout
-        function toggleAuth() {
-            if (isLoggedIn) {
-                logout();
-            } else {
-                login();
-            }
+        // FAQ Toggle
+        function toggleFAQ(element) {
+            const faqItem = element.parentElement;
+            faqItem.classList.toggle('active');
         }
 
-        // Função de logout
+        // Form Submission
+        document.getElementById('supportForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Mensagem enviada com sucesso! Entraremos em contato em breve.');
+            this.reset();
+        });
+
+        // Logout
         function logout() {
             if (confirm('Tem certeza que deseja sair?')) {
-                isLoggedIn = false;
-                updateAuthButton();
-                updateStatusIndicator();
                 alert('Você foi desconectado com sucesso.');
-                // Fechar o menu após o logout
-                const settingsMenu = document.getElementById('settingsMenu');
-                settingsMenu.classList.remove('active');
-            }
-        }
-
-        // Função de login
-        function login() {
-            isLoggedIn = true;
-            updateAuthButton();
-            updateStatusIndicator();
-            // Fechar o menu após o login
-            const settingsMenu = document.getElementById('settingsMenu');
-            settingsMenu.classList.remove('active');
-            // Redirecionar para página de login
-            window.location.href = 'login.html';
-        }
-
-        // Atualizar o botão de autenticação
-        function updateAuthButton() {
-            if (isLoggedIn) {
-                authIcon.className = 'fas fa-sign-out-alt';
-                authText.textContent = 'Sair';
-            } else {
-                authIcon.className = 'fas fa-sign-in-alt';
-                authText.textContent = 'Login / Cadastrar-se';
-            }
-        }
-
-        // Atualizar o indicador de status
-        function updateStatusIndicator() {
-            if (isLoggedIn) {
-                statusIndicator.classList.remove('logged-out');
-                statusText.textContent = 'Logado';
-            } else {
-                statusIndicator.classList.add('logged-out');
-                statusText.textContent = 'Deslogado';
-            }
-        }
-
-        // Para a página de perfil - confirmação de exclusão de conta
-        function confirmDelete() {
-            if (confirm('Tem certeza que deseja excluir sua conta? Esta ação é irreversível e todos os seus dados serão perdidos.')) {
-                if (confirm('Esta é sua última chance. Confirmar exclusão permanente da conta?')) {
-                    alert('Conta excluída com sucesso. Sentiremos sua falta!');
-                    window.location.href = 'index.html';
-                }
+                window.location.href = 'index.html';
             }
         }
     </script>
 </body>
-
 </html>

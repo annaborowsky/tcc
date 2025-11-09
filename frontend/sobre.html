@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Missas - Comunidade São Francisco</title>
+    <title>Sobre - Projeto FéTech</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -134,7 +134,6 @@
             box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5);
         }
 
-        /* Configurações */
         .settings-container {
             position: relative;
         }
@@ -281,6 +280,18 @@
         }
 
         /* Main Content */
+        .settings-menu {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+        }
+
+        .settings-menu.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
         main {
             padding: 40px 0;
         }
@@ -392,7 +403,25 @@
             margin-bottom: 20px;
         }
 
-        .mass-schedule {
+        .card-image {
+            height: 160px;
+            background: var(--light-gray);
+            border-radius: 8px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray);
+            font-size: 14px;
+            overflow: hidden;
+        }
+
+        .card-image i {
+            font-size: 40px;
+            opacity: 0.5;
+        }
+
+        .about-content {
             background: white;
             border-radius: var(--radius);
             padding: 30px;
@@ -400,130 +429,98 @@
             margin-bottom: 40px;
         }
 
-        .mass-day {
-            margin-bottom: 30px;
-            padding-bottom: 20px;
+        .about-section {
+            margin-bottom: 40px;
+            padding-bottom: 30px;
             border-bottom: 1px solid var(--light-gray);
         }
 
-        .mass-day:last-child {
+        .about-section:last-child {
             margin-bottom: 0;
             padding-bottom: 0;
             border-bottom: none;
         }
 
-        .mass-day h3 {
+        .about-section h3 {
             color: var(--primary);
             margin-bottom: 20px;
             display: flex;
             align-items: center;
-            gap: 10px;
-        }
-
-        .mass-times {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-        }
-
-        .mass-time {
-            background: var(--light);
-            padding: 15px;
-            border-radius: var(--radius);
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            transition: var(--transition);
-        }
-
-        .mass-time:hover {
-            background: #f0f5ff;
-            transform: translateX(5px);
-        }
-
-        .mass-time i {
-            color: var(--secondary);
+            gap: 12px;
             font-size: 20px;
         }
 
-        .mass-info {
-            flex: 1;
+        .about-section h3 i {
+            color: var(--secondary);
         }
 
-        .mass-time-slot {
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 25px;
+        }
+
+        .team-member {
+            background: var(--light);
+            border-radius: var(--radius);
+            padding: 20px;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .team-member:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+
+        .member-avatar {
+            width: 80px;
+            height: 80px;
+            background: var(--secondary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            font-size: 30px;
+            color: var(--primary);
+        }
+
+        .member-name {
             font-weight: 600;
             color: var(--primary);
             margin-bottom: 5px;
         }
 
-        .mass-type {
-            font-size: 14px;
+        .member-role {
             color: var(--gray);
+            font-size: 14px;
+            margin-bottom: 10px;
         }
 
-        .special-masses {
-            background: white;
-            border-radius: var(--radius);
-            padding: 30px;
-            box-shadow: var(--shadow);
-            margin-bottom: 40px;
-        }
-
-        .special-mass-item {
+        .member-contact {
             display: flex;
-            gap: 20px;
-            padding: 20px;
-            border-bottom: 1px solid var(--light-gray);
+            justify-content: center;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .member-contact a {
+            width: 35px;
+            height: 35px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
             transition: var(--transition);
         }
 
-        .special-mass-item:hover {
-            background: var(--light);
-        }
-
-        .special-mass-item:last-child {
-            border-bottom: none;
-        }
-
-        .special-mass-date {
-            background: var(--primary);
-            color: white;
-            width: 70px;
-            height: 70px;
-            border-radius: var(--radius);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-
-        .special-mass-day {
-            font-size: 20px;
-            font-weight: bold;
-            line-height: 1;
-        }
-
-        .special-mass-month {
-            font-size: 12px;
-            text-transform: uppercase;
-        }
-
-        .special-mass-details {
-            flex: 1;
-        }
-
-        .special-mass-meta {
-            display: flex;
-            gap: 15px;
-            margin: 10px 0;
-            font-size: 14px;
-            color: var(--gray);
-        }
-
-        .special-mass-meta i {
-            color: var(--secondary);
-            margin-right: 5px;
+        .member-contact a:hover {
+            background: var(--primary-light);
+            transform: translateY(-2px);
         }
 
         /* Footer */
@@ -626,7 +623,42 @@
             color: rgba(255, 255, 255, 0.7);
         }
 
-        /* Modo Escuro */
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .hero h1 {
+                font-size: 26px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .section-title {
+                font-size: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-buttons {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Modo Escuro - Apenas cores azuis, conteúdo principal branco */
         body.dark-mode {
             --primary: #1e3a8a;
             --primary-light: #3b82f6;
@@ -650,29 +682,26 @@
         }
 
         body.dark-mode .card,
-        body.dark-mode .mass-schedule,
-        body.dark-mode .special-masses,
-        body.dark-mode .mass-time {
+        body.dark-mode .about-content,
+        body.dark-mode .team-member {
             background: white;
             color: var(--dark);
         }
 
         body.dark-mode .card h3,
-        body.dark-mode .section-title,
-        body.dark-mode .mass-day h3,
-        body.dark-mode .special-mass-details h3 {
+        body.dark-mode .about-section h3,
+        body.dark-mode .section-title {
             color: var(--primary);
         }
 
-        body.dark-mode #popy {
-            color: white;
-            border-bottom: 2px solid var(--light-gray);
+        body.dark-mode .card p,
+        body.dark-mode .about-section p {
+            color: var(--gray);
         }
 
-        body.dark-mode .card p,
-        body.dark-mode .special-mass-details p,
-        body.dark-mode .mass-type {
-            color: var(--gray);
+        body.dark-mode .card-image {
+            background: var(--light-gray);
+            color: var(--primary);
         }
 
         body.dark-mode .settings-menu {
@@ -692,269 +721,148 @@
         body.dark-mode .theme-options {
             background: var(--light-gray);
         }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                gap: 20px;
-            }
-
-            .hero h1 {
-                font-size: 26px;
-            }
-
-            .hero p {
-                font-size: 16px;
-            }
-
-            .section-title {
-                font-size: 20px;
-            }
-
-            .special-mass-item {
-                flex-direction: column;
-            }
-
-            .special-mass-date {
-                align-self: flex-start;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .cards-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .nav-buttons {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-
-            .mass-times {
-                grid-template-columns: 1fr;
-            }
-        }
     </style>
 </head>
 
 <body>
 <header>
-    <div class="container">
-        <div class="header-content">
-            <div class="logo">
-                <div class="logo-icon">
-                    <i class="fas fa-church"></i>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-church"></i>
+                    </div>
+                    <div>
+                        <div class="logo-text">Sobre Nós</div>
+                        <div class="logo-subtitle">Saiba um pouco mais sobre nós</div>
+                    </div>
                 </div>
-                <div>
-                    <div class="logo-text">Missas</div>
-                    <div class="logo-subtitle">A oração mais forte que existe!</div>
-                </div>
-            </div>
-            <div class="nav-buttons">
-                <a href="sobre.html" class="nav-btn"><i class="fas fa-info-circle"></i> Sobre</a>
-                <a href="ajuda.html" class="nav-btn"><i class="fas fa-question-circle"></i> Ajuda</a>
-                <a href="index.html" class="nav-btn"><i class="fas fa-home"></i> Início</a>
+                <div class="nav-buttons">
+                    <a href="sobre.html" class="nav-btn active"><i class="fas fa-info-circle"></i> Sobre</a>
+                    <a href="ajuda.html" class="nav-btn"><i class="fas fa-question-circle"></i> Ajuda</a>
+                    <a href="index.html" class="nav-btn"><i class="fas fa-home"></i> Início</a>
 
-                <!-- Botão de Configurações -->
-                <div class="settings-container">
-                    <button class="settings-btn" onclick="toggleSettings()">
-                        <i class="fas fa-cog" style="font-size: 22px;"></i>
-                    </button>
-                    <div class="settings-menu" id="settingsMenu">
-                        <button class="settings-menu-item" onclick="toggleTheme()">
-                            <i class="fas fa-palette"></i>
-                            <span>Tema</span>
+                    <!-- Botão de Configurações -->
+                    <div class="settings-container">
+                        <button class="settings-btn" onclick="toggleSettings()">
+                            <i class="fas fa-cog" style="font-size: 22px;"></i>
                         </button>
-                        <button class="settings-menu-item" onclick="window.location.href='perfil.html'">
-                            <i class="fas fa-user"></i> Meu perfil
-                        </button>
-                        <button class="settings-menu-item" id="authButton" onclick="toggleAuth()">
-                            <i class="fas fa-sign-out-alt" id="authIcon"></i>
-                            <span id="authText">Sair</span>
-                        </button>
+                        <div class="settings-menu" id="settingsMenu">
+                            <button class="settings-menu-item" onclick="toggleTheme()">
+                                <i class="fas fa-palette"></i>
+                                <span>Tema</span>
+                            </button>
+                            <button class="settings-menu-item" onclick="window.location.href='perfil.html'">
+                                <i class="fas fa-user"></i> Meu perfil
+                            </button>
+                            <button class="settings-menu-item" id="authButton" onclick="toggleAuth()">
+                                <i class="fas fa-sign-out-alt" id="authIcon"></i>
+                                <span id="authText">Sair</span>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
+           <div class="hero">
+                <h1>Sobre o Projeto FéTech</h1>
+                <p>Conheça a motivação, objetivos e equipe por trás deste Trabalho de Conclusão de Curso</p>
+            </div>
         </div>
-        <div class="hero">
-            <h1>Horários de Missas</h1>
-            <p>Participe das nossas celebrações e fortaleça sua fé com a comunidade.</p>
-        </div>
-    </div>
-</header>
+    </header>
+
 
     <br>
 
     <main class="container">
-        <section class="mass-schedule">
-            <h2 class="section-title"><i class="fas fa-calendar-alt"></i> Horários Regulares</h2>
+        <div class="about-content">
+            <div class="about-section">
+                <h3><i class="fas fa-bullseye"></i> Objetivo do Projeto</h3>
+                <p>O <strong>FéTech</strong> é um sistema de organização pastoral desenvolvido como Trabalho de
+                    Conclusão de Curso (TCC) para o curso de Informática para Internet do Instituto Federal Catarinense.
+                </p>
+                <p>Nosso objetivo principal é criar uma plataforma digital que facilite a gestão e o engajamento das
+                    comunidades religiosas, modernizando processos administrativos e promovendo uma maior integração
+                    entre os membros.</p>
+            </div>
 
-            <div class="mass-day">
-                <h3><i class="fas fa-sun"></i> Domingo</h3>
-                <div class="mass-times">
-                    <div class="mass-time">
-                        <i class="fas fa-clock"></i>
-                        <div class="mass-info">
-                            <div class="mass-time-slot">07:00</div>
-                            <div class="mass-type">Missa Matinal</div>
+            <div class="about-section">
+                <h3><i class="fas fa-lightbulb"></i> Motivação</h3>
+                <p>A motivação para este projeto surgiu da observação das dificuldades enfrentadas por comunidades
+                    religiosas na gestão de suas atividades pastorais. Muitas ainda dependem de processos manuais e
+                    planilhas desconexas, o que dificulta a comunicação e organização.</p>
+                <p>Buscamos oferecer uma solução tecnológica que:</p>
+                <ul style="margin-left: 20px; margin-top: 10px; color: var(--gray);">
+                    <li>Centralize informações da comunidade</li>
+                    <li>Facilite a comunicação entre membros</li>
+                    <li>Organize escalas de voluntários</li>
+                    <li>Disponibilize recursos espirituais</li>
+                    <li>Promova o engajamento dos fiéis</li>
+                </ul>
+            </div>
+
+            <div class="about-section">
+                <h3><i class="fas fa-graduation-cap"></i> Contexto Acadêmico</h3>
+                <p>Este projeto foi desenvolvido como requisito para conclusão do curso de [Nome do Curso] no Instituto
+                    Federal Catarinense, campus [Nome do Campus].</p>
+                <p>O trabalho envolve pesquisa, desenvolvimento e implementação de um sistema web completo, demonstrando
+                    as competências técnicas adquiridas ao longo do curso, incluindo:</p>
+                <div class="cards-grid" style="margin-top: 20px;">
+                    <div class="card">
+                        <h3><i class="fas fa-code"></i> Frontend</h3>
+                        <p>Desenvolvimento de interface responsiva com HTML5, CSS3 e JavaScript, garantindo experiência
+                            do usuário otimizada.</p>
+                    </div>
+                    <div class="card">
+                        <h3><i class="fas fa-database"></i> Backend</h3>
+                        <p>Arquitetura de servidor, banco de dados e APIs para gerenciamento eficiente das informações.
+                        </p>
+                    </div>
+                    <div class="card">
+                        <h3><i class="fas fa-mobile-alt"></i> UX/UI</h3>
+                        <p>Design centrado no usuário, considerando acessibilidade e usabilidade para diferentes perfis
+                            de usuários.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="about-section">
+                <h3><i class="fas fa-users"></i> Equipe de Desenvolvimento</h3>
+                <p>Conheça os desenvolvedores responsáveis por este projeto:</p>
+                <div class="team-grid">
+                    <div class="team-member">
+                        <div class="member-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="member-name">Anna Clara Borowsky Hegele</div>
+                        <div class="member-role">Desenvolvedor Frontend</div>
+                        <div class="member-contact">
+                            <a href="https://github.com/annaborowsky"><i class="fab fa-github"></i></a>
+                            <a href="https://www.instagram.com/anna.edwm/"><i class="fab fa-instagram"></i></a>
                         </div>
                     </div>
-                    <div class="mass-time">
-                        <i class="fas fa-clock"></i>
-                        <div class="mass-info">
-                            <div class="mass-time-slot">09:00</div>
-                            <div class="mass-type">Missa da Família</div>
+                    <div class="team-member">
+                        <div class="member-avatar">
+                            <i class="fas fa-user"></i>
                         </div>
-                    </div>
-                    <div class="mass-time">
-                        <i class="fas fa-clock"></i>
-                        <div class="mass-info">
-                            <div class="mass-time-slot">11:00</div>
-                            <div class="mass-type">Missa Solene</div>
-                        </div>
-                    </div>
-                    <div class="mass-time">
-                        <i class="fas fa-clock"></i>
-                        <div class="mass-info">
-                            <div class="mass-time-slot">19:00</div>
-                            <div class="mass-type">Missa da Juventude</div>
+                        <div class="member-name">Wallan Peres Steffen</div>
+                        <div class="member-role">Desenvolvedor Full Stack</div>
+                        <div class="member-contact">
+                            <a href="https://github.com/wallan-peres-steffen"><i class="fab fa-github"></i></a>
+                            <a href="https://www.instagram.com/Wallan_peres/"><i class="fab fa-instagram"></i></a>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="mass-day">
-                <h3><i class="fas fa-calendar-day"></i> Segunda a Sexta</h3>
-                <div class="mass-times">
-                    <div class="mass-time">
-                        <i class="fas fa-clock"></i>
-                        <div class="mass-info">
-                            <div class="mass-time-slot">07:00</div>
-                            <div class="mass-type">Missa da Manhã</div>
-                        </div>
-                    </div>
-                    <div class="mass-time">
-                        <i class="fas fa-clock"></i>
-                        <div class="mass-info">
-                            <div class="mass-time-slot">12:00</div>
-                            <div class="mass-type">Missa do Meio-Dia</div>
-                        </div>
-                    </div>
-                    <div class="mass-time">
-                        <i class="fas fa-clock"></i>
-                        <div class="mass-info">
-                            <div class="mass-time-slot">19:30</div>
-                            <div class="mass-type">Missa da Noite</div>
-                        </div>
-                    </div>
-                </div>
+            <div class="about-section">
+                <h3><i class="fas fa-handshake"></i> Agradecimentos</h3>
+                <p>Agradecemos ao Instituto Federal Catarinense pela oportunidade de desenvolvimento deste projeto, aos
+                    professores orientadores pelo suporte técnico e pedagógico, e à comunidade que inspirou esta
+                    solução.</p>
+                <p>Esperamos que o FéTech possa contribuir positivamente para a modernização da gestão pastoral e o
+                    fortalecimento das comunidades religiosas.</p>
             </div>
-
-            <div class="mass-day">
-                <h3><i class="fas fa-star"></i> Sábado</h3>
-                <div class="mass-times">
-                    <div class="mass-time">
-                        <i class="fas fa-clock"></i>
-                        <div class="mass-info">
-                            <div class="mass-time-slot">08:00</div>
-                            <div class="mass-type">Missa da Manhã</div>
-                        </div>
-                    </div>
-                    <div class="mass-time">
-                        <i class="fas fa-clock"></i>
-                        <div class="mass-info">
-                            <div class="mass-time-slot">17:00</div>
-                            <div class="mass-type">Missa Vespertina</div>
-                        </div>
-                    </div>
-                    <div class="mass-time">
-                        <i class="fas fa-clock"></i>
-                        <div class="mass-info">
-                            <div class="mass-time-slot">19:00</div>
-                            <div class="mass-type">Missa Dominical Antecipada</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="special-masses">
-            <h2 class="section-title"><i class="fas fa-star"></i> Missas Especiais</h2>
-
-            <div class="special-mass-item">
-                <div class="special-mass-date">
-                    <div class="special-mass-day">15</div>
-                    <div class="special-mass-month">MAI</div>
-                </div>
-                <div class="special-mass-details">
-                    <h3>Missa de São Francisco</h3>
-                    <p>Celebração especial em honra ao nosso padroeiro com bênção dos animais.</p>
-                    <div class="special-mass-meta">
-                        <span><i class="far fa-clock"></i> 18:00</span>
-                        <span><i class="fas fa-map-marker-alt"></i> Igreja Matriz</span>
-                        <span><i class="fas fa-user-alt"></i> Pe. João Silva</span>
-                    </div>
-                    <a href="#" class="btn btn-outline">Mais Informações</a>
-                </div>
-            </div>
-
-            <div class="special-mass-item">
-                <div class="special-mass-date">
-                    <div class="special-mass-day">20</div>
-                    <div class="special-mass-month">MAI</div>
-                </div>
-                <div class="special-mass-details">
-                    <h3>Missa com Unção dos Enfermos</h3>
-                    <p>Celebração especial com o sacramento da unção para idosos e enfermos.</p>
-                    <div class="special-mass-meta">
-                        <span><i class="far fa-clock"></i> 15:00</span>
-                        <span><i class="fas fa-map-marker-alt"></i> Igreja Matriz</span>
-                        <span><i class="fas fa-user-alt"></i> Pe. Carlos Oliveira</span>
-                    </div>
-                    <a href="#" class="btn btn-outline">Mais Informações</a>
-                </div>
-            </div>
-
-            <div class="special-mass-item">
-                <div class="special-mass-date">
-                    <div class="special-mass-day">25</div>
-                    <div class="special-mass-month">MAI</div>
-                </div>
-                <div class="special-mass-details">
-                    <h3>Missa das Mães</h3>
-                    <p>Celebração especial para todas as mães da comunidade com bênção especial.</p>
-                    <div class="special-mass-meta">
-                        <span><i class="far fa-clock"></i> 10:00</span>
-                        <span><i class="fas fa-map-marker-alt"></i> Capela Nossa Senhora</span>
-                        <span><i class="fas fa-user-alt"></i> Pe. Maria Santos</span>
-                    </div>
-                    <a href="#" class="btn btn-outline">Mais Informações</a>
-                </div>
-            </div>
-        </section>
-
-        <section>
-            <h2 id="popy" class="section-title"><i class="fas fa-info-circle"></i> Informações Importantes</h2>
-            <div class="cards-grid">
-                <div class="card">
-                    <h3><i class="fas fa-bell"></i> Confissões</h3>
-                    <p>As confissões estão disponíveis 30 minutos antes de cada missa ou mediante agendamento com a
-                        secretaria.</p>
-                    <a href="#" class="btn">Agendar Confissão</a>
-                </div>
-                <div class="card">
-                    <h3><i class="fas fa-users"></i> Primeira Eucaristia</h3>
-                    <p>Preparação para a primeira comunhão acontece aos sábados pela manhã. Inscrições abertas.</p>
-                    <a href="#" class="btn">Saiba Mais</a>
-                </div>
-                <div class="card">
-                    <h3><i class="fas fa-baby"></i> Batizados</h3>
-                    <p>Celebrações de batizado acontecem no primeiro e terceiro domingo de cada mês às 14h.</p>
-                    <a href="#" class="btn">Agendar Batizado</a>
-                </div>
-            </div>
-        </section>
+        </div>
     </main>
 
     <footer>
@@ -978,7 +886,7 @@
                         <li><a href="biblia.html"><i class="fas fa-chevron-right"></i> Bíblia</a></li>
                         <li><a href="retiros.html"><i class="fas fa-chevron-right"></i> Retiros</a></li>
                         <li><a href="eventos.html"><i class="fas fa-chevron-right"></i> Eventos</a></li>
-                        <li><a href="leitura.html"><i class="fas fa-chevron-right"></i> Leitura do Dia</a></li>
+                        <li><a href="sobre.html"><i class="fas fa-chevron-right"></i> Sobre</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
@@ -1052,21 +960,13 @@
         document.addEventListener('DOMContentLoaded', function () {
             const savedTheme = localStorage.getItem('theme') || 'light';
             setTheme(savedTheme);
-
-            // Adicionar data atual
-            const today = new Date();
-            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-            const dateString = today.toLocaleDateString('pt-BR', options);
-
-            // Adicionar a data ao hero
-            const hero = document.querySelector('.hero p');
-            hero.innerHTML += `<br><small><i class="far fa-calendar"></i> Hoje é ${dateString}</small>`;
         });
 
         // Logout
         function logout() {
             if (confirm('Tem certeza que deseja sair?')) {
                 alert('Você foi desconectado com sucesso.');
+                // Redirecionar para a página inicial
                 window.location.href = 'index.html';
             }
         }

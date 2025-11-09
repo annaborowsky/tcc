@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,7 +18,7 @@
             --dark: #212529;
             --gray: #6c757d;
             --light-gray: #e9ecef;
-            --shadow: 0 4px 12px rgba(0,0,0,0.1);
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             --radius: 12px;
             --transition: all 0.3s ease;
         }
@@ -87,7 +88,7 @@
             justify-content: center;
             color: var(--primary);
             font-size: 24px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
         .logo-text {
@@ -104,10 +105,11 @@
         .nav-buttons {
             display: flex;
             gap: 10px;
+            align-items: center;
         }
 
         .nav-btn {
-            background: rgba(255,255,255,0.15);
+            background: rgba(255, 255, 255, 0.15);
             border: none;
             padding: 10px 18px;
             border-radius: 30px;
@@ -123,23 +125,146 @@
         }
 
         .nav-btn:hover {
-            background: rgba(255,255,255,0.25);
+            background: rgba(255, 255, 255, 0.25);
             transform: translateY(-2px);
         }
 
         .nav-btn.active {
-            background: rgba(255,255,255,0.3);
-            box-shadow: 0 0 0 2px rgba(255,255,255,0.5);
+            background: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5);
+        }
+
+        /* Configurações */
+        .settings-container {
+            position: relative;
+        }
+
+        .settings-btn {
+            background: rgba(255, 255, 255, 0.15);
+            border: none;
+            padding: 10px 18px;
+            border-radius: 30px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            backdrop-filter: blur(5px);
+        }
+
+        .settings-btn:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-2px);
+        }
+
+        .settings-menu {
+            position: absolute;
+            top: 50px;
+            right: 0;
+            background: white;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 15px 0;
+            min-width: 200px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: var(--transition);
+            z-index: 1000;
+        }
+
+        .settings-menu.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .settings-menu-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 20px;
+            color: var(--dark);
+            text-decoration: none;
+            transition: var(--transition);
+            border: none;
+            background: none;
+            width: 100%;
+            text-align: left;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .settings-menu-item:hover {
+            background: var(--light);
+            color: var(--primary);
+        }
+
+        .settings-menu-item i {
+            width: 20px;
+            text-align: center;
+            color: var(--secondary);
+        }
+
+        .settings-menu-divider {
+            height: 1px;
+            background: var(--light-gray);
+            margin: 8px 0;
+        }
+
+        .theme-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .theme-options {
+            display: flex;
+            gap: 5px;
+            background: var(--light-gray);
+            padding: 4px;
+            border-radius: 20px;
+        }
+
+        .theme-option {
+            width: 30px;
+            height: 30px;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+        }
+
+        .theme-option.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        .theme-light {
+            background: #f8f9fa;
+            color: #212529;
+        }
+
+        .theme-dark {
+            background: #212529;
+            color: #f8f9fa;
         }
 
         .hero {
             text-align: center;
             padding: 40px 20px;
-            background: rgba(255,255,255,0.1);
+            background: rgba(255, 255, 255, 0.1);
             border-radius: var(--radius);
             margin-top: 20px;
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.2);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .hero h1 {
@@ -195,10 +320,30 @@
             margin-bottom: 20px;
             padding-bottom: 10px;
             border-bottom: 1px solid var(--light-gray);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+        }
+
+        .bible-sidebar h3 i {
+            transition: var(--transition);
+        }
+
+        .bible-sidebar h3.active i {
+            transform: rotate(180deg);
         }
 
         .bible-sidebar ul {
             list-style: none;
+            max-height: 500px;
+            overflow-y: auto;
+            transition: var(--transition);
+        }
+
+        .bible-sidebar ul.hidden {
+            max-height: 0;
+            overflow: hidden;
         }
 
         .bible-sidebar li {
@@ -275,7 +420,7 @@
         .btn:hover {
             background: var(--primary-light);
             transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
         }
 
         .btn-secondary {
@@ -296,6 +441,23 @@
         .btn-outline:hover {
             background: var(--primary);
             color: white;
+        }
+
+        select {
+            padding: 10px 15px;
+            border-radius: 8px;
+            border: 1px solid var(--light-gray);
+            background: white;
+            color: var(--dark);
+            font-size: 14px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px rgba(44, 85, 48, 0.2);
         }
 
         /* Footer */
@@ -338,7 +500,7 @@
         }
 
         .footer-links a {
-            color: rgba(255,255,255,0.8);
+            color: rgba(255, 255, 255, 0.8);
             text-decoration: none;
             transition: var(--transition);
             display: flex;
@@ -379,7 +541,7 @@
             justify-content: center;
             width: 40px;
             height: 40px;
-            background: rgba(255,255,255,0.1);
+            background: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
             color: white;
             transition: var(--transition);
@@ -393,9 +555,75 @@
         .footer-bottom {
             text-align: center;
             padding-top: 20px;
-            border-top: 1px solid rgba(255,255,255,0.1);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
             font-size: 14px;
-            color: rgba(255,255,255,0.7);
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Modo Escuro */
+        body.dark-mode {
+            --primary: #1e3a8a;
+            --primary-light: #3b82f6;
+            --primary-dark: #1e40af;
+            --secondary: #d4af37;
+            --secondary-light: #e8c766;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+            --light-gray: #e9ecef;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: var(--dark);
+        }
+
+        body.dark-mode header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+        }
+
+        body.dark-mode footer {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+        }
+
+        body.dark-mode .bible-sidebar,
+        body.dark-mode .bible-content {
+            background: white;
+            color: var(--dark);
+        }
+
+        body.dark-mode .bible-sidebar h3,
+        body.dark-mode .section-title {
+            color: var(--primary);
+        }
+
+        body.dark-mode .bible-sidebar a {
+            color: var(--gray);
+        }
+
+        body.dark-mode .bible-sidebar a:hover {
+            background: var(--light-gray);
+            color: var(--primary);
+        }
+
+        body.dark-mode .bible-sidebar a.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        body.dark-mode .settings-menu {
+            background: white;
+            color: var(--dark);
+        }
+
+        body.dark-mode .settings-menu-item {
+            color: var(--dark);
+        }
+
+        body.dark-mode .settings-menu-item:hover {
+            background: var(--light);
+            color: var(--primary);
+        }
+
+        body.dark-mode .theme-options {
+            background: var(--light-gray);
         }
 
         /* Responsive */
@@ -420,6 +648,12 @@
             .bible-container {
                 grid-template-columns: 1fr;
             }
+
+            .bible-header {
+                flex-direction: column;
+                gap: 15px;
+                align-items: flex-start;
+            }
         }
 
         @media (max-width: 480px) {
@@ -427,40 +661,71 @@
                 flex-wrap: wrap;
                 justify-content: center;
             }
+
+            .bible-navigation {
+                flex-direction: column;
+                gap: 15px;
+            }
         }
     </style>
 </head>
+
 <body>
     <header>
         <div class="container">
             <div class="header-content">
                 <div class="logo">
                     <div class="logo-icon">
-                        <i class="fas fa-church"></i>
+                        <i class="fas fa-bible"></i>
                     </div>
                     <div>
-                        <div class="logo-text">Paróquia São José Operário</div>
-                        <div class="logo-subtitle">Uma família em fé e amor</div>
+                        <div class="logo-text">Bíblia</div>
+                        <div class="logo-subtitle">A palavra de Deus!</div>
                     </div>
                 </div>
                 <div class="nav-buttons">
-                    <button class="nav-btn"><i class="fas fa-info-circle"></i> Sobre</button>
-                    <button class="nav-btn"><i class="fas fa-question-circle"></i> Ajuda</button>
+                    <a href="sobre.html" class="nav-btn"><i class="fas fa-info-circle"></i> Sobre</a>
+                    <a href="ajuda.html" class="nav-btn"><i class="fas fa-question-circle"></i> Ajuda</a>
                     <a href="index.html" class="nav-btn"><i class="fas fa-home"></i> Início</a>
+
+                    <!-- Botão de Configurações -->
+                    <div class="settings-container">
+                        <button class="settings-btn" onclick="toggleSettings()">
+                            <i class="fas fa-cog" style="font-size: 22px;"></i>
+                        </button>
+                        <div class="settings-menu" id="settingsMenu">
+                            <button class="settings-menu-item" onclick="toggleTheme()">
+                                <i class="fas fa-palette"></i>
+                                <span>Tema</span>
+                            </button>
+                            <button class="settings-menu-item" onclick="window.location.href='perfil.html'">
+                                <i class="fas fa-user"></i> Meu perfil
+                            </button>
+                            <button class="settings-menu-item" id="authButton" onclick="toggleAuth()">
+                                <i class="fas fa-sign-out-alt" id="authIcon"></i>
+                                <span id="authText">Sair</span>
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="hero">
                 <h1>Bíblia Online</h1>
-                <p>Leia e pesquise nas sagradas escrituras em diferentes versões.</p>
+                <p>Leia e pesquise nas sagradas escrituras em diferentes versões católicas.</p>
             </div>
         </div>
     </header>
 
+    <br>
+
     <main class="container">
         <div class="bible-container">
             <div class="bible-sidebar">
-                <h3>Livros da Bíblia</h3>
-                <ul>
+                <h3 id="booksToggle">
+                    <span>Livros da Bíblia</span>
+                    <i class="fas fa-chevron-down"></i>
+                </h3>
+                <ul id="booksList">
                     <li><a href="#" class="active">Gênesis</a></li>
                     <li><a href="#">Êxodo</a></li>
                     <li><a href="#">Levítico</a></li>
@@ -506,24 +771,15 @@
                 <div class="bible-header">
                     <h2>Gênesis 1</h2>
                     <div>
-                        <select class="btn-outline" style="padding: 8px 12px;">
-                            <option>Almeida Revista e Atualizada</option>
-                            <option>Nova Versão Internacional</option>
-                            <option>Bíblia de Jerusalém</option>
+                        <select id="translationSelect">
+                            <option value="jerusalem">Bíblia de Jerusalém</option>
+                            <option value="avemaria">Bíblia Ave-Maria</option>
+                            <option value="pastoral">Bíblia Pastoral</option>
                         </select>
                     </div>
                 </div>
-                <div class="bible-verse">
-                    <p><span class="bible-verse-number">1</span> No princípio, criou Deus os céus e a terra.</p>
-                    <p><span class="bible-verse-number">2</span> A terra, porém, estava sem forma e vazia; havia trevas sobre a face do abismo, e o Espírito de Deus pairava por sobre as águas.</p>
-                    <p><span class="bible-verse-number">3</span> Disse Deus: Haja luz; e houve luz.</p>
-                    <p><span class="bible-verse-number">4</span> E viu Deus que a luz era boa; e fez separação entre a luz e as trevas.</p>
-                    <p><span class="bible-verse-number">5</span> Chamou Deus à luz Dia e às trevas, Noite. Houve tarde e manhã, o primeiro dia.</p>
-                    <p><span class="bible-verse-number">6</span> E disse Deus: Haja firmamento no meio das águas e separação entre águas e águas.</p>
-                    <p><span class="bible-verse-number">7</span> Fez, pois, Deus o firmamento e separação entre as águas debaixo do firmamento e as águas sobre o firmamento. E assim se fez.</p>
-                    <p><span class="bible-verse-number">8</span> E chamou Deus ao firmamento Céus. Houve tarde e manhã, o segundo dia.</p>
-                    <p><span class="bible-verse-number">9</span> Disse também Deus: Ajuntem-se as águas debaixo dos céus num só lugar, e apareça a porção seca. E assim se fez.</p>
-                    <p><span class="bible-verse-number">10</span> E chamou Deus à porção seca Terra e ao ajuntamento das águas Mares. E viu Deus que isso era bom.</p>
+                <div class="bible-verse" id="bibleText">
+                    <!-- O texto será carregado dinamicamente com base na tradução selecionada -->
                 </div>
                 <div class="bible-navigation">
                     <a href="#" class="btn btn-outline"><i class="fas fa-arrow-left"></i> Capítulo Anterior</a>
@@ -532,6 +788,8 @@
             </div>
         </div>
     </main>
+
+    <br>
 
     <footer>
         <div class="container">
@@ -555,6 +813,7 @@
                         <li><a href="retiros.html"><i class="fas fa-chevron-right"></i> Retiros</a></li>
                         <li><a href="eventos.html"><i class="fas fa-chevron-right"></i> Eventos</a></li>
                         <li><a href="leitura.html"><i class="fas fa-chevron-right"></i> Leitura do Dia</a></li>
+                        <li><a href="enciclopedias.html"><i class="fas fa-chevron-right"></i> Enciclopédias</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
@@ -587,5 +846,126 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        // Gerenciamento de Configurações
+        function toggleSettings() {
+            const menu = document.getElementById('settingsMenu');
+            menu.classList.toggle('active');
+        }
+
+        // Fechar menu ao clicar fora
+        document.addEventListener('click', function (event) {
+            const settingsContainer = document.querySelector('.settings-container');
+            const settingsMenu = document.getElementById('settingsMenu');
+
+            if (!settingsContainer.contains(event.target)) {
+                settingsMenu.classList.remove('active');
+            }
+        });
+
+        // Gerenciamento de Tema
+        function setTheme(theme) {
+            if (theme === 'dark') {
+                document.body.classList.add('dark-mode');
+                document.querySelector('.theme-light').classList.remove('active');
+                document.querySelector('.theme-dark').classList.add('active');
+            } else {
+                document.body.classList.remove('dark-mode');
+                document.querySelector('.theme-light').classList.add('active');
+                document.querySelector('.theme-dark').classList.remove('active');
+            }
+            localStorage.setItem('theme', theme);
+        }
+
+        function toggleTheme() {
+            const isDark = document.body.classList.contains('dark-mode');
+            setTheme(isDark ? 'light' : 'dark');
+        }
+
+        // Carregar tema salvo
+        document.addEventListener('DOMContentLoaded', function () {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            setTheme(savedTheme);
+            
+            // Inicializar a lista de livros da Bíblia
+            initBooksList();
+            
+            // Carregar o texto bíblico inicial
+            loadBibleText();
+        });
+
+        // Logout
+        function logout() {
+            if (confirm('Tem certeza que deseja sair?')) {
+                alert('Você foi desconectado com sucesso.');
+                window.location.href = 'index.html';
+            }
+        }
+
+        // Toggle da lista de livros da Bíblia
+        function initBooksList() {
+            const booksToggle = document.getElementById('booksToggle');
+            const booksList = document.getElementById('booksList');
+            
+            booksToggle.addEventListener('click', function() {
+                booksToggle.classList.toggle('active');
+                booksList.classList.toggle('hidden');
+            });
+        }
+
+        // Textos bíblicos para diferentes traduções
+        const bibleTranslations = {
+            jerusalem: [
+                "<p><span class='bible-verse-number'>1</span> No princípio, Deus criou o céu e a terra.</p>",
+                "<p><span class='bible-verse-number'>2</span> A terra estava sem forma e vazia; as trevas cobriam o abismo e o Espírito de Deus pairava sobre as águas.</p>",
+                "<p><span class='bible-verse-number'>3</span> Deus disse: 'Faça-se a luz!' E a luz foi feita.</p>",
+                "<p><span class='bible-verse-number'>4</span> Deus viu que a luz era boa, e separou a luz das trevas.</p>",
+                "<p><span class='bible-verse-number'>5</span> Deus chamou à luz 'dia' e às trevas 'noite'. Sobreveio a tarde e depois a manhã: foi o primeiro dia.</p>",
+                "<p><span class='bible-verse-number'>6</span> Deus disse: 'Faça-se um firmamento entre as águas, e separe ele umas das outras'.</p>",
+                "<p><span class='bible-verse-number'>7</span> Deus fez o firmamento e separou as águas que estavam debaixo do firmamento daquelas que estavam por cima.</p>",
+                "<p><span class='bible-verse-number'>8</span> E Deus chamou ao firmamento 'céu'. Sobreveio a tarde e depois a manhã: foi o segundo dia.</p>",
+                "<p><span class='bible-verse-number'>9</span> Deus disse: 'Que as águas que estão debaixo do céu se ajuntem num mesmo lugar, e apareça o elemento árido'. E assim se fez.</p>",
+                "<p><span class='bible-verse-number'>10</span> Deus chamou ao elemento árido 'terra' e ao ajuntamento das águas 'mar'. E Deus viu que isso era bom.</p>"
+            ],
+            avemaria: [
+                "<p><span class='bible-verse-number'>1</span> No princípio, Deus criou o céu e a terra.</p>",
+                "<p><span class='bible-verse-number'>2</span> A terra era informe e vazia; as trevas cobriam o abismo, e o Espírito de Deus pairava sobre as águas.</p>",
+                "<p><span class='bible-verse-number'>3</span> Deus disse: 'Faça-se a luz!' E a luz foi feita.</p>",
+                "<p><span class='bible-verse-number'>4</span> Deus viu que a luz era boa, e separou a luz das trevas.</p>",
+                "<p><span class='bible-verse-number'>5</span> Deus chamou à luz 'dia' e às trevas 'noite'. Sobreveio a tarde e depois a manhã: foi o primeiro dia.</p>",
+                "<p><span class='bible-verse-number'>6</span> Deus disse: 'Faça-se um firmamento entre as águas, e separe ele umas das outras'.</p>",
+                "<p><span class='bible-verse-number'>7</span> Deus fez o firmamento e separou as águas que estavam debaixo do firmamento daquelas que estavam por cima.</p>",
+                "<p><span class='bible-verse-number'>8</span> E Deus chamou ao firmamento 'céu'. Sobreveio a tarde e depois a manhã: foi o segundo dia.</p>",
+                "<p><span class='bible-verse-number'>9</span> Deus disse: 'Que as águas que estão debaixo do céu se ajuntem num mesmo lugar, e apareça o elemento árido'. E assim se fez.</p>",
+                "<p><span class='bible-verse-number'>10</span> Deus chamou ao elemento árido 'terra' e ao ajuntamento das águas 'mar'. E Deus viu que isso era bom.</p>"
+            ],
+            pastoral: [
+                "<p><span class='bible-verse-number'>1</span> No princípio, Deus criou o céu e a terra.</p>",
+                "<p><span class='bible-verse-number'>2</span> A terra estava deserta e vazia, as trevas cobriam a face do abismo, e o sopro de Deus pairava sobre as águas.</p>",
+                "<p><span class='bible-verse-number'>3</span> Deus disse: 'Haja luz!' E houve luz.</p>",
+                "<p><span class='bible-verse-number'>4</span> Deus viu que a luz era boa, e separou a luz das trevas.</p>",
+                "<p><span class='bible-verse-number'>5</span> Deus chamou à luz 'dia' e às trevas 'noite'. Houve uma tarde e uma manhã: primeiro dia.</p>",
+                "<p><span class='bible-verse-number'>6</span> Deus disse: 'Haja um firmamento no meio das águas, separando umas das outras'.</p>",
+                "<p><span class='bible-verse-number'>7</span> Deus fez o firmamento, separando as águas que estavam debaixo do firmamento das que estavam por cima.</p>",
+                "<p><span class='bible-verse-number'>8</span> E Deus chamou ao firmamento 'céu'. Houve uma tarde e uma manhã: segundo dia.</p>",
+                "<p><span class='bible-verse-number'>9</span> Deus disse: 'As águas que estão debaixo do céu se reúnam num só lugar, e apareça o chão seco'. E assim aconteceu.</p>",
+                "<p><span class='bible-verse-number'>10</span> Deus chamou ao chão seco 'terra', e ao ajuntamento das águas 'mar'. E Deus viu que era bom.</p>"
+            ]
+        };
+
+        // Carregar texto bíblico baseado na tradução selecionada
+        function loadBibleText() {
+            const translationSelect = document.getElementById('translationSelect');
+            const bibleText = document.getElementById('bibleText');
+            const selectedTranslation = translationSelect.value;
+            
+            bibleText.innerHTML = bibleTranslations[selectedTranslation].join('');
+        }
+
+        // Adicionar evento de mudança para o seletor de tradução
+        document.getElementById('translationSelect').addEventListener('change', loadBibleText);
+    </script>
 </body>
+
 </html>
