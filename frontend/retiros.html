@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,7 +18,7 @@
             --dark: #212529;
             --gray: #6c757d;
             --light-gray: #e9ecef;
-            --shadow: 0 4px 12px rgba(0,0,0,0.1);
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             --radius: 12px;
             --transition: all 0.3s ease;
         }
@@ -87,7 +88,7 @@
             justify-content: center;
             color: var(--primary);
             font-size: 24px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
         .logo-text {
@@ -108,7 +109,7 @@
         }
 
         .nav-btn {
-            background: rgba(255,255,255,0.15);
+            background: rgba(255, 255, 255, 0.15);
             border: none;
             padding: 10px 18px;
             border-radius: 30px;
@@ -124,13 +125,135 @@
         }
 
         .nav-btn:hover {
-            background: rgba(255,255,255,0.25);
+            background: rgba(255, 255, 255, 0.25);
             transform: translateY(-2px);
         }
 
         .nav-btn.active {
-            background: rgba(255,255,255,0.3);
-            box-shadow: 0 0 0 2px rgba(255,255,255,0.5);
+            background: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5);
+        }
+
+        .settings-container {
+            position: relative;
+        }
+
+        .settings-btn {
+            background: rgba(255, 255, 255, 0.15);
+            border: none;
+            padding: 10px 18px;
+            border-radius: 30px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            backdrop-filter: blur(5px);
+        }
+
+        .settings-btn:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-2px);
+        }
+
+        .settings-menu {
+            position: absolute;
+            top: 50px;
+            right: 0;
+            background: white;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 15px 0;
+            min-width: 200px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: var(--transition);
+            z-index: 1000;
+        }
+
+        .settings-menu.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .settings-menu-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 20px;
+            color: var(--dark);
+            text-decoration: none;
+            transition: var(--transition);
+            border: none;
+            background: none;
+            width: 100%;
+            text-align: left;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .settings-menu-item:hover {
+            background: var(--light);
+            color: var(--primary);
+        }
+
+        .settings-menu-item i {
+            width: 20px;
+            text-align: center;
+            color: var(--secondary);
+        }
+
+        .settings-menu-divider {
+            height: 1px;
+            background: var(--light-gray);
+            margin: 8px 0;
+        }
+
+        .theme-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .theme-options {
+            display: flex;
+            gap: 5px;
+            background: var(--light-gray);
+            padding: 4px;
+            border-radius: 20px;
+        }
+
+        .theme-option {
+            width: 30px;
+            height: 30px;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+        }
+
+        .theme-option.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        .theme-light {
+            background: #f8f9fa;
+            color: #212529;
+        }
+
+        .theme-dark {
+            background: #212529;
+            color: #f8f9fa;
         }
 
         .settings-container {
@@ -258,11 +381,11 @@
         .hero {
             text-align: center;
             padding: 40px 20px;
-            background: rgba(255,255,255,0.1);
+            background: rgba(255, 255, 255, 0.1);
             border-radius: var(--radius);
             margin-top: 20px;
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.2);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .hero h1 {
@@ -328,7 +451,7 @@
         .btn:hover {
             background: var(--primary-light);
             transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
         }
 
         .btn-secondary {
@@ -381,7 +504,7 @@
 
         .card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 12px 20px rgba(0,0,0,0.15);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
         }
 
         .card h3 {
@@ -437,7 +560,7 @@
 
         .retreat-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 12px 20px rgba(0,0,0,0.15);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
         }
 
         .retreat-image {
@@ -525,7 +648,7 @@
         }
 
         .footer-links a {
-            color: rgba(255,255,255,0.8);
+            color: rgba(255, 255, 255, 0.8);
             text-decoration: none;
             transition: var(--transition);
             display: flex;
@@ -566,7 +689,7 @@
             justify-content: center;
             width: 40px;
             height: 40px;
-            background: rgba(255,255,255,0.1);
+            background: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
             color: white;
             transition: var(--transition);
@@ -580,9 +703,9 @@
         .footer-bottom {
             text-align: center;
             padding-top: 20px;
-            border-top: 1px solid rgba(255,255,255,0.1);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
             font-size: 14px;
-            color: rgba(255,255,255,0.7);
+            color: rgba(255, 255, 255, 0.7);
         }
 
         /* Responsive */
@@ -660,9 +783,13 @@
         }
 
         body.dark-mode .card h3,
-        body.dark-mode .retreat-card h3,
-        body.dark-mode .section-title {
+        body.dark-mode .retreat-card h3 {
             color: var(--primary);
+        }
+
+        body.dark-mode .section-title {
+            color: white;
+            /*aq*/
         }
 
         body.dark-mode .card p,
@@ -695,6 +822,7 @@
         }
     </style>
 </head>
+
 <body>
     <header>
         <div class="container">
@@ -704,37 +832,31 @@
                         <i class="fas fa-church"></i>
                     </div>
                     <div>
-                        <div class="logo-text">Paróquia São José Operário</div>
-                        <div class="logo-subtitle">Uma família em fé e amor</div>
+                        <div class="logo-text">Retiros</div>
+                        <div class="logo-subtitle">Faça já seu retiro espiritual!</div>
                     </div>
                 </div>
                 <div class="nav-buttons">
-                    <button class="nav-btn"><i class="fas fa-info-circle"></i> Sobre</button>
-                    <button class="nav-btn"><i class="fas fa-question-circle"></i> Ajuda</button>
+                    <a href="sobre.html" class="nav-btn"><i class="fas fa-info-circle"></i> Sobre</a>
+                    <a href="ajuda.html" class="nav-btn"><i class="fas fa-question-circle"></i> Ajuda</a>
                     <a href="index.html" class="nav-btn"><i class="fas fa-home"></i> Início</a>
 
-                         <div class="settings-container">
+                    <!-- Botão de Configurações -->
+                    <div class="settings-container">
                         <button class="settings-btn" onclick="toggleSettings()">
-                            <i class="fas fa-cog"></i> Configurações
+                            <i class="fas fa-cog" style="font-size: 22px;"></i>
                         </button>
                         <div class="settings-menu" id="settingsMenu">
                             <button class="settings-menu-item" onclick="toggleTheme()">
                                 <i class="fas fa-palette"></i>
                                 <span>Tema</span>
-                                <div class="theme-options">
-                                    
-                                    <button class="settings-menu-item">
-                                        <a href="perfil.html">
-                                            <i class="fas fa-user"></i>
-                                            Meu Perfil
-                                        </a>
-                                    </button>
-                                     <button class="settings-menu-item" onclick="logout()">
-                                <i class="fas fa-sign-out-alt"></i>
-                                Sair
                             </button>
-
-                                </div>
+                            <button class="settings-menu-item" onclick="window.location.href='perfil.html'">
+                                <i class="fas fa-user"></i> Meu perfil
+                            </button>
+                            <button class="settings-menu-item" id="authButton" onclick="toggleAuth()">
+                                <i class="fas fa-sign-out-alt" id="authIcon"></i>
+                                <span id="authText">Sair</span>
                             </button>
                         </div>
                     </div>
@@ -744,8 +866,9 @@
                 <h1>Retiros Espirituais</h1>
                 <p>Momentos de reflexão e renovação espiritual para toda a família.</p>
             </div>
-        </div>
     </header>
+
+    <br>
 
     <main class="container">
         <section>
@@ -762,7 +885,8 @@
                             <span><i class="far fa-calendar"></i> 20-22 de Maio</span>
                             <span><i class="fas fa-map-marker-alt"></i> Casa de Retiros Monte Carmelo</span>
                         </div>
-                        <p>Um fim de semana dedicado ao silêncio, à oração e à contemplação. Uma oportunidade para se desconectar do mundo e se conectar com Deus.</p>
+                        <p>Um fim de semana dedicado ao silêncio, à oração e à contemplação. Uma oportunidade para se
+                            desconectar do mundo e se conectar com Deus.</p>
                         <a href="#" class="btn" style="margin-top: 15px;">Mais Informações</a>
                     </div>
                 </div>
@@ -777,7 +901,8 @@
                             <span><i class="far fa-calendar"></i> 10-12 de Junho</span>
                             <span><i class="fas fa-map-marker-alt"></i> Centro de Espiritualidade São José</span>
                         </div>
-                        <p>Um retiro especial para casais que desejam fortalecer sua relação à luz da fé. Momentos de partilha, reflexão e renovação do amor conjugal.</p>
+                        <p>Um retiro especial para casais que desejam fortalecer sua relação à luz da fé. Momentos de
+                            partilha, reflexão e renovação do amor conjugal.</p>
                         <a href="#" class="btn" style="margin-top: 15px;">Mais Informações</a>
                     </div>
                 </div>
@@ -792,7 +917,8 @@
                             <span><i class="far fa-calendar"></i> 15-17 de Julho</span>
                             <span><i class="fas fa-map-marker-alt"></i> Acampamento São Francisco</span>
                         </div>
-                        <p>Um retiro dinâmico e envolvente para jovens que buscam aprofundar sua fé através de atividades, músicas, partilhas e momentos de oração.</p>
+                        <p>Um retiro dinâmico e envolvente para jovens que buscam aprofundar sua fé através de
+                            atividades, músicas, partilhas e momentos de oração.</p>
                         <a href="#" class="btn" style="margin-top: 15px;">Mais Informações</a>
                     </div>
                 </div>
@@ -807,7 +933,8 @@
                             <span><i class="far fa-calendar"></i> 5-7 de Agosto</span>
                             <span><i class="fas fa-map-marker-alt"></i> Casa de Retiros Divina Misericórdia</span>
                         </div>
-                        <p>Um retiro profundo para quem busca cura emocional e espiritual. Através da oração, do perdão e da reconciliação, encontre a paz interior.</p>
+                        <p>Um retiro profundo para quem busca cura emocional e espiritual. Através da oração, do perdão
+                            e da reconciliação, encontre a paz interior.</p>
                         <a href="#" class="btn" style="margin-top: 15px;">Mais Informações</a>
                     </div>
                 </div>
@@ -818,16 +945,23 @@
             <h2 class="section-title"><i class="fas fa-info-circle"></i> Informações Gerais</h2>
             <div class="card">
                 <h3><i class="fas fa-question-circle"></i> Como Participar</h3>
-                <p>Para participar de nossos retiros, entre em contato com a secretaria paroquial ou preencha o formulário de inscrição disponível para cada evento. As vagas são limitadas e as inscrições devem ser feitas com antecedência.</p>
-                
+                <p>Para participar de nossos retiros, entre em contato com a secretaria paroquial ou preencha o
+                    formulário de inscrição disponível para cada evento. As vagas são limitadas e as inscrições devem
+                    ser feitas com antecedência.</p>
+
                 <h3 style="margin-top: 20px;"><i class="fas fa-hand-holding-heart"></i> Investimento</h3>
-                <p>Os valores dos retiros variam de acordo com a duração e o local. Oferecemos condições especiais para famílias e casos de dificuldade financeira. Entre em contato para mais informações.</p>
-                
+                <p>Os valores dos retiros variam de acordo com a duração e o local. Oferecemos condições especiais para
+                    famílias e casos de dificuldade financeira. Entre em contato para mais informações.</p>
+
                 <h3 style="margin-top: 20px;"><i class="fas fa-clock"></i> O que Levar</h3>
-                <p>Recomendamos que os participantes tragam: Bíblia, caderno para anotações, roupa de cama e banho (quando não fornecida), roupas confortáveis, artigos de higiene pessoal e medicamentos de uso contínuo.</p>
+                <p>Recomendamos que os participantes tragam: Bíblia, caderno para anotações, roupa de cama e banho
+                    (quando não fornecida), roupas confortáveis, artigos de higiene pessoal e medicamentos de uso
+                    contínuo.</p>
             </div>
         </section>
     </main>
+
+    <br>
 
     <footer>
         <div class="container">
@@ -937,4 +1071,5 @@
         }
     </script>
 </body>
+
 </html>

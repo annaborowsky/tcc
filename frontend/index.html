@@ -141,7 +141,7 @@
         .settings-btn {
             background: rgba(255, 255, 255, 0.15);
             border: none;
-            padding: 10px 18px;
+            padding: 11px 18px;
             border-radius: 30px;
             color: white;
             font-weight: 600;
@@ -151,6 +151,7 @@
             align-items: center;
             gap: 8px;
             backdrop-filter: blur(5px);
+            text-decoration: none;
         }
 
         .settings-btn:hover {
@@ -673,7 +674,8 @@
             --gray: #6c757d;
             --light-gray: #e9ecef;
             background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            color: white; /* Alterado para branco para melhor contraste */
+            color: white;
+            /* Alterado para branco para melhor contraste */
         }
 
         body.dark-mode header {
@@ -694,17 +696,29 @@
 
         /* CORREÇÃO DOS TÍTULOS NO MODO ESCURO - AGORA EM BRANCO */
         body.dark-mode .section-title {
-            color: white; /* Títulos das seções em branco */
-            border-bottom: 2px solid rgba(255, 255, 255, 0.2); /* Borda mais suave */
+            color: white;
+            /* Títulos das seções em branco */
+            border-bottom: 2px solid white;
+            /* Borda mais suave */
         }
 
+        body.dark-mode #popy {
+            color: #1e3a8a;
+            /* Títulos das seções em branco */
+            border-bottom: 2px solid #1e3a8a;
+            /* Borda mais suave */
+        }
+
+
         body.dark-mode .section-title i {
-            color: var(--secondary); /* Mantém o dourado nos ícones */
+            color: var(--secondary);
+            /* Mantém o dourado nos ícones */
         }
 
         body.dark-mode .card h3,
         body.dark-mode .resource-card h3 {
-            color: var(--primary); /* Mantém azul nos títulos dos cards */
+            color: var(--primary);
+            /* Mantém azul nos títulos dos cards */
         }
 
         body.dark-mode .card p,
@@ -727,7 +741,8 @@
         }
 
         body.dark-mode .schedule-item h4 {
-            color: var(--primary); /* Mantém azul nos títulos da agenda */
+            color: var(--primary);
+            /* Mantém azul nos títulos da agenda */
         }
 
         body.dark-mode .settings-menu {
@@ -748,11 +763,21 @@
             background: var(--light-gray);
         }
 
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid #F9C74F;
+            color: #F9C74F;
+        }
+
+        .btn-secondary:hover {
+            background-color: #F9C74F;
+            color: white;
+        }
     </style>
 </head>
 
 <body>
-    <header>
+ <header>
         <div class="container">
             <div class="header-content">
                 <div class="logo">
@@ -767,30 +792,24 @@
                 <div class="nav-buttons">
                     <a href="sobre.html" class="nav-btn"><i class="fas fa-info-circle"></i> Sobre</a>
                     <a href="ajuda.html" class="nav-btn"><i class="fas fa-question-circle"></i> Ajuda</a>
-                    <a href="index.html" class="nav-btn"><i class="fas fa-home"></i> Início</a>
+                    <a href="index.html" class="nav-btn active"><i class="fas fa-home"></i> Início</a>
 
                     <!-- Botão de Configurações -->
                     <div class="settings-container">
                         <button class="settings-btn" onclick="toggleSettings()">
-                            <i class="fas fa-cog"></i> Configurações
+                            <i class="fas fa-cog" style="font-size: 22px;"></i>
                         </button>
                         <div class="settings-menu" id="settingsMenu">
                             <button class="settings-menu-item" onclick="toggleTheme()">
                                 <i class="fas fa-palette"></i>
                                 <span>Tema</span>
-                                <div class="theme-options">
-
-                                    <button class="settings-menu-item">
-                                        <a href="perfil.html">
-                                            <i class="fas fa-user"></i>
-                                            Meu Perfil
-                                        </a>
-                                    </button>
-                                    <button class="settings-menu-item" id="authButton" onclick="toggleAuth()">
-                                        <i class="fas fa-sign-out-alt" id="authIcon"></i>
-                                        <span id="authText">Sair</span>
-                                    </button>
-                                </div>
+                            </button>
+                            <button class="settings-menu-item" onclick="window.location.href='perfil.html'">
+                                <i class="fas fa-user"></i> Meu perfil
+                            </button>
+                            <button class="settings-menu-item" id="authButton" onclick="toggleAuth()">
+                                <i class="fas fa-sign-out-alt" id="authIcon"></i>
+                                <span id="authText">Sair</span>
                             </button>
                         </div>
                     </div>
@@ -802,6 +821,8 @@
             </div>
         </div>
     </header>
+
+    <br>
 
     <main class="container">
         <section>
@@ -866,9 +887,9 @@
 
         <section class="schedule">
             <div class="schedule-header">
-                <h2 class="section-title" style="border-bottom: none; margin: 0; padding: 0;"><i
-                        class="fas fa-calendar-day"></i> Próximas Escalas</h2>
-                <a href="eventos.html" class="btn btn-secondary">Ver Todas as Escalas</a>
+                <h2 class="section-title" style="border-bottom: none; margin: 0; padding: 0;" id="popy" ><i
+                        class="fas fa-calendar-day" ></i> Próximas Escalas</h2>
+                <a href="escalas.html" class="btn btn-secondary">Ver Todas as Escalas</a>
             </div>
             <div class="schedule-grid">
                 <div class="schedule-item">
