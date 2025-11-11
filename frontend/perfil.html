@@ -967,7 +967,8 @@
                         </div>
                     </div>
 
-                    <button class="btn">
+                    <!-- Na seção de Preferências, substitua o botão atual por: -->
+                    <button class="btn" onclick="savePreferences()">
                         <i class="fas fa-save"></i> Salvar Preferências
                     </button>
                 </div>
@@ -1021,15 +1022,6 @@
                         <p><strong>Atenção:</strong> Esta ação é irreversível. Todos os seus dados serão permanentemente
                             excluídos e você perderá o acesso a todos os recursos da comunidade. Esta operação não pode
                             ser desfeita.</p>
-
-                        <div class="form-group">
-                            <label class="form-label">
-                                <i class="fas fa-keyboard"></i> Digite "EXCLUIR" para confirmar
-                            </label>
-                            <input type="text" class="form-input" placeholder="Digite EXCLUIR aqui..."
-                                id="confirmDelete">
-                        </div>
-
                         <button class="btn btn-danger" onclick="confirmDelete()">
                             <i class="fas fa-trash"></i> Excluir Minha Conta Permanentemente
                         </button>
@@ -1107,17 +1099,13 @@
             }
         });
 
-        // Gerenciamento de Tema - CORRIGIDO
+        // Gerenciamento de Tema
         function setTheme(theme) {
             if (theme === 'dark') {
                 document.body.classList.add('dark-mode');
-                document.querySelector('.theme-light').classList.remove('active');
-                document.querySelector('.theme-dark').classList.add('active');
                 document.getElementById('themeSelect').value = 'dark';
             } else {
                 document.body.classList.remove('dark-mode');
-                document.querySelector('.theme-light').classList.add('active');
-                document.querySelector('.theme-dark').classList.remove('active');
                 document.getElementById('themeSelect').value = 'light';
             }
             localStorage.setItem('theme', theme);
@@ -1133,14 +1121,66 @@
             const savedTheme = localStorage.getItem('theme') || 'light';
             setTheme(savedTheme);
 
-            // Atualizar o select do tema
-            document.getElementById('themeSelect').value = savedTheme;
-
             // Adicionar listener para o select
             document.getElementById('themeSelect').addEventListener('change', function () {
                 setTheme(this.value);
             });
+
+            // Adicionar listener para salvar preferências
+            document.querySelector('#preferencias .btn').addEventListener('click', function (e) {
+                e.preventDefault();
+                savePreferences();
+            });
         });
+
+        // Salvar preferências
+        function savePreferences() {
+            // Salvar tema
+            const selectedTheme = document.getElementById('themeSelect').value;
+            setTheme(selectedTheme);
+
+            // Salvar configurações de notificação
+            const notifEmail = document.getElementById('notif-email').checked;
+            const notifEventos = document.getElementById('notif-eventos').checked;
+            const notifNovidades = document.getElementById('notif-novidades').checked;
+
+            // Salvar no localStorage
+            localStorage.setItem('notifEmail', notifEmail);
+            localStorage.setItem('notifEventos', notifEventos);
+            localStorage.setItem('notifNovidades', notifNovidades);
+
+            // Salvar ministérios
+            const ministerioCoral = document.getElementById('ministerio-coral').checked;
+            const ministerioAcolitos = document.getElementById('ministerio-acolitos').checked;
+            const ministerioVisitacao = document.getElementById('ministerio-visitacao').checked;
+
+            localStorage.setItem('ministerioCoral', ministerioCoral);
+            localStorage.setItem('ministerioAcolitos', ministerioAcolitos);
+            localStorage.setItem('ministerioVisitacao', ministerioVisitacao);
+
+            alert('Preferências salvas com sucesso!');
+        }
+
+        // Carregar preferências salvas
+        function loadPreferences() {
+            // Carregar notificações
+            const notifEmail = localStorage.getItem('notifEmail') === 'true';
+            const notifEventos = localStorage.getItem('notifEventos') === 'true';
+            const notifNovidades = localStorage.getItem('notifNovidades') === 'true';
+
+            document.getElementById('notif-email').checked = notifEmail !== null ? notifEmail : true;
+            document.getElementById('notif-eventos').checked = notifEventos !== null ? notifEventos : true;
+            document.getElementById('notif-novidades').checked = notifNovidades !== null ? notifNovidades : false;
+
+            // Carregar ministérios
+            const ministerioCoral = localStorage.getItem('ministerioCoral') === 'true';
+            const ministerioAcolitos = localStorage.getItem('ministerioAcolitos') === 'true';
+            const ministerioVisitacao = localStorage.getItem('ministerioVisitacao') === 'true';
+
+            document.getElementById('ministerio-coral').checked = ministerioCoral !== null ? ministerioCoral : true;
+            document.getElementById('ministerio-acolitos').checked = ministerioAcolitos !== null ? ministerioAcolitos : false;
+            document.getElementById('ministerio-visitacao').checked = ministerioVisitacao !== null ? ministerioVisitacao : false;
+        }
 
         // Logout
         function logout() {
@@ -1161,6 +1201,8 @@
 
             if (confirm('Tem certeza ABSOLUTA que deseja excluir sua conta? Esta ação é IRREVERSÍVEL.')) {
                 if (confirm('Última chance. Todos os seus dados serão perdidos permanentemente. Confirmar?')) {
+                    // Limpar todas as preferências
+                    localStorage.clear();
                     alert('Conta excluída com sucesso. Sentiremos sua falta na comunidade!');
                     window.location.href = 'index.html';
                 }
@@ -1187,7 +1229,7 @@
             });
         });
 
-        // Adicionar data atual
+        // Adicionar data atual e carregar preferências
         document.addEventListener('DOMContentLoaded', function () {
             const today = new Date();
             const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
@@ -1195,6 +1237,9 @@
 
             const hero = document.querySelector('.hero p');
             hero.innerHTML += `<br><small><i class="far fa-calendar"></i> Hoje é ${dateString}</small>`;
+
+            // Carregar preferências salvas
+            loadPreferences();
         });
     </script>
 </body>

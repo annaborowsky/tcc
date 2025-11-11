@@ -851,9 +851,9 @@
                     <ul class="footer-links">
                         <li><a href="index.html"><i class="fas fa-chevron-right"></i> Início</a></li>
                         <li><a href="missas.html"><i class="fas fa-chevron-right"></i> Missas</a></li>
-                        <li><a href="biblia.html"><i class="fas fa-chevron-right"></i> Bíblia</a></li>
-                        <li><a href="retiros.html"><i class="fas fa-chevron-right"></i> Retiros</a></li>
                         <li><a href="eventos.html"><i class="fas fa-chevron-right"></i> Eventos</a></li>
+                        <li><a href="retiros.html"><i class="fas fa-chevron-right"></i> Retiros</a></li>
+                        <li><a href="biblia.html"><i class="fas fa-chevron-right"></i> Bíblia</a></li>
                         <li><a href="leitura.html"><i class="fas fa-chevron-right"></i> Leitura do Dia</a></li>
                         <li><a href="enciclopedias.html"><i class="fas fa-chevron-right"></i> Enciclopédias</a></li>
                     </ul>
@@ -994,21 +994,12 @@
             }
         });
 
-        
-        function toggleTheme() {
-            const isDark = document.body.classList.contains('dark-mode');
-        }
-
-        // Carregar tema salvo
+        // Gerenciamento de Tema
         function setTheme(theme) {
             if (theme === 'dark') {
                 document.body.classList.add('dark-mode');
-                document.querySelector('.theme-light').classList.remove('active');
-                document.querySelector('.theme-dark').classList.add('active');
             } else {
                 document.body.classList.remove('dark-mode');
-                document.querySelector('.theme-light').classList.add('active');
-                document.querySelector('.theme-dark').classList.remove('active');
             }
             localStorage.setItem('theme', theme);
         }
@@ -1018,14 +1009,14 @@
             setTheme(isDark ? 'light' : 'dark');
         }
 
-        // Carregar tema salvo
+        // Carregar tema salvo e renderizar escalas
         document.addEventListener('DOMContentLoaded', function () {
             const savedTheme = localStorage.getItem('theme') || 'light';
             setTheme(savedTheme);
             updateAuthButton();
-            updateStatusIndicator();
+            renderScales(scalesData); // LINHA ADICIONADA AQUI
         });
-        
+
         // Alternar entre login/logout
         function toggleAuth() {
             if (isLoggedIn) {
@@ -1072,39 +1063,39 @@
 
             if (scales.length === 0) {
                 container.innerHTML = `
-                    <div class="empty-state">
-                        <i class="fas fa-calendar-times"></i>
-                        <h3>Nenhuma escala encontrada</h3>
-                        <p>Não há escalas que correspondam aos filtros selecionados. Tente ajustar os critérios de busca.</p>
-                        <button class="btn" onclick="clearFilters()">Limpar Filtros</button>
-                    </div>
-                `;
+                <div class="empty-state">
+                    <i class="fas fa-calendar-times"></i>
+                    <h3>Nenhuma escala encontrada</h3>
+                    <p>Não há escalas que correspondam aos filtros selecionados. Tente ajustar os critérios de busca.</p>
+                    <button class="btn" onclick="clearFilters()">Limpar Filtros</button>
+                </div>
+            `;
                 return;
             }
 
             container.innerHTML = scales.map(scale => `
-                <div class="scale-card" data-ministry="${scale.ministry}" data-status="${scale.status}">
-                    <div class="scale-header">
-                        <div>
-                            <h3 class="scale-title">${scale.title}</h3>
-                            <div class="scale-date">
-                                <i class="far fa-calendar"></i>
-                                ${formatDate(scale.date)}
-                            </div>
+            <div class="scale-card" data-ministry="${scale.ministry}" data-status="${scale.status}">
+                <div class="scale-header">
+                    <div>
+                        <h3 class="scale-title">${scale.title}</h3>
+                        <div class="scale-date">
+                            <i class="far fa-calendar"></i>
+                            ${formatDate(scale.date)}
                         </div>
-                        <div class="scale-badge">${getMinistryName(scale.ministry)}</div>
                     </div>
-                    <ul class="scale-members">
-                        ${scale.members.map(member => `
-                            <li class="scale-member">
-                                <i class="fas fa-user"></i>
-                                ${member.name}
-                                <span class="member-role">${member.role}</span>
-                            </li>
-                        `).join('')}
-                    </ul>
+                    <div class="scale-badge">${getMinistryName(scale.ministry)}</div>
                 </div>
-            `).join('');
+                <ul class="scale-members">
+                    ${scale.members.map(member => `
+                        <li class="scale-member">
+                            <i class="fas fa-user"></i>
+                            ${member.name}
+                            <span class="member-role">${member.role}</span>
+                        </li>
+                    `).join('')}
+                </ul>
+            </div>
+        `).join('');
         }
 
         // Formatar data
